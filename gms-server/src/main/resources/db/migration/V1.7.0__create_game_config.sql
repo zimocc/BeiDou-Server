@@ -13,9 +13,9 @@ create table if not exists game_config
 
 insert into game_config (config_type, config_sub_type, config_clazz, config_code, config_value, config_desc)
 values ('world', '0', 'java.lang.Integer', 'flag', '0', '0=普通大区，1=活动大区，2=新区，3=热门大区(0=nothing,1=event,2=new,3=hot)'),
-       ('world', '0', 'java.lang.String', 'server_message', 'Welcome to Scania!', '顶部滚动信息(top scrolling information)'),
-       ('world', '0', 'java.lang.String', 'event_message', 'Scania', '大区描述(world description)'),
-       ('world', '0', 'java.lang.String', 'recommend_message', 'Welcome to Scania!', '大区推荐信息(world recommend information)'),
+       ('world', '0', 'java.lang.String', 'server_message', 'Welcome to Zimo!', '顶部滚动信息(top scrolling information)'),
+       ('world', '0', 'java.lang.String', 'event_message', 'Zimo', '大区描述(world description)'),
+       ('world', '0', 'java.lang.String', 'recommend_message', 'Welcome to Zimo!', '大区推荐信息(world recommend information)'),
        ('world', '0', 'java.lang.Integer', 'channel_size', '3', '启动频道数(default channel size)'),
        ('world', '0', 'java.lang.Float', 'exp_rate', '1.0', '经验倍率(exp rate)'),
        ('world', '0', 'java.lang.Float', 'meso_rate', '1.0', '金币倍率(meso rate)'),

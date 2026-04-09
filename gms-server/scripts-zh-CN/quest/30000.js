@@ -19,123 +19,94 @@ AllowFunction-could use directly
 -gainMeso获取金币(int gain);
  */
 
-
 var status = -1;
 
 //Start
-function start(mode, type, selection)
-{
-	if (CheckStatus(mode))
-	{
-	    if (status == 0)
-	    {
-			//第一层对话
-			qm.sendNext("哦，尊贵的冒险者#r#h ##k，欢迎莅临#b《北斗冒险岛》#k这方被神秘与奇迹所笼罩的奇幻之地！吾乃您的引导者，#r小睡#k，一个集智慧与优雅于一身的存在，特此恭候您的到来。")
-	    }
-		else if (status == 1 )
-		{
-			//第二层对话
-			qm.sendNextPrev("哈哈，恭喜您，被命运的骰子扔进了这场荒诞不经的大冒险！您准备好了吗？前方是无尽的搞笑、离奇和不可思议！从玛加提亚城的狂欢派对，直接跳入冰封雪域的冰雪奇缘，再一头扎进森林迷宫的魔幻蘑菇圈，最后飘向星空岛屿的银河漂流瓶大会！")
-		}
-		else if (status == 2)
-		{
-			//最后一层对话完继续循环至此，退出结束
-		    if (mode == 0)
-		    {
-		    	qm.forceStartQuest();
-                qm.gainMeso(100000);			
-		    	qm.forceCompleteQuest();
-				qm.dispose();
-		    }
-			else
-			{
-				qm.sendNextPrev("记住，冒险岛不只是冒险，它是一场对常规的无情嘲弄，是对逻辑的彻底颠覆！所以，请放开您的笑点，拥抱这份疯狂，与我们一起，在荒诞与奇幻中，创造属于我们的神经质传奇吧！哈哈，让我们一起，笑对人生，疯癫到底！");
-			}
-			
-		}
-		else if (status == 3)
-		{
-			if (qm.getPlayer().getMapId() != 4)
-			{
-				qm.sendAcceptDecline("你想重新回到#b青苹果乐园#k吗？");
-			}
-			else
-			{
-			    qm.sendOk("请跟你面前的昨日酣睡对话吧！祝您游戏开心。");
-			    qm.forceStartQuest();
-                qm.dispose();				
-			}
-
-		}
-		else if (status == 4)
-		{
-			if (qm.getJobId() == 0)
-			{
-			    qm.warp(4);
-			    qm.sendOk("请跟你面前的昨日酣睡对话吧！祝您游戏开心。");
-			    qm.forceStartQuest();			
-			    qm.dispose();				
-			}
-			else
-			{
-				qm.sendOk("咦，你竟然不是新手。很遗憾我不能带你前往青苹果乐园了，不过我依然可以给你一部分启动资金：\r\n #fUI/CashShop.img/CashItem/0# x100000");
-				qm.forceStartQuest();
-                qm.gainMeso(100000);			
-		    	qm.forceCompleteQuest();
-				qm.dispose();
-			}
-		}
-		else
-			qm.dispose();
-	}
+function start(mode, type, selection) {
+  if (CheckStatus(mode)) {
+    if (status == 0) {
+      //第一层对话
+      qm.sendNext(
+        "哦，尊贵的冒险者#r#h ##k，欢迎莅临#b《紫陌冒冲岛》#k这方被神秘与奇迹所笼罩的奇幻之地！吾乃您的引导者，#r紫陌#k，一个集智慧与优雅于一身的存在，特此恭候您的到来。",
+      );
+    } else if (status == 1) {
+      //第二层对话
+      qm.sendNextPrev(
+        "哈哈，恭喜您，被命运的骰子扔进了这场荒诞不经的大冒险！您准备好了吗？前方是无尽的搞笑、离奇和不可思议！从玛加提亚城的狂欢派对，直接跳入冰封雪域的冰雪奇缘，再一头扎进森林迷宫的魔幻蘑菇圈，最后飘向星空岛屿的银河漂流瓶大会！",
+      );
+    } else if (status == 2) {
+      //最后一层对话完继续循环至此，退出结束
+      if (mode == 0) {
+        qm.forceStartQuest();
+        qm.gainMeso(100000);
+        qm.forceCompleteQuest();
+        qm.dispose();
+      } else {
+        qm.sendNextPrev(
+          "记住，冒险岛不只是冒险，它是一场对常规的无情嘲弄，是对逻辑的彻底颠覆！所以，请放开您的笑点，拥抱这份疯狂，与我们一起，在荒诞与奇幻中，创造属于我们的神经质传奇吧！哈哈，让我们一起，笑对人生，疯癫到底！",
+        );
+      }
+    } else if (status == 3) {
+      if (qm.getPlayer().getMapId() != 4) {
+        qm.sendAcceptDecline("你想重新回到#b青苹果乐园#k吗？");
+      } else {
+        qm.sendOk("请跟你面前的紫陌大魔王对话吧！祝您游戏开心。");
+        qm.forceStartQuest();
+        qm.dispose();
+      }
+    } else if (status == 4) {
+      if (qm.getJobId() == 0) {
+        qm.warp(4);
+        qm.sendOk("请跟你面前的紫陌大魔王对话吧！祝您游戏开心。");
+        qm.forceStartQuest();
+        qm.dispose();
+      } else {
+        qm.sendOk(
+          "咦，你竟然不是新手。很遗憾我不能带你前往青苹果乐园了，不过我依然可以给你一部分启动资金：\r\n #fUI/CashShop.img/CashItem/0# x100000",
+        );
+        qm.forceStartQuest();
+        qm.gainMeso(100000);
+        qm.forceCompleteQuest();
+        qm.dispose();
+      }
+    } else qm.dispose();
+  }
 }
 
-function end(mode, type, selection)
-{
-	if (CheckStatus(mode))
-	{
-	    if (status == 0)
-	    {
-			//第一层对话
-            qm.sendOk("看来你已经见过小睡了，欢迎来到北斗，这是给你的启动资金，希望对您的冒险有所帮助\r\n\r\n#fUI/CashShop.img/CSDiscount/bonus# 金币: 100000");
-            qm.gainMeso(100000);			
-			qm.forceCompleteQuest();
-            qm.dispose();			
-	    }
-		else if (status == 1 )
-		{
-			//第二层对话			
-		}
-		else
-		{
-			//最后一层对话完继续循环至此，退出结束
-			qm.dispose();
-		}
-	}
-			
+function end(mode, type, selection) {
+  if (CheckStatus(mode)) {
+    if (status == 0) {
+      //第一层对话
+      qm.sendOk(
+        "看来你已经见过紫陌了，欢迎来到紫陌冒沖岛，这是给你的启动资金，希望对您的冒险有所帮助\r\n\r\n#fUI/CashShop.img/CSDiscount/bonus# 金币: 100000",
+      );
+      qm.gainMeso(100000);
+      qm.forceCompleteQuest();
+      qm.dispose();
+    } else if (status == 1) {
+      //第二层对话
+    } else {
+      //最后一层对话完继续循环至此，退出结束
+      qm.dispose();
+    }
+  }
 }
 
-function CheckStatus(mode)
-{
-	if (mode == -1)
-	{
-		qm.dispose();
-		return false;
-	}
-	
-	if (mode == 1)
-	{
-		status++;
-	}
-	else
-	{
-		status--;
-	}
-	
-	if (status == -1)
-	{
-		qm.dispose();
-		return false;
-	}	
-	return true;
+function CheckStatus(mode) {
+  if (mode == -1) {
+    qm.dispose();
+    return false;
+  }
+
+  if (mode == 1) {
+    status++;
+  } else {
+    status--;
+  }
+
+  if (status == -1) {
+    qm.dispose();
+    return false;
+  }
+  return true;
 }

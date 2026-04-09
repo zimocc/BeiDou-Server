@@ -9208,7 +9208,7 @@
         <string name="desc" value="Alters equipment for better or worse. Cannot be used on Cash items. Some stats are not affected."/>
     </imgdir>
     <imgdir name="2430033">
-        <string name="desc" value="神奇的北斗卫星指导书。传说是\n由该书封面上的冒险岛勇士昨日\n小睡流传下来的，据说集齐7本\n以后会有意想不到的事情发生，\n是什么呢？蹦下咔啦咔"/>
-        <string name="name" value="北斗卫星指导书"/>
+        <string name="desc" value="神奇的紫陌蛇皮指导书。传说是\n由该书封面上的冒险岛勇士紫陌\n大魔王流传下来的，据说集齐7本\n以后会有意想不到的事情发生，\n是什么呢？蹦下咔啦咔"/>
+        <string name="name" value="紫陌蛇皮指导书"/>
     </imgdir>
 </imgdir>

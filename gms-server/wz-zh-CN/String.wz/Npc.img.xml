@@ -8636,8 +8636,8 @@
         <string name="n0" value="你好，我是TokyoEric"/>
     </imgdir>
     <imgdir name="9900001">
-        <string name="name" value="昨日小睡"/>
-        <string name="n0" value="欢迎加入北斗！"/>
+        <string name="name" value="紫陌大魔王"/>
+        <string name="n0" value="欢迎加入紫陌冒沖岛！"/>
     </imgdir>
     <imgdir name="9901000">
         <string name="d0" value="哈啰? 我达到 200级了. 要达到200级实在是很困难的. 经过考验和痛苦, 我终于做到了. 你如果努力就可以成为大师. 祝你好运!!"/>
@@ -36649,9 +36649,9 @@
         <string name="name" value="test"/>
     </imgdir>
     <imgdir name="2104">
-        <string name="name" value="昨日酣睡"/>
-        <string name="func" value="北斗冒险岛萌新指引"/>
-        <string name="n0" value="欢迎来到北斗冒险岛~！"/>
+        <string name="name" value="紫陌大魔王"/>
+        <string name="func" value="紫陌冒沖岛萌新指引"/>
+        <string name="n0" value="欢迎来到紫陌冒沖岛~！"/>
         <string name="n1" value="你问为什么你出生在这里吗？那是因为冒险岛055版本前，新手都来到这里！"/>
         <string name="n2" value="有没有唤起你童年的回忆呢？"/>
         <string name="n3" value="点击我，我将带你开启回忆的旅程！"/>
@@ -36691,7 +36691,7 @@
         <string name="n1" value="爱拼,才会烎!"/>
     </imgdir>
     <imgdir name="9209103">
-        <string name="name" value="在北斗冒险岛，吃汉堡，热热闹闹过新年"/>
+        <string name="name" value="在紫陌冒沖岛，吃汉堡，热热闹闹过新年"/>
     </imgdir>
     <imgdir name="9310084">
         <string name="name" value="情人节红线女"/>
