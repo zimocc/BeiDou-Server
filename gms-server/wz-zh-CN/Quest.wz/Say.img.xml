@@ -34172,8 +34172,8 @@
     <imgdir name="4928">
         <imgdir name="0">
             <string name="0" value="哦，嗨！对不起。我没看见你站在那里。我刚刚在读你回来的枫树历史书。\n\n#L0##b我以为你都读过了。#k#l"/>
-            <string name="1" value="是的，我做到了。由于我父亲是亨利家族的首领，他非常严格地记住了枫树历史上发生的每一件事。我仍然记得所有的名字和数字。\n\n#L0###b那你为什么要读它呢？为什么你看起来如此烦恼？#k#l"/>
-            <string name="2" value="这本书中的一些东西一直困扰着我。#b鲍勃·斯奈尔#k这个名字写满了这本书，但没有任何图片，也没有对这个人进行太多描述，只是神奇地出现了，然后消失了，没有任何解释。如果我知道...\n\n#L0##b听起来我可以帮你#l\n#L1###b祝你好运！（书呆子…）#k#l"/>
+            <string name="1" value="是的，我做到了。由于我父亲是亨利家族的首领，他非常严格地记住了枫树历史上发生的每一件事。我仍然记得所有的名字和数字。\n\n#L0##b那你为什么要读它呢？为什么你看起来如此烦恼？#k#l"/>
+            <string name="2" value="这本书中的一些东西一直困扰着我。#b鲍勃·斯奈尔#k这个名字写满了这本书，但没有任何图片，也没有对这个人进行太多描述，只是神奇地出现了，然后消失了，没有任何解释。如果我知道...\n\n#L0##b听起来我可以帮你#l\n#L1##b祝你好运！（书呆子…）#k#l"/>
             <string name="3" value="真正地你真的会为我这么做吗？"/>
             <int name="ask" value="1"/>
             <imgdir name="stop">
@@ -34372,7 +34372,7 @@
     </imgdir>
     <imgdir name="4932">
         <imgdir name="1">
-            <string name="0" value="这不是吗！上下快速移动上下快速移动你还好吗？\r\n\r\n#L0##bBob做得很好。他就在他的壳里。#k#l"/>
+            <string name="0" value="这不是吗！上下快速移动上下快速移动你还好吗？\r\n\r\n#L0##b鲍勃做得很好。他就在他的壳里。#k#l"/>
             <string name="1" value="你不要那样说！你伤害了他，不是吗？我可以看出他身上有新的抓痕。这并不致命，但...\r\n\r\n#L0##b我确实打了他几下，让他陷入困境。如果我知道鲍勃·斯奈尔确实是一只蜗牛，我可能会采取不同的做法。#k#l"/>
             <string name="2" value="我原谅你。我们总是为了钱、为了衣服、为了力量而猎杀怪物，所有这些都是为了在这个世界上生存。如果你把鲍勃误认为是普通的蜗牛，我也不会感到惊讶。可怜的动物...\r\n\r\n#L0##b鲍勃怎么了？你对他了解多少？#k#l"/>
             <string name="3" value="鲍勃是我最老最亲爱的朋友之一。我从小就见过他，所以他可能和我一样大。我们聊了很多。这些聊天的主题大多是关于这个宇宙和我们的生活目的。直到有一天，我们分享了很多想法；他决定独自过苦行僧的生活。从那以后已经有一段时间了。我不知道我会看到他这样。\r\n\r\n#L0##b啊。。。我明白了。我在想，如果有机会的话，你知道我怎么才能说服他走出困境吗？#k#l"/>
@@ -34444,7 +34444,7 @@
     <imgdir name="4936">
         <imgdir name="0">
             <string name="0" value="哦，嗨！很高兴再次见到你。谢谢你帮我找到我的女儿。我仍然在弥补我们这些天失去的岁月。\r\n\r\n#L0##b这很好。嘿，我有个问题要问。#k#l"/>
-            <string name="1" value="当然，你问什么都行。\r\n\r\n#L0##b既然你研究的是Maplestory的怪物，我想你对蜗牛略知一二，对吧？#k#l"/>
+            <string name="1" value="当然，你问什么都行。\r\n\r\n#L0##b既然你研究的是冒险岛的怪物，我想你对蜗牛略知一二，对吧？#k#l"/>
             <string name="2" value="是的，我愿意这么说。怎么了？\r\n\r\n#L0##b你能告诉我这只蜗牛多大了吗？（展示鲍勃的蜗牛壳）#k#l"/>
             <string name="3" value="好的，让我们看看..."/>
             <imgdir name="yes">
@@ -34467,7 +34467,7 @@
             </imgdir>
         </imgdir>
         <imgdir name="1">
-            <string name="0" value="这很有趣。对你来说，它可能只是另一个蜗牛壳，但如果你近距离观察，这个蜗牛壳上的生长环结构非常密集，人眼几乎无法计数。\r\n\r\n#L0##b好吧，我不会感到惊讶。他就是传说中的鲍勃·斯奈尔，与Maplestore的历史一起生活。#k#l"/>
+            <string name="0" value="这很有趣。对你来说，它可能只是另一个蜗牛壳，但如果你近距离观察，这个蜗牛壳上的生长环结构非常密集，人眼几乎无法计数。\r\n\r\n#L0##b好吧，我不会感到惊讶。他就是传说中的鲍勃·斯奈尔，与冒险岛的历史一起生活。#k#l"/>
             <string name="1" value="我对这个世界的历史了解不多。但这是一个非常独特的发现。我打赌考古学家温斯顿可能比我对这个案子了解得更多。"/>
             <imgdir name="yes">
                 <string name="0" value="温斯顿在佩里翁附近的某个地方研究化石。你可能想和他核实一下这个蜗牛壳的情况。在你去那里之前我必须告诉你。小心温斯顿喜欢吸引力和名声。我听说他不时地窃取别人的研究成果来夺取过去的荣耀。我希望他对鲍勃蜗牛壳的学术价值不太感兴趣..."/>
@@ -60332,7 +60332,7 @@
     </imgdir>
     <imgdir name="28331">
         <imgdir name="0">
-            <string name="0" value="问候，旅行者。我的名字是汉娜，目前我正在为节日筹办一场“光之节”活动。如果你可以帮助我，我将非常感激！"/>
+            <string name="0" value="你好，旅行者。我的名字是汉娜，目前我正在筹办一场“清明节”活动。如果你可以帮助我，我将非常感激！"/>
             <imgdir name="yes">
                 <string name="0" value="很好。我想为节日建造一个祭坛，所以我们需要 25 个祭坛零件。有些人尝试帮助我，但他们的斧子卡在了木头上。战胜那些怪物应该会给你所需的零件。谢谢并赶快回来！"/>
             </imgdir>
@@ -60363,7 +60363,7 @@
             </imgdir>
         </imgdir>
         <imgdir name="1">
-            <string name="0" value="干得好！我觉得这些蜡烛足够开启光明节了！感谢你的辛勤工作，请收下这份礼物作为我的感激之情。"/>
+            <string name="0" value="干得好！我觉得这些蜡烛足够开启清明节了！感谢你的辛勤工作，请收下这份礼物作为我的感激之情。"/>
             <imgdir name="yes">
                 <string name="0" value="再次感谢！如果你想打开这个礼物盒子，那你想我帮你开启礼物吗？"/>
             </imgdir>
@@ -63266,7 +63266,7 @@
             <int name="ask" value="1"/>
             <string name="0" value="什么？马歇尔拒绝了？\r\n#L0##b是的，好像发生了什么不好的事情。#l\n#k"/>
             <string name="1" value="难道是真的？没有传说中的剪刀的话，就无法理发了...\r\n#L0##b传说中的剪刀？那是什么东西？#l\n#k"/>
-            <string name="2" value="只要稍微处理一下就能做出漂亮发型的传说中的剪刀。据说马歇尔怕把它弄丢，所以在每次下班的时候，都会把它锁在地铁站入口处的保管箱里。但是不久前他把保管箱的钥匙弄丢了。如果你能帮他找到钥匙，他一定会答应你的请求。快去寻找钥匙吧。"/>
+            <string name="2" value="只要稍微处理一下就能做出漂亮发型的传说中的剪刀。据说马歇尔怕把它弄丢，所以在每次下班的时候，都会把它锁在地铁站入口处的储物柜里。但是不久前他把储物柜的钥匙弄丢了。如果你能帮他找到钥匙，他一定会答应你的请求。快去寻找钥匙吧。"/>
             <imgdir name="stop">
                 <imgdir name="0">
                     <int name="answer" value="1"/>
@@ -63278,7 +63278,7 @@
                 </imgdir>
             </imgdir>
             <imgdir name="yes">
-                <string name="0" value="根据传闻，他是在废都广场5~6层买东西的时候弄丢的。一定是被模特们捡走了...但是不知道是哪个模特捡走的。请你去消灭模特，找到#b保管箱钥匙#k，打开地铁站的保管箱看看。"/>
+                <string name="0" value="根据传闻，他是在废都广场5~6层买东西的时候弄丢的。一定是被模特们捡走了...但是不知道是哪个模特捡走的。请你去消灭模特，找到#b储物柜钥匙#k，打开地铁站的储物柜看看。"/>
             </imgdir>
             <imgdir name="no">
                 <string name="0" value="你是没有自信吗？我想你一定可以做到的。"/>
@@ -63286,18 +63286,18 @@
         </imgdir>
         <imgdir name="1">
             <int name="ask" value="1"/>
-            <string name="0" value="...\r\n#L0##b(关得很紧的保管箱。没有钥匙无法把它打开。)#l\n#k"/>
-            <string name="1" value="#b(...把钥匙插上去，保管箱的门打开了。里面好像有什么东西！)#k"/>
+            <string name="0" value="...\r\n#L0##b(关得很紧的储物柜。没有钥匙无法把它打开。)#l\n#k"/>
+            <string name="1" value="#b(...把钥匙插上去，储物柜的门打开了。里面好像有什么东西！)#k"/>
             <imgdir name="stop">
                 <imgdir name="0">
                     <int name="answer" value="1"/>
                     <int name="flip" value="1"/>
                 </imgdir>
                 <imgdir name="npc">
-                    <string name="0" value="找到#b保管箱钥匙#k，打开地铁站里的保管箱。"/>
+                    <string name="0" value="找到#b储物柜钥匙#k，打开地铁站里的储物柜。"/>
                 </imgdir>
                 <imgdir name="item">
-                    <string name="0" value="#b(要打开保管箱，好像需要#b保管箱钥匙#k。)#k"/>
+                    <string name="0" value="#b(要打开储物柜，好像需要#b储物柜钥匙#k。)#k"/>
                 </imgdir>
             </imgdir>
         </imgdir>
@@ -63311,7 +63311,7 @@
                 <string name="0" value="#b(把剪刀抓在手里，感觉上面围绕着一股奇怪的力量。快把它交给马歇尔吧。)#k"/>
             </imgdir>
             <imgdir name="no">
-                <string name="0" value="#b(...保管箱的门很快又关上了。)#k"/>
+                <string name="0" value="#b(...储物柜的门很快又关上了。)#k"/>
             </imgdir>
         </imgdir>
         <imgdir name="1">
@@ -63321,14 +63321,14 @@
             </imgdir>
             <imgdir name="stop">
                 <imgdir name="npc">
-                    <string name="0" value="#b(...保管箱里什么都没有。快把#b传说中的剪刀#k交给#b马歇尔#k吧。)#k"/>
+                    <string name="0" value="#b(...储物柜里什么都没有。快把#b传说中的剪刀#k交给#b马歇尔#k吧。)#k"/>
                 </imgdir>
                 <imgdir name="item">
                     <string name="0" value="为了说服#b马歇尔#k，必须首先找到#b传说中的剪刀#k。"/>
                 </imgdir>
             </imgdir>
             <imgdir name="lost">
-                <string name="0" value="#b(打开保管箱，看到了传说中的剪刀。什么时候又回到保管箱里来了？伸出手，把剪刀拿出来吧。)#k"/>
+                <string name="0" value="#b(打开储物柜，看到了传说中的剪刀。什么时候又回到储物柜里来了？伸出手，把剪刀拿出来吧。)#k"/>
             </imgdir>
         </imgdir>
     </imgdir>
@@ -65029,7 +65029,7 @@
             <string name="0" value="哦~你是说想成为海盗？你心里已经下定决心，做好准备了？"/>
             <imgdir name="yes">
                 <string name="0" value="那好。大家都知道#r海盗#b是一项需要#b力量#k与敏捷的职业。如果想成为海盗的话，就要去见见#r诺特勒斯号#k的#b#p1090000##k 大人。"/>
-                <string name="1" value="Passing by me and go further, you can find #bPirate Statue#k to teleport to #bNautilus#k."/>
+                <string name="1" value="经过我，再往前走，你就能找到#b海盗雕像#k,通过它传送至#b诺特勒斯号#k."/>
             </imgdir>
             <imgdir name="no">
                 <string name="0" value="不是说想成为海盗吗？这个嘛......不管是什么职业都要有心理上的万全准备再来找我啊。"/>
@@ -65051,8 +65051,8 @@
         <imgdir name="0">
             <string name="0" value="选择战士吗？看到我之后也想成为威风凛凛的战士吧？如果已经下定决心的话，就果断的按下接受吧。"/>
             <imgdir name="yes">
-                <string name="0" value="不错。#r战士#k这个职业重视#b力量(Str)#k，也需要一定程度的敏捷(Dex)。現在立刻去见#r勇士部落#k的#b#p1022000##k。"/>
-                <string name="1" value="Passing by me and go further, you can find #bWarrior Statue#k to teleport to #bPerion#k."/>
+                <string name="0" value="不错。#r战士#k这个职业重视#b力量(Str)#k，也需要一定程度的敏捷(Dex)。现在立刻去见#r勇士部落#k的#b#p1022000##k。"/>
+                <string name="1" value="经过我，再往前走，你就能找到#b战士雕像#k,通过它传送至#b勇士部落#k."/>
             </imgdir>
             <imgdir name="no">
                 <string name="0" value="不想成为战士吗？哦..不管是什么职业，若做好了准备再来找我吧。"/>
@@ -65075,7 +65075,7 @@
             <string name="0" value="听说过神箭手#b#p1012100##k的名声吗？以弓作为武器的弓箭手职业，在很远距离能以很高的命中率狩猎怪物。怎样？要走上#b弓箭手之路#k吗？"/>
             <imgdir name="yes">
                 <string name="0" value="好的。想要见到#b#p1012100##k，要去一个叫做#r射手村#k的村庄。如果不知道怎么去，按下#rW#k键，从#b世界地图#k上可以找到。"/>
-                <string name="1" value="Passing by me and go further, you can find #bBowman Statue#k to teleport to #bHenesys#k."/>
+                <string name="1" value="经过我，再往前走，你就能找到#b弓箭手雕像#k,通过它传送至#b射手村#k."/>
             </imgdir>
             <imgdir name="no">
                 <string name="0" value="你如果见到#b射手村#k的#b赫丽娜#k的话可能会改变想法的。或者看看其它弓箭手们~ 不管什么时候，想得到关于职业的帮助随时来找我吧."/>
@@ -65098,7 +65098,7 @@
             <string name="0" value="是的。需要相当的敏捷(Dex)与幸运(Luk)的#b飞侠#k这个职业还是有着相当大的魅力。如何？要走上飞侠的路吗？"/>
             <imgdir name="yes">
                 <string name="0" value="飞侠嘛～想要见到#r#p1052001##k要去废弃都市，首先见到那个人再说。不要忘了，要成为#r飞侠#k的话需达到#b等级 10#k以上.. 在路上也不要忘记狩猎遇到的怪物。"/>
-                <string name="1" value="Passing by me and go further, you can find #bThief Statue#k to teleport to #bKerning City#k."/>
+                <string name="1" value="经过我，再往前走，你就能找到#b飞侠雕像#k,通过它传送至#b废弃都市#k."/>
             </imgdir>
             <imgdir name="no">
                 <string name="0" value="去见#b#p1052001##k这一路就已经很愉快的吧.. 哦，不管怎样，如果想了解这个职业的话再来找我吧。"/>
@@ -65121,7 +65121,7 @@
             <string name="0" value="大法师#p1032001#啊.. 我也只是远远的见过呢.. 那个.. 听说他经常在魔法密林顶端的魔法图书馆里..怎样？想要走上法师之路吗？"/>
             <imgdir name="yes">
                 <string name="0" value="是吗，如果见到连我也没见过的#b#p1032001##k的话..记得跟我讲讲.. 想要成为法师，到魔法密林村庄最顶端的图书馆就能见到那个人。"/>
-                <string name="1" value="Passing by me and go further, you can find #bMagician Statue#k to teleport to #bElinia#k."/>
+                <string name="1" value="经过我，再往前走，你就能找到#b魔术师雕像#k,通过它传送至#b魔法密林#k."/>
             </imgdir>
             <imgdir name="no">
                 <string name="0" value="难道你的志向不是法师吗？我看法师很不错啊...不管什么时候，想要了解职业的话就来找我吧。"/>
@@ -65666,7 +65666,7 @@
             <int name="ask" value="1"/>
             <string name="0" value="什么？马歇尔拒绝了？\r\n#L0##b是的，好像发生了什么不好的事情。#l\n#k"/>
             <string name="1" value="难道是真的？没有传说中的剪刀的话，就无法理发了......\r\n#L0##b传说中的剪刀？那是什么东西？#l\n#k"/>
-            <string name="2" value="只要稍微处理一下就能做出漂亮发型的传说中的剪刀。据说马歇尔怕把它弄丢，所以在每次下班的时候，都会把它锁在地铁站入口处的保管箱里。但是不久前他把保管箱的钥匙弄丢了。如果你能帮他找到钥匙，他一定会答应你的请求。快去寻找钥匙吧。"/>
+            <string name="2" value="只要稍微处理一下就能做出漂亮发型的传说中的剪刀。据说马歇尔怕把它弄丢，所以在每次下班的时候，都会把它锁在地铁站入口处的储物柜里。但是不久前他把储物柜的钥匙弄丢了。如果你能帮他找到钥匙，他一定会答应你的请求。快去寻找钥匙吧。"/>
             <imgdir name="stop">
                 <imgdir name="0">
                     <int name="answer" value="1"/>
@@ -65678,7 +65678,7 @@
                 </imgdir>
             </imgdir>
             <imgdir name="yes">
-                <string name="0" value="根据传闻，他是在废都广场5~6层买东西的时候弄丢的。一定是被模特们捡走了......但是不知道是哪个模特捡走的。请你去消灭模特，找到#b保管箱钥匙#k，打开地铁站的保管箱看看。"/>
+                <string name="0" value="根据传闻，他是在废都广场5~6层买东西的时候弄丢的。一定是被模特们捡走了......但是不知道是哪个模特捡走的。请你去消灭模特，找到#b储物柜钥匙#k，打开地铁站的储物柜看看。"/>
             </imgdir>
             <imgdir name="no">
                 <string name="0" value="你是没有自信吗？我想你一定可以做到的。"/>
@@ -65686,18 +65686,18 @@
         </imgdir>
         <imgdir name="1">
             <int name="ask" value="1"/>
-            <string name="0" value="...\r\n#L0##b(关得很紧的保管箱。没有钥匙无法把它打开。)#l\n#k"/>
-            <string name="1" value="#b(......把钥匙插上去，保管箱的门打开了。里面好像有什么东西！)#k"/>
+            <string name="0" value="...\r\n#L0##b(关得很紧的储物柜。没有钥匙无法把它打开。)#l\n#k"/>
+            <string name="1" value="#b(......把钥匙插上去，储物柜的门打开了。里面好像有什么东西！)#k"/>
             <imgdir name="stop">
                 <imgdir name="0">
                     <int name="answer" value="1"/>
                     <int name="flip" value="1"/>
                 </imgdir>
                 <imgdir name="npc">
-                    <string name="0" value="找到#b保管箱钥匙#k，打开地铁站里的保管箱。"/>
+                    <string name="0" value="找到#b储物柜钥匙#k，打开地铁站里的储物柜。"/>
                 </imgdir>
                 <imgdir name="item">
-                    <string name="0" value=" #b(要打开保管箱，好像需要#b保管箱钥匙#k。)#k"/>
+                    <string name="0" value=" #b(要打开储物柜，好像需要#b储物柜钥匙#k。)#k"/>
                 </imgdir>
             </imgdir>
         </imgdir>
@@ -65711,7 +65711,7 @@
                 <string name="0" value="#b(把剪刀抓在手里，感觉上面围绕着一股奇怪的力量。快把它交给马歇尔吧。)#k"/>
             </imgdir>
             <imgdir name="no">
-                <string name="0" value="#b(......保管箱的门很快又关上了。)#k"/>
+                <string name="0" value="#b(......储物柜的门很快又关上了。)#k"/>
             </imgdir>
         </imgdir>
         <imgdir name="1">
@@ -65721,14 +65721,14 @@
             </imgdir>
             <imgdir name="stop">
                 <imgdir name="npc">
-                    <string name="0" value="#b(......保管箱里什么都没有。快把#b传说中的剪刀#k交给#b马歇尔#k吧。)#k"/>
+                    <string name="0" value="#b(......储物柜里什么都没有。快把#b传说中的剪刀#k交给#b马歇尔#k吧。)#k"/>
                 </imgdir>
                 <imgdir name="item">
                     <string name="0" value="为了说服#b马歇尔#k，必须首先找到#b传说中的剪刀#k。"/>
                 </imgdir>
             </imgdir>
             <imgdir name="lost">
-                <string name="0" value="#b(打开保管箱，看到了传说中的剪刀。什么时候又回到保管箱里来了？伸出手，把剪刀拿出来吧。)#k"/>
+                <string name="0" value="#b(打开储物柜，看到了传说中的剪刀。什么时候又回到储物柜里来了？伸出手，把剪刀拿出来吧。)#k"/>
             </imgdir>
         </imgdir>
     </imgdir>
@@ -66019,7 +66019,7 @@
             <int name="ask" value="1"/>
             <string name="0" value="我的新歌......新歌正在被人玷污。\r\n#L0##b新歌被人玷污？到底在说什么啊？#l\n#k"/>
             <string name="1" value="在废都广场某个地方的摇滚之魂！那个妖怪在随意演奏我的新歌。这样下去的话，阿赫可能会被人怀疑剽窃别人的歌曲。\r\n#L0##b剽窃！这可不行！摇滚之魂！我一定会把他消灭掉！#l\n#k"/>
-            <string name="2" value="Is that so?"/>
+            <string name="2" value="是吗？"/>
             <imgdir name="stop">
                 <imgdir name="0">
                     <int name="answer" value="1"/>
