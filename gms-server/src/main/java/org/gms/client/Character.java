@@ -354,10 +354,8 @@ public class Character extends AbstractCharacterObject {
     @Getter
     @Setter
     private Trade trade = null;
-    @Getter
     @Setter
     private MonsterBook monsterBook;
-    @Getter
     @Setter
     private CashShop cashShop;
     private final Set<NewYearCardRecord> newyears = new LinkedHashSet<>();
@@ -616,9 +614,11 @@ public class Character extends AbstractCharacterObject {
         ret.map = null;
         ret.job = Job.BEGINNER;
         ret.level = 1;
-        ret.accountId = c.getAccID();
+        ret.accountId = c != null ? c.getAccID() : 0;
         ret.buddylist = new BuddyList(20);
         ret.mapleMount = null;
+        ret.cashShop = new CashShop();
+        ret.monsterBook = new MonsterBook();
         ret.getInventory(InventoryType.EQUIP).setSlotLimit(24);
         ret.getInventory(InventoryType.USE).setSlotLimit(24);
         ret.getInventory(InventoryType.SETUP).setSlotLimit(24);
@@ -5117,11 +5117,28 @@ public class Character extends AbstractCharacterObject {
     }
 
     public GuildCharacter getMGC() {
+        if (mgc == null) {
+            mgc = new GuildCharacter(this);
+        }
         return mgc;
     }
 
     public void setMGC(GuildCharacter mgc) {
         this.mgc = mgc;
+    }
+
+    public MonsterBook getMonsterBook() {
+        if (monsterBook == null) {
+            monsterBook = new MonsterBook();
+        }
+        return monsterBook;
+    }
+
+    public CashShop getCashShop() {
+        if (cashShop == null) {
+            cashShop = new CashShop();
+        }
+        return cashShop;
     }
 
     public PartyCharacter getMPC() {

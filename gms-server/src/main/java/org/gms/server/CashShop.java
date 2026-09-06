@@ -85,6 +85,16 @@ public class CashShop {
     private static final AccountService accountService = ServerManager.getApplicationContext().getBean(AccountService.class);
     private static final CharacterService characterService = ServerManager.getApplicationContext().getBean(CharacterService.class);
 
+    public CashShop() {
+        this.accountId = 0;
+        this.characterId = 0;
+        this.nxCredit = 0;
+        this.maplePoint = 0;
+        this.nxPrepaid = 0;
+        this.opened = false;
+        this.factory = ItemFactory.CASH_OVERALL;
+    }
+
     public CashShop(int accountId, int characterId, int jobType) {
         this.accountId = accountId;
         this.characterId = characterId;
@@ -473,6 +483,9 @@ public class CashShop {
     }
 
     public void save(Connection con) throws SQLException {
+        if (accountId <= 0 || characterId <= 0) {
+            return;
+        }
         try (PreparedStatement ps = con.prepareStatement("UPDATE `accounts` SET `nxCredit` = ?, `maplePoint` = ?, `nxPrepaid` = ? WHERE `id` = ?")) {
             ps.setInt(1, nxCredit);
             ps.setInt(2, maplePoint);

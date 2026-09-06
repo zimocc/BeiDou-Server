@@ -2783,11 +2783,15 @@ public class PacketCreator {
         String allianceName = "";
         if (chr.getGuildId() > 0) {
             Guild mg = Server.getInstance().getGuild(chr.getGuildId());
-            guildName = mg.getName();
+            if (mg != null) {
+                guildName = mg.getName();
 
-            Alliance alliance = Server.getInstance().getAlliance(chr.getGuild().getAllianceId());
-            if (alliance != null) {
-                allianceName = alliance.getName();
+                if (mg.getAllianceId() > 0) {
+                    Alliance alliance = Server.getInstance().getAlliance(mg.getAllianceId());
+                    if (alliance != null) {
+                        allianceName = alliance.getName();
+                    }
+                }
             }
         }
         p.writeString(guildName);
@@ -2820,16 +2824,29 @@ public class PacketCreator {
         } else {
             p.writeByte(0);
         }
-        p.writeByte(chr.getCashShop().getWishList().size());
-        for (int sn : chr.getCashShop().getWishList()) {
-            p.writeInt(sn);
+        CashShop cs = chr.getCashShop();
+        List<Integer> wishList = (cs != null) ? cs.getWishList() : null;
+        if (wishList != null) {
+            p.writeByte(wishList.size());
+            for (int sn : wishList) {
+                p.writeInt(sn);
+            }
+        } else {
+            p.writeByte(0);
         }
 
         MonsterBook book = chr.getMonsterBook();
-        p.writeInt(book.getBookLevel());
-        p.writeInt(book.getNormalCard());
-        p.writeInt(book.getSpecialCard());
-        p.writeInt(book.getTotalCards());
+        if (book != null) {
+            p.writeInt(book.getBookLevel());
+            p.writeInt(book.getNormalCard());
+            p.writeInt(book.getSpecialCard());
+            p.writeInt(book.getTotalCards());
+        } else {
+            p.writeInt(1);
+            p.writeInt(0);
+            p.writeInt(0);
+            p.writeInt(0);
+        }
         p.writeInt(chr.getMonsterBookCover() > 0 ? ItemInformationProvider.getInstance().getCardMobId(chr.getMonsterBookCover()) : 0);
         Item medal = chr.getInventory(InventoryType.EQUIPPED).getItem((short) -49);
         if (medal != null) {
@@ -2839,9 +2856,11 @@ public class PacketCreator {
         }
         ArrayList<Short> medalQuests = new ArrayList<>();
         List<QuestStatus> completed = chr.getCompletedQuests();
-        for (QuestStatus qs : completed) {
-            if (qs.getQuest().getId() >= 29000) { // && q.getQuest().getId() <= 29923
-                medalQuests.add(qs.getQuest().getId());
+        if (completed != null) {
+            for (QuestStatus qs : completed) {
+                if (qs.getQuest() != null && qs.getQuest().getId() >= 29000) { // && q.getQuest().getId() <= 29923
+                    medalQuests.add(qs.getQuest().getId());
+                }
             }
         }
 
@@ -6072,7 +6091,7 @@ public class PacketCreator {
         p.writeInt(entry.getTotalReputation()); //total rep
         p.writeInt(entry.getRepsToSenior()); //reps recorded to senior
         p.writeInt(entry.getTodaysRep());
-        p.writeInt(isOnline ? ((chr.isAwayFromWorld() || chr.getCashShop().isOpened()) ? -1 : chr.getClient().getChannel() - 1) : 0);
+        p.writeInt(isOnline ? ((chr.isAwayFromWorld() || (chr.getCashShop() != null && chr.getCashShop().isOpened())) ? -1 : chr.getClient().getChannel() - 1) : 0);
         p.writeInt(isOnline ? (int) (chr.getLoggedInTime() / 60000) : 0); //time online in minutes
         p.writeString(entry.getName()); //name
     }

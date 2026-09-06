@@ -35,14 +35,16 @@ public final class CharInfoRequestHandler extends AbstractPacketHandler {
         p.skip(4);
         int cid = p.readInt();
         MapObject target = c.getPlayer().getMap().getMapObject(cid);
-        if (target != null) {
-            if (target instanceof Character player) {
-
-                if (c.getPlayer().getId() != player.getId()) {
-                    player.exportExcludedItems(c);
-                }
-                c.sendPacket(PacketCreator.charInfo(player));
+        if (target == null) {
+            target = c.getPlayer().getMap().getCharacterById(cid);
+        }
+        if (target instanceof Character player) {
+            if (c.getPlayer().getId() != player.getId()) {
+                player.exportExcludedItems(c);
             }
+            c.sendPacket(PacketCreator.charInfo(player));
+        } else {
+            c.sendPacket(PacketCreator.enableActions());
         }
     }
 }

@@ -44,6 +44,9 @@ public final class MonsterBook {
     private final Lock lock = new ReentrantLock();
     private static final MonsterBookService monsterBookService = ServerManager.getApplicationContext().getBean(MonsterBookService.class);
 
+    public MonsterBook() {
+    }
+
     public MonsterBook(int cid) {
         loadCards(cid);
     }
@@ -58,6 +61,9 @@ public final class MonsterBook {
     }
 
     public void addCard(final Client c, final int cardid) {
+        if (c == null || c.getPlayer() == null || c.getPlayer().getMap() == null) {
+            return;
+        }
         c.getPlayer().getMap().broadcastMessage(c.getPlayer(), PacketCreator.showForeignCardEffect(c.getPlayer().getId()), false);
 
         Integer qty;
@@ -178,6 +184,9 @@ public final class MonsterBook {
     }
 
     public void saveCards(Connection con, int chrId) throws SQLException {
+        if (chrId <= 0 || cards.isEmpty()) {
+            return;
+        }
         final String query = """
                 INSERT INTO monsterbook (charid, cardid, level)
                 VALUES (?, ?, ?)
