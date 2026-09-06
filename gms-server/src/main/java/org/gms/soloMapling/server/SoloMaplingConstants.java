@@ -5,7 +5,9 @@ import org.gms.net.server.channel.Channel;
 
 public class SoloMaplingConstants {
 
-    public static final Channel mainChannel = Server.getInstance().getChannel(0, 1);
+    public static Channel getMainChannel() {
+        return Server.getInstance().getChannel(GameConstants.WORLD_SCANIA, GameConstants.CHANNEL_1);
+    }
 
     public static class GameConstants {
         public static final int WORLD_SCANIA = 0;

@@ -14,8 +14,14 @@ import java.util.function.Supplier;
 public class SoloMaplingUtilities {
 
     public static Random random = new Random();
-    public static final Channel channel = Server.getInstance().getChannel(SoloMaplingConstants.GameConstants.WORLD_SCANIA, SoloMaplingConstants.GameConstants.CHANNEL_1);
-    public static final World world = Server.getInstance().getWorld(SoloMaplingConstants.GameConstants.WORLD_SCANIA);
+
+    public static Channel getChannel() {
+        return Server.getInstance().getChannel(SoloMaplingConstants.GameConstants.WORLD_SCANIA, SoloMaplingConstants.GameConstants.CHANNEL_1);
+    }
+
+    public static World getWorld() {
+        return Server.getInstance().getWorld(SoloMaplingConstants.GameConstants.WORLD_SCANIA);
+    }
 
     // A 1-in-N dice roll, NOT a percent chance: rollChanceInverse(20) is true one time in 20.
     // The bigger the number, the lower the chance. For percent semantics use chance(percent).
@@ -51,13 +57,19 @@ public class SoloMaplingUtilities {
     }
 
     public static org.gms.client.Character getChr(int userId) {
-        Character chr = SoloMaplingConstants.mainChannel.getPlayerStorage().getCharacterById(userId);
-        return chr;
+        Channel ch = getChannel();
+        if (ch == null || ch.getPlayerStorage() == null) {
+            return null;
+        }
+        return ch.getPlayerStorage().getCharacterById(userId);
     }
 
     public static Character getChr(String name) {
-        Character chr = SoloMaplingConstants.mainChannel.getPlayerStorage().getCharacterByName(name);
-        return chr;
+        Channel ch = getChannel();
+        if (ch == null || ch.getPlayerStorage() == null) {
+            return null;
+        }
+        return ch.getPlayerStorage().getCharacterByName(name);
     }
 
     public static String getTextAfterColon(String input) {

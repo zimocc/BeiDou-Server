@@ -6,12 +6,15 @@ import org.gms.net.server.Server;
 import org.gms.server.maps.MapleTVEffect;
 import org.gms.util.PacketCreator;
 
+import org.gms.net.server.channel.Channel;
+import org.gms.net.server.world.World;
+
 import java.util.LinkedList;
 import java.util.List;
 
-import static org.gms.soloMapling.server.SoloMaplingUtilities.channel;
+import static org.gms.soloMapling.server.SoloMaplingUtilities.getChannel;
 import static org.gms.soloMapling.server.SoloMaplingUtilities.getRandomElement;
-import static org.gms.soloMapling.server.SoloMaplingUtilities.world;
+import static org.gms.soloMapling.server.SoloMaplingUtilities.getWorld;
 
 public class MegaphoneCommands {
 
@@ -22,16 +25,27 @@ public class MegaphoneCommands {
     public static void BotItemMegaphone(Character fakechar, String message, Item item) {
         String msg = fakechar.getName() + " : " + message; // medal + // optional medal
         boolean whisper = true;
-        Server.getInstance().broadcastMessage(world.getId(), PacketCreator.itemMegaphone(msg, whisper, channel.getId(), item));
+        World w = getWorld();
+        Channel ch = getChannel();
+        if (w != null && ch != null) {
+            Server.getInstance().broadcastMessage(w.getId(), PacketCreator.itemMegaphone(msg, whisper, ch.getId(), item));
+        }
     }
 
     public static void BotGachaponMegaphone(Character fakechar, Item item) {
-        String map = fakechar.getMap().getMapName();
-        Server.getInstance().broadcastMessage(world.getId(), PacketCreator.gachaponMessage(item, map, fakechar));
+        String map = fakechar.getMap() != null ? fakechar.getMap().getMapName() : "";
+        World w = getWorld();
+        if (w != null) {
+            Server.getInstance().broadcastMessage(w.getId(), PacketCreator.gachaponMessage(item, map, fakechar));
+        }
     }
 
     private static void BotSuperMegaphone(Character fakechar, String msg, boolean ear) {
-        Server.getInstance().broadcastMessage(world.getId(), PacketCreator.serverNotice(3, channel.getId(), fakechar.getName() + " : " + msg, ear));
+        World w = getWorld();
+        Channel ch = getChannel();
+        if (w != null && ch != null) {
+            Server.getInstance().broadcastMessage(w.getId(), PacketCreator.serverNotice(3, ch.getId(), fakechar.getName() + " : " + msg, ear));
+        }
     }
 
     public static void BotSuperMegaphone(Character fakechar, String msg) {
@@ -42,8 +56,11 @@ public class MegaphoneCommands {
         LinkedList list = stringTo4LineLinkedList(message);
         String medal = "";
         boolean ear = true;
-        Server.getInstance().broadcastMessage(world.getId(), PacketCreator.getAvatarMega(fakechar, medal, channel.getId(), itemId, list, ear));
-//      //  TimerManager.getInstance().schedule(() -> Server.getInstance().broadcastMessage(world.getId(), PacketCreator.byeAvatarMega()), SECONDS.toMillis(10));
+        World w = getWorld();
+        Channel ch = getChannel();
+        if (w != null && ch != null) {
+            Server.getInstance().broadcastMessage(w.getId(), PacketCreator.getAvatarMega(fakechar, medal, ch.getId(), itemId, list, ear));
+        }
     }
 
 

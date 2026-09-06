@@ -24,9 +24,9 @@ import static org.gms.soloMapling.DebugUtilities.debugprint;
 import static org.gms.soloMapling.FreeMarket.FMShopDescGen.getRandomCharacterIGN;
 import static org.gms.soloMapling.server.ExecutorServiceManager.runAsync;
 import static org.gms.soloMapling.server.SoloMaplingUtilities.getChr;
-import static org.gms.soloMapling.server.SoloMaplingUtilities.channel;
+import static org.gms.soloMapling.server.SoloMaplingUtilities.getChannel;
 import static org.gms.soloMapling.server.SoloMaplingUtilities.getMapleMapById;
-import static org.gms.soloMapling.server.SoloMaplingUtilities.world;
+import static org.gms.soloMapling.server.SoloMaplingUtilities.getWorld;
 
 public class BotGeneration {
 
@@ -177,19 +177,31 @@ public class BotGeneration {
 
     public static void removeBotFromServer(Character fakechar) {
         fakechar.setDisconnectedFromChannelWorld();
-        fakechar.getMap().removePlayer(fakechar);
-        channel.removePlayer(fakechar);
-        world.getPlayerStorage().removePlayer(fakechar.getId());
+        if (fakechar.getMap() != null) {
+            fakechar.getMap().removePlayer(fakechar);
+        }
+        org.gms.net.server.channel.Channel ch = getChannel();
+        if (ch != null) {
+            ch.removePlayer(fakechar);
+        }
+        org.gms.net.server.world.World w = getWorld();
+        if (w != null && w.getPlayerStorage() != null) {
+            w.getPlayerStorage().removePlayer(fakechar.getId());
+        }
         CharacterStorage.removeActiveBot(fakechar.getId());//
         BotBuffDriver.clearBot(fakechar.getId());   // Phase 3a: release buff recast timers
         BotBuffRequestHandler.clearBot(fakechar.getId());   // release chat-buff-request cooldown
     }
 
     private static void addBotToServer(Character fakechar) {
-//        final Channel channel = Server.getInstance().getChannel(BotSM.GameConstants.WORLD_SCANIA, BotSM.GameConstants.CHANNEL_1);
-        channel.addPlayer(fakechar);
-//        World world = Server.getInstance().getWorld(BotSM.GameConstants.WORLD_SCANIA);
-        world.getPlayerStorage().addPlayer(fakechar);
+        org.gms.net.server.channel.Channel ch = getChannel();
+        if (ch != null) {
+            ch.addPlayer(fakechar);
+        }
+        org.gms.net.server.world.World w = getWorld();
+        if (w != null && w.getPlayerStorage() != null) {
+            w.getPlayerStorage().addPlayer(fakechar);
+        }
         fakechar.setEnteredChannelWorld();
     }
 

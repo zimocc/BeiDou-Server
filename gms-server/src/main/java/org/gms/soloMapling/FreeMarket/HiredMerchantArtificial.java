@@ -84,5 +84,8 @@ public class HiredMerchantArtificial extends HiredMerchant {
         this.tertiary = shopType;
     }
 
-
+    @Override
+    public void saveItems(boolean shutdown) {
+        // Artificial in-memory bot shops have no database records; skip saving to avoid SQL errors
+    }
 }

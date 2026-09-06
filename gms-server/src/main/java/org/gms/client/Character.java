@@ -49,6 +49,7 @@ import org.gms.dao.entity.*;
 import org.gms.exception.NotEnabledException;
 import org.gms.manager.ServerManager;
 import org.gms.soloMapling.ArtificialPlayer.BotTier;
+import static org.gms.soloMapling.ArtificialPlayer.BotHelpers.isBot;
 import org.gms.soloMapling.server.EventMessageSystem.EventBus;
 import org.gms.soloMapling.server.EventMessageSystem.EventFactory;
 import org.gms.model.dto.InventorySearchReqDTO;
@@ -602,6 +603,7 @@ public class Character extends AbstractCharacterObject {
     public static Character getDefault(Client c) {
         Character ret = new Character();
         ret.client = c;
+        ret.world = c != null ? c.getWorld() : 0;
         ret.setGMLevel(0);
         ret.hp = 50;
         ret.setMaxHp(50);
@@ -1815,7 +1817,7 @@ public class Character extends AbstractCharacterObject {
 
         sendPacket(warpPacket);
         map.removePlayer(this);
-        if (client.getChannelServer().getPlayerStorage().getCharacterById(getId()) != null) {
+        if (isBot(this) || (client != null && client.getChannelServer() != null && client.getChannelServer().getPlayerStorage().getCharacterById(getId()) != null)) {
             map = to;
             setPosition(pos);
             map.addPlayer(this);

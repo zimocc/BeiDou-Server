@@ -331,30 +331,33 @@ public class HiredMerchant extends AbstractMapObject {
                         announceItemSold(newItem, price, getQuantityLeft(pItem.getItem().getItemId()));
                     }
 
-                    Character owner = Server.getInstance().getWorld(world).getPlayerStorage().getCharacterById(ownerId);
-                    if (owner != null && !isBot(owner)) {
-                        ownerName = owner.getName();
-                        owner.addMerchantMesos(price);
-                    } else {
-                        try (Connection con = DatabaseConnection.getConnection()) {
-                            long merchantMesos = 0;
-                            try (PreparedStatement ps = con.prepareStatement("SELECT MerchantMesos FROM characters WHERE id = ?")) {
-                                ps.setInt(1, ownerId);
-                                try (ResultSet rs = ps.executeQuery()) {
-                                    if (rs.next()) {
-                                        merchantMesos = rs.getInt(1);
+                    if (!(this instanceof org.gms.soloMapling.FreeMarket.HiredMerchantArtificial)) {
+                        World wld = Server.getInstance().getWorld(world);
+                        Character owner = (wld != null && wld.getPlayerStorage() != null) ? wld.getPlayerStorage().getCharacterById(ownerId) : null;
+                        if (owner != null && !isBot(owner)) {
+                            ownerName = owner.getName();
+                            owner.addMerchantMesos(price);
+                        } else {
+                            try (Connection con = DatabaseConnection.getConnection()) {
+                                long merchantMesos = 0;
+                                try (PreparedStatement ps = con.prepareStatement("SELECT MerchantMesos FROM characters WHERE id = ?")) {
+                                    ps.setInt(1, ownerId);
+                                    try (ResultSet rs = ps.executeQuery()) {
+                                        if (rs.next()) {
+                                            merchantMesos = rs.getInt(1);
+                                        }
                                     }
                                 }
-                            }
-                            merchantMesos += price;
+                                merchantMesos += price;
 
-                            try (PreparedStatement ps = con.prepareStatement("UPDATE characters SET MerchantMesos = ? WHERE id = ?", PreparedStatement.RETURN_GENERATED_KEYS)) {
-                                ps.setInt(1, (int) Math.min(merchantMesos, Integer.MAX_VALUE));
-                                ps.setInt(2, ownerId);
-                                ps.executeUpdate();
+                                try (PreparedStatement ps = con.prepareStatement("UPDATE characters SET MerchantMesos = ? WHERE id = ?", PreparedStatement.RETURN_GENERATED_KEYS)) {
+                                    ps.setInt(1, (int) Math.min(merchantMesos, Integer.MAX_VALUE));
+                                    ps.setInt(2, ownerId);
+                                    ps.executeUpdate();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                        } catch (Exception e) {
-                            e.printStackTrace();
                         }
                     }
                 } else {
@@ -367,18 +370,27 @@ public class HiredMerchant extends AbstractMapObject {
                 c.sendPacket(PacketCreator.enableActions());
                 return;
             }
-            try {
-                this.saveItems(false);
-            } catch (Exception e) {
-                e.printStackTrace();
+            if (!(this instanceof org.gms.soloMapling.FreeMarket.HiredMerchantArtificial)) {
+                try {
+                    this.saveItems(false);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
 
     private void announceItemSold(Item item, int mesos, int inStore) {
+        if (this instanceof org.gms.soloMapling.FreeMarket.HiredMerchantArtificial) {
+            return;
+        }
         String qtyStr = (item.getQuantity() > 1) ? " x " + item.getQuantity() : "";
 
-        Character player = Server.getInstance().getWorld(world).getPlayerStorage().getCharacterById(ownerId);
+        World wld = Server.getInstance().getWorld(world);
+        if (wld == null || wld.getPlayerStorage() == null) {
+            return;
+        }
+        Character player = wld.getPlayerStorage().getCharacterById(ownerId);
         if (player != null && player.isLoggedInWorld()) {
             player.dropMessage(6, "[Hired Merchant] Item '" + ItemInformationProvider.getInstance().getName(item.getItemId()) + "'" + qtyStr + " has been sold for " + mesos + " mesos. (" + inStore + " left)");
         }
@@ -859,35 +871,38 @@ public class HiredMerchant extends AbstractMapObject {
                 announceItemSold(newItem, price, getQuantityLeft(pItem.getItem().getItemId()));
             }
 
-            Character owner = Server.getInstance().getWorld(world).getPlayerStorage().getCharacterByName(ownerName);
-            if (owner != null && !isBot(owner)) {
-                owner.addMerchantMesos(price);
-            } else {
-                try (Connection con = DatabaseConnection.getConnection()) {
-                    long merchantMesos = 0;
-                    try (PreparedStatement ps = con.prepareStatement("SELECT MerchantMesos FROM characters WHERE id = ?")) {
-                        ps.setInt(1, ownerId);
-                        try (ResultSet rs = ps.executeQuery()) {
-                            if (rs.next()) {
-                                merchantMesos = rs.getInt(1);
+            if (!(this instanceof org.gms.soloMapling.FreeMarket.HiredMerchantArtificial)) {
+                World wld = Server.getInstance().getWorld(world);
+                Character owner = (wld != null && wld.getPlayerStorage() != null) ? wld.getPlayerStorage().getCharacterByName(ownerName) : null;
+                if (owner != null && !isBot(owner)) {
+                    owner.addMerchantMesos(price);
+                } else {
+                    try (Connection con = DatabaseConnection.getConnection()) {
+                        long merchantMesos = 0;
+                        try (PreparedStatement ps = con.prepareStatement("SELECT MerchantMesos FROM characters WHERE id = ?")) {
+                            ps.setInt(1, ownerId);
+                            try (ResultSet rs = ps.executeQuery()) {
+                                if (rs.next()) {
+                                    merchantMesos = rs.getInt(1);
+                                }
                             }
                         }
-                    }
-                    merchantMesos += price;
+                        merchantMesos += price;
 
-                    try (PreparedStatement ps = con.prepareStatement("UPDATE characters SET MerchantMesos = ? WHERE id = ?")) {
-                        ps.setInt(1, (int) Math.min(merchantMesos, Integer.MAX_VALUE));
-                        ps.setInt(2, ownerId);
-                        ps.executeUpdate();
+                        try (PreparedStatement ps = con.prepareStatement("UPDATE characters SET MerchantMesos = ? WHERE id = ?")) {
+                            ps.setInt(1, (int) Math.min(merchantMesos, Integer.MAX_VALUE));
+                            ps.setInt(2, ownerId);
+                            ps.executeUpdate();
+                        }
+                    } catch (Exception e) {
+                        log.error("Error updating bot merchant mesos", e);
                     }
-                } catch (Exception e) {
-                    log.error("Error updating bot merchant mesos", e);
                 }
-            }
-            try {
-                this.saveItems(false);
-            } catch (Exception e) {
-                log.error("Error saving merchant items after bot buy", e);
+                try {
+                    this.saveItems(false);
+                } catch (Exception e) {
+                    log.error("Error saving merchant items after bot buy", e);
+                }
             }
         }
     }
