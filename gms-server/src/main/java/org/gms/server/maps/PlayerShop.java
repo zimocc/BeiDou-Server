@@ -446,10 +446,13 @@ public class PlayerShop extends AbstractMapObject {
     }
 
     private byte getVisitorSlot(Character chr) {
+        if (chr == null || chr.getName() == null) {
+            return 0;
+        }
         byte s = 0;
         for (Character mc : getVisitors()) {
             s++;
-            if (mc != null) {
+            if (mc != null && mc.getName() != null) {
                 if (mc.getName().equalsIgnoreCase(chr.getName())) {
                     break;
                 }
@@ -462,23 +465,26 @@ public class PlayerShop extends AbstractMapObject {
     }
 
     public void chat(Client c, String chat) {
-        byte s = getVisitorSlot(c.getPlayer());
-
-        synchronized (chatLog) {
-            chatLog.add(new Pair<>(c.getPlayer(), chat));
-            if (chatLog.size() > 25) {
-                chatLog.remove(0);
-            }
-            chatSlot.put(c.getPlayer().getId(), s);
+        if (c != null && c.getPlayer() != null) {
+            chat(c.getPlayer(), chat);
         }
-
-        broadcast(PacketCreator.getPlayerShopChat(c.getPlayer(), chat, s));
     }
 
     public void chat(Character chr, String chat) {
-        if (chr != null && chr.getClient() != null) {
-            chat(chr.getClient(), chat);
+        if (chr == null) {
+            return;
         }
+        byte s = getVisitorSlot(chr);
+
+        synchronized (chatLog) {
+            chatLog.add(new Pair<>(chr, chat));
+            if (chatLog.size() > 25) {
+                chatLog.remove(0);
+            }
+            chatSlot.put(chr.getId(), s);
+        }
+
+        broadcast(PacketCreator.getPlayerShopChat(chr, chat, s));
     }
 
     private void recoverChatLog() {
