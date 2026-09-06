@@ -1,0 +1,3 @@
+# Machine-owned pinned town spots (appended by !env townpresence mark).
+# One per line:  <mapId>: <x>,<y>   - merged into TownPresence.yaml pins at load.
+# Safe to hand-edit or delete lines.

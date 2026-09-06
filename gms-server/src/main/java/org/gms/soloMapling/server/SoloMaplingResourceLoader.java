@@ -204,12 +204,14 @@ public class SoloMaplingResourceLoader {
         InputStream is = getInputStream(rawPath);
         if (is == null) {
             Path resolved = resolvePath(rawPath);
-            try {
-                return new FileReader(resolved.toFile(), StandardCharsets.UTF_8);
-            } catch (IOException e) {
-                log.error("Failed to create Reader for: {}", rawPath, e);
-                return new StringReader("");
+            if (Files.exists(resolved) && !Files.isDirectory(resolved)) {
+                try {
+                    return new FileReader(resolved.toFile(), StandardCharsets.UTF_8);
+                } catch (IOException e) {
+                    log.error("Failed to create Reader for: {}", rawPath, e);
+                }
             }
+            return new StringReader("");
         }
         return new InputStreamReader(is, StandardCharsets.UTF_8);
     }
