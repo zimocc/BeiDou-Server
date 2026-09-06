@@ -3,6 +3,7 @@ package org.gms.soloMapling.ArtificialPlayer;
 import org.gms.client.Character;
 import org.gms.client.Client;
 import org.gms.client.Job;
+import org.gms.client.inventory.InventoryType;
 import org.gms.server.maps.MapleMap;
 import org.gms.soloMapling.ArtificialPlayer.BotAttackSystem.BotBuffDriver;
 import org.gms.soloMapling.ArtificialPlayer.BotBuffRequestSystem.BotBuffRequestHandler;
@@ -57,16 +58,13 @@ public class BotGeneration {
         }
 
         int botId = 999;
-        int baseId = 2; // Base Bot Character
+        Character chr = Character.getDefault(getBotClient());
+        chr.getInventory(InventoryType.EQUIP).setSlotLimit(96);
+        chr.getInventory(InventoryType.USE).setSlotLimit(96);
+        chr.getInventory(InventoryType.SETUP).setSlotLimit(96);
+        chr.getInventory(InventoryType.ETC).setSlotLimit(96);
 
-        try {
-            Character chr = Character.loadCharFromDB(baseId, getBotClient(), false);
-            consoleBot = chr;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        consoleBot = setConsoleBot(consoleBot, botId); // Bot onDemandBot
+        consoleBot = setConsoleBot(chr, botId); // Bot onDemandBot
         addBotToServer(consoleBot);
         return consoleBot;
     }
@@ -81,15 +79,12 @@ public class BotGeneration {
 
     // forcedJobId > 0 pins the exact job (GM 'trainhere' test spawn); 0 = a random job for the class.
     public static int createBot(Point pos, MapleMap map, int baseClass, int minLevel, int maxLevel, int forcedJobId) {
-        int cid = 2; // CID 2 = Base Bot Character
+        Character bot = Character.getDefault(getBotClient());
+        bot.getInventory(InventoryType.EQUIP).setSlotLimit(96);
+        bot.getInventory(InventoryType.USE).setSlotLimit(96);
+        bot.getInventory(InventoryType.SETUP).setSlotLimit(96);
+        bot.getInventory(InventoryType.ETC).setSlotLimit(96);
 
-        Character bot = null;
-        try {
-            Character chr = Character.loadCharFromDB(cid, getBotClient(), false);
-            bot = chr;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         int botId = SoloMaplingConstants.GameConstants.BOT_BASE_ID + currentBotCount.getAndIncrement();
         bot = setBotStats(bot, botId); // Bot onDemandBot
         addBotToServer(bot);

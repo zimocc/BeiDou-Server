@@ -35,3 +35,6 @@ src/main/resources/static/
 .claude/settings.local.json
 CLAUDE.local.md
 SoloMapling-0.3
+gms-server/cache
+*BotLog.txt
+BotLog.txt

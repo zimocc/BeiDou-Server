@@ -16,7 +16,7 @@ powershell -Command "Get-Content -Path 'BotLog.txt' -Wait"
  */
 
 public class BotLogger {
-    static final boolean log = true;
+    static final boolean log = false;
     private static final String LOG_FILE = "BotLog.txt";
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 

@@ -175,23 +175,23 @@ public class EnvironmentManager {
         // trips (TrainingBot.doInit / TOWN_SHOPS).
         runWave(8, "Training bots", List.of(
                 () -> GCMovement.mapsWithinHops(MapId.HENESYS, 1),          // prewarm the portal graph once
-                () -> spawnTrainingBotsAt(MapId.LITH_HARBOUR,  20,  1, 15),
-                () -> spawnTrainingBotsAt(MapId.HENESYS,       225, 10, 95),
-                () -> spawnTrainingBotsAt(MapId.KERNING_CITY,  225, 10, 65),
-                () -> spawnTrainingBotsAt(MapId.PERION,        225, 10, 65),
-                () -> spawnTrainingBotsAt(MapId.ELLINIA,       225, 10, 65),
-                () -> spawnTrainingBotsAt(MapId.SLEEPYWOOD,     225, 25, 95),  // town: Sleepy Dungeon + Ant Tunnel I-IV + Forest of Golem
-                () -> spawnTrainingBotsAt(MapId.ANT_TUNNEL_PARK, 180, 40, 95), // deep hub (~9 hops in): Cave of Evil Eye / Grave of Mushmom
-                () -> spawnTrainingBotsAt(MapId.ORBIS,         220, 30, 86),
-                () -> spawnTrainingBotsAt(MapId.LUDIBRIUM,     200, 25, 95),
-                () -> spawnTrainingBotsAt(MapId.PATH_OF_TIME_HUB, 160, 70, 95), // deep hub: Forgotten Path of Time / Clocktower (Platoon Chronos, Papa Pixie → Papulatus)
-                () -> spawnTrainingBotsAt(MapId.EL_NATH,       200, 50, 80),  // town: shops at El Nath Market (potion / equip); grinds Ice Valley + cloud maps
-                () -> spawnTrainingBotsAt(MapId.SHARP_CLIFF_I, 200, 60, 90), // deep hub (Jeff one-way from Ice Valley II): Sharp Cliff II / Wolf Territory / Forest of Dead Trees / Dead Mine
+                () -> spawnTrainingBotsAt(MapId.LITH_HARBOUR,  10,  1, 15),
+                () -> spawnTrainingBotsAt(MapId.HENESYS,       25, 10, 95),
+                () -> spawnTrainingBotsAt(MapId.KERNING_CITY,  20, 10, 65),
+                () -> spawnTrainingBotsAt(MapId.PERION,        20, 10, 65),
+                () -> spawnTrainingBotsAt(MapId.ELLINIA,       20, 10, 65),
+                () -> spawnTrainingBotsAt(MapId.SLEEPYWOOD,     25, 25, 95),  // town: Sleepy Dungeon + Ant Tunnel I-IV + Forest of Golem
+                () -> spawnTrainingBotsAt(MapId.ANT_TUNNEL_PARK, 15, 40, 95), // deep hub (~9 hops in): Cave of Evil Eye / Grave of Mushmom
+                () -> spawnTrainingBotsAt(MapId.ORBIS,         20, 30, 86),
+                () -> spawnTrainingBotsAt(MapId.LUDIBRIUM,     20, 25, 95),
+                () -> spawnTrainingBotsAt(MapId.PATH_OF_TIME_HUB, 15, 70, 95), // deep hub: Forgotten Path of Time / Clocktower (Platoon Chronos, Papa Pixie → Papulatus)
+                () -> spawnTrainingBotsAt(MapId.EL_NATH,       20, 50, 80),  // town: shops at El Nath Market (potion / equip); grinds Ice Valley + cloud maps
+                () -> spawnTrainingBotsAt(MapId.SHARP_CLIFF_I, 15, 60, 90), // deep hub (Jeff one-way from Ice Valley II): Sharp Cliff II / Wolf Territory / Forest of Dead Trees / Dead Mine
 
-                () -> spawnTrainingBotsAt(MapId.HENESYS,       25,  1,  9),  // beginner sword grinders
-                () -> spawnTrainingBotsAt(MapId.KERNING_CITY,  20,  1,  9),  // beginner sword grinders
-                () -> spawnTrainingBotsAt(MapId.PERION,        20,  1,  9),  // beginner sword grinders
-                () -> spawnTrainingBotsAt(MapId.ELLINIA,       20,  1,  9)  // beginner sword grinders
+                () -> spawnTrainingBotsAt(MapId.HENESYS,       5,  1,  9),  // beginner sword grinders
+                () -> spawnTrainingBotsAt(MapId.KERNING_CITY,  5,  1,  9),  // beginner sword grinders
+                () -> spawnTrainingBotsAt(MapId.PERION,        5,  1,  9),  // beginner sword grinders
+                () -> spawnTrainingBotsAt(MapId.ELLINIA,       5,  1,  9)  // beginner sword grinders
 
         ));
 
