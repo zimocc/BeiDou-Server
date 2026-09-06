@@ -5696,19 +5696,26 @@ public class Character extends AbstractCharacterObject {
     }
 
     private void guildUpdate() {
-        mgc.setLevel(level);
-        mgc.setJobId(job.getId());
-
         if (this.guildId < 1) {
             return;
         }
 
+        GuildCharacter gc = getMGC();
+        if (gc != null) {
+            gc.setLevel(level);
+            gc.setJobId(job.getId());
+        }
+
         try {
-            Server.getInstance().memberLevelJobUpdate(this.mgc);
-            //Server.getInstance().getGuild(guildid, world, mgc).gainGP(40);
-            int allianceId = getGuild().getAllianceId();
-            if (allianceId > 0) {
-                Server.getInstance().allianceMessage(allianceId, GuildPackets.updateAllianceJobLevel(this), getId(), -1);
+            if (gc != null) {
+                Server.getInstance().memberLevelJobUpdate(gc);
+            }
+            Guild g = getGuild();
+            if (g != null) {
+                int allianceId = g.getAllianceId();
+                if (allianceId > 0) {
+                    Server.getInstance().allianceMessage(allianceId, GuildPackets.updateAllianceJobLevel(this), getId(), -1);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -6125,7 +6132,10 @@ public class Character extends AbstractCharacterObject {
         silentPartyUpdate();
 
         if (this.guildId > 0) {
-            getGuild().broadcast(PacketCreator.levelUpMessage(2, level, name), this.getId());
+            Guild g = getGuild();
+            if (g != null) {
+                g.broadcast(PacketCreator.levelUpMessage(2, level, name), this.getId());
+            }
         }
 
         if (level % 20 == 0) {
