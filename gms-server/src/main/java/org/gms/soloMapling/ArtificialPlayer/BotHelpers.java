@@ -53,11 +53,15 @@ public class BotHelpers {
     }
 
     public static String convertItemIdToName(int itemId) {
-        String itemName = ItemInformationProvider.getInstance().getName(itemId);
-        if (itemName == null) {
+        try {
+            String itemName = ItemInformationProvider.getInstance().getName(itemId);
+            if (itemName == null) {
+                return "NULL";
+            }
+            return itemName;
+        } catch (Exception e) {
             return "NULL";
         }
-        return itemName;
     }
 
     public static Point adjustCenterPositionXAxis(Point center, int currIndex, int initialIncrement, int subsequentIncrement, int offset) {

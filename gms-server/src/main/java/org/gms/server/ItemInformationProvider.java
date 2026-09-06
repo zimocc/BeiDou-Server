@@ -68,6 +68,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author Matze
@@ -101,8 +102,9 @@ public class ItemInformationProvider {
     protected Map<Integer, Integer> wholePriceCache = new HashMap<>();
     protected Map<Integer, Double> unitPriceCache = new HashMap<>();
     protected Map<Integer, Integer> projectileWatkCache = new HashMap<>();
-    protected Map<Integer, Pair<String, String>> nameDescCache = new HashMap<>();
-    protected Map<Integer, String> msgCache = new HashMap<>();
+    private static final Pair<String, String> EMPTY_NAME_DESC = new Pair<>(null, null);
+    protected Map<Integer, Pair<String, String>> nameDescCache = new ConcurrentHashMap<>();
+    protected Map<Integer, String> msgCache = new ConcurrentHashMap<>();
     protected Map<Integer, Boolean> accountItemRestrictionCache = new HashMap<>();
     protected Map<Integer, Boolean> dropRestrictionCache = new HashMap<>();
     protected Map<Integer, Boolean> pickupRestrictionCache = new HashMap<>();
@@ -1349,16 +1351,19 @@ public class ItemInformationProvider {
     }
 
     public Pair<String, String> getNameDesc(int itemId) {
-        if (nameDescCache.containsKey(itemId)) {
-            return nameDescCache.get(itemId);
+        Pair<String, String> cached = nameDescCache.get(itemId);
+        if (cached != null) {
+            return cached == EMPTY_NAME_DESC ? null : cached;
         }
         Data strings = getStringData(itemId);
         if (strings == null) {
+            nameDescCache.put(itemId, EMPTY_NAME_DESC);
             return null;
         }
         String name = DataTool.getString("name", strings, null);
         String desc = DataTool.getString("desc", strings, null);
         if (name == null) {
+            nameDescCache.put(itemId, EMPTY_NAME_DESC);
             return null;
         }
         Pair<String, String> ret = new Pair<>(name, desc);
@@ -1367,15 +1372,17 @@ public class ItemInformationProvider {
     }
 
     public String getMsg(int itemId) {
-        if (msgCache.containsKey(itemId)) {
-            return msgCache.get(itemId);
+        String cached = msgCache.get(itemId);
+        if (cached != null) {
+            return cached.isEmpty() ? null : cached;
         }
         Data strings = getStringData(itemId);
         if (strings == null) {
+            msgCache.put(itemId, "");
             return null;
         }
         String ret = DataTool.getString("msg", strings, null);
-        msgCache.put(itemId, ret);
+        msgCache.put(itemId, ret != null ? ret : "");
         return ret;
     }
 
