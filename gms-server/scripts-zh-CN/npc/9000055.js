@@ -1,6 +1,6 @@
 /**
- * @description Bot Control & Management Interaction NPC (9000055)
- * Provides Bot companion recruitment, party combat/follow commanding, wild bot spawning & map clearing.
+ * @description Bot 控制管理与召唤交互中心 (9000055)
+ * 提供 Bot 队友招募、一键指挥打怪/跟随、本地图 Bot 召唤与清理功能。
  */
 
 const BotGeneration = Java.type('org.gms.soloMapling.ArtificialPlayer.BotGeneration');

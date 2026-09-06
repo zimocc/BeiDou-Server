@@ -50,7 +50,7 @@ function action(mode, type, selection) {
 		text += "#L3#传送自由#l \t #L69#快速转职#l \t #L70#学习技能#l\r\n";
 		text += "#L71#超级传送#l \t #L4#爆率一览#l \t #L2#在线奖励#l\r\n";
         text += "#L0#新人福利#l \t #L1#每日签到#l  \t #L72#转世重生#l\r\n";
-		text += "#L5#野外BOSS刷新#l\r\n";
+		text += "#L5#野外BOSS刷新#l \t #L90#Bot伴侣管理#l\r\n";
 		// text += "#L999#测试脚本>>>未上线#l \t \r\n";
         if (cm.getPlayer().isGM()) {
             text += "\r\n\r\n";
@@ -103,6 +103,10 @@ function doSelect(selection) {
             break;
         case 5:
             openNpc("AreaBossRefresh");
+            break;
+        case 90:
+            cm.dispose();
+            cm.openNpc(9000055);
             break;
         // GM功能
         case 61:
