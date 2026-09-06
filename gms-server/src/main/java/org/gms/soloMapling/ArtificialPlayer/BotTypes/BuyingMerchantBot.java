@@ -118,12 +118,21 @@ public class BuyingMerchantBot extends BotSM {
         }
     }
 
-    static String buildBuyingMessage(String itemName, int offerPrice) {
-        List<String> prefixes = List.of("Buying", "B>", "B>>", "BUY>", "Buying>");
-        List<String> suffixes = List.of("Trade Me", "PM me", "just trade me!", "hmu", "whisp me",
-                "no lowball", "no noobs", "no scammers", "Pros only", "hotties only", "no nx h0es",
-                "baddies only", "no weebs", "English Only", "No Spanish",
-                "serious offers only", "dont waste my time", "legit only", "fair price only");
+    public static String buildBuyingMessage(String itemName, int offerPrice) {
+        List<String> prefixes;
+        List<String> suffixes;
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+            prefixes = List.of("收>", "收", "收>>", "高价收>", "收收收>", "求购>");
+            suffixes = List.of("点我交易", "带价密", "直接点我交易", "速点交易", "代价密",
+                    "黑人绕道", "新手勿扰", "骗子绕道", "高手速来", "妹子优先", "非诚勿扰",
+                    "别浪费时间", "诚信交易", "公道价速出", "在线等", "不墨迹的来");
+        } else {
+            prefixes = List.of("Buying", "B>", "B>>", "BUY>", "Buying>");
+            suffixes = List.of("Trade Me", "PM me", "just trade me!", "hmu", "whisp me",
+                    "no lowball", "no noobs", "no scammers", "Pros only", "hotties only", "no nx h0es",
+                    "baddies only", "no weebs", "English Only", "No Spanish",
+                    "serious offers only", "dont waste my time", "legit only", "fair price only");
+        }
 
         String msg = getRandomElement(prefixes) + " " + itemName + " " + formatPriceToShorthand(offerPrice) + " " + getRandomElement(suffixes);
 
@@ -134,7 +143,7 @@ public class BuyingMerchantBot extends BotSM {
 
         msg = msg.replace("[", "").replace("]", "");
 
-        if (random.nextDouble() < 0.15) {
+        if (!org.gms.soloMapling.server.SoloMaplingI18n.isChinese() && random.nextDouble() < 0.15) {
             msg = msg.toUpperCase();
         }
         return msg;

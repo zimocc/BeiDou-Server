@@ -118,12 +118,21 @@ public class SellingMerchantBot extends BotSM {
         }
     }
 
-    static String buildSellingMessage(String itemName) {
-        List<String> prefixes = List.of("Selling", "S>", "S>>", "SELL>", "Selling>");
-        List<String> suffixes = List.of("You Offer", "Offer", "Trade Me", "just trade me!", "PM me",
-                "no lowball", "no noobs", "no scammers", "Pros only", "hotties only", "no nx h0es",
-                "baddies only", "no weebs", "English Only", "No Spanish",
-                "serious offers only", "dont waste my time", "legit only", "no time wasters");
+    public static String buildSellingMessage(String itemName) {
+        List<String> prefixes;
+        List<String> suffixes;
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+            prefixes = List.of("出>", "出", "出>>", "急出>", "甩卖>", "急甩>");
+            suffixes = List.of("代价密", "带价来", "诚心带价", "点我交易", "速点交易",
+                    "黑人绕道", "新手勿扰", "骗子绕道", "高手速来", "妹子优先", "非诚勿扰",
+                    "别浪费时间", "诚信交易", "不墨迹代价", "在线等", "不墨迹的来");
+        } else {
+            prefixes = List.of("Selling", "S>", "S>>", "SELL>", "Selling>");
+            suffixes = List.of("You Offer", "Offer", "Trade Me", "just trade me!", "PM me",
+                    "no lowball", "no noobs", "no scammers", "Pros only", "hotties only", "no nx h0es",
+                    "baddies only", "no weebs", "English Only", "No Spanish",
+                    "serious offers only", "dont waste my time", "legit only", "no time wasters");
+        }
 
         String msg = getRandomElement(prefixes) + " " + itemName + " " + getRandomElement(suffixes);
 
@@ -134,7 +143,7 @@ public class SellingMerchantBot extends BotSM {
 
         msg = msg.replace("[", "").replace("]", "");
 
-        if (random.nextDouble() < 0.15) {
+        if (!org.gms.soloMapling.server.SoloMaplingI18n.isChinese() && random.nextDouble() < 0.15) {
             msg = msg.toUpperCase();
         }
         return msg;

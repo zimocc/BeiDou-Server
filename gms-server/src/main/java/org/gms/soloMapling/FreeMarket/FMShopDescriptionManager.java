@@ -309,7 +309,9 @@ public class FMShopDescriptionManager {
                 List.of("B"),
                 List.of(13),
                 () -> {
-                    return ("Welcome to " + owner + "'s Shop!");
+                    return org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                            ("欢迎光临 " + owner + " 的小店！") :
+                            ("Welcome to " + owner + "'s Shop!");
                 });
         welcomeDesc.addRoomRange(13, 22);
 

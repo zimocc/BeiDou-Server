@@ -231,6 +231,37 @@ public class FMEconomyManager {
      * @return A string representation of the price in English notation
      */
     public static String formatPriceToShorthand(int price, int decimalPlaces) {
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+            if (price < 10000) {
+                return String.valueOf(price);
+            }
+            if (price < 100_000_000) {
+                double formattedPrice = price / 10000.0;
+                if (decimalPlaces <= 0) {
+                    return Math.round(formattedPrice) + "万";
+                } else {
+                    String formatPattern = "%." + decimalPlaces + "f";
+                    String formatted = String.format(formatPattern, formattedPrice);
+                    if (formatted.contains(".")) {
+                        formatted = formatted.replaceAll("0+$", "").replaceAll("\\.$", "");
+                    }
+                    return formatted + "万";
+                }
+            } else {
+                double formattedPrice = price / 100_000_000.0;
+                if (decimalPlaces <= 0) {
+                    return Math.round(formattedPrice) + "亿";
+                } else {
+                    String formatPattern = "%." + decimalPlaces + "f";
+                    String formatted = String.format(formatPattern, formattedPrice);
+                    if (formatted.contains(".")) {
+                        formatted = formatted.replaceAll("0+$", "").replaceAll("\\.$", "");
+                    }
+                    return formatted + "亿";
+                }
+            }
+        }
+
         if (price < 1000) {
             return String.valueOf(price);
         }

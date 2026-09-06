@@ -67,15 +67,28 @@ public class NXMerchantBot extends BotSM {
     }
 
     private void advertise() {
-        List<String> messages = List.of(
-                "Selling 10k nx cash code, 50m TRADE ME!",
-                "S> 10k NX code 50m, no lowballs",
-                "NX CODE 10k >> 50m trade me!! legit only",
-                "10k nx cash code for 50m, Pros only",
-                "SELLING NX 10K CODE!! 50m!! no scammers",
-                "S>> 10,000 NX code, 50m, serious offers only",
-                "got nx codes, 10k for 50m, trade me fast"
-        );
+        List<String> messages;
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+            messages = List.of(
+                    "出10k点券卡密，5000万金币，点我交易！",
+                    "出> 10k点卷卡密 5000w，不议价",
+                    "点券卡密 10k >> 5000w 点我交易！！诚信第一",
+                    "10k点券卡密换5000万金币，非诚勿扰",
+                    "出售点卷10k！！5000w！！骗子绕道",
+                    "出>> 10000点卷卡密，5000万金币，诚心买卖",
+                    "大量点券卡密，10k换5000w，速点我交易"
+            );
+        } else {
+            messages = List.of(
+                    "Selling 10k nx cash code, 50m TRADE ME!",
+                    "S> 10k NX code 50m, no lowballs",
+                    "NX CODE 10k >> 50m trade me!! legit only",
+                    "10k nx cash code for 50m, Pros only",
+                    "SELLING NX 10K CODE!! 50m!! no scammers",
+                    "S>> 10,000 NX code, 50m, serious offers only",
+                    "got nx codes, 10k for 50m, trade me fast"
+            );
+        }
         SocialCommands.BotSpeak(getChr(), getRandomElement(messages));
     }
 
@@ -85,7 +98,7 @@ public class NXMerchantBot extends BotSM {
             return;
         }
 
-        SocialCommands.BotSpeak(getChr(), "messaging you.");
+        SocialCommands.BotSpeak(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "私聊你发卡密了。" : "messaging you.");
         sendMessengerInviteComplete(getChr(), getLastTradedCharacter());
 
         boolean accepted = waitForCondition(
@@ -96,14 +109,20 @@ public class NXMerchantBot extends BotSM {
             String nxCode = generateGiftCardCode();
             createCompleteNXCode(nxCode);
 
-            botSendChatFull(getChr(), "here is the 10k nx code... be sure to write it down. Remember to NOT include dashes", 3000);
-            botSendChatFull(getChr(), nxCode, 7000);
-            botSendChatFull(getChr(), "enjoy it!", 2000);
+            if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+                botSendChatFull(getChr(), "这是10k点券卡密... 请记好，注意不要输入横杠：", 3000);
+                botSendChatFull(getChr(), nxCode, 7000);
+                botSendChatFull(getChr(), "祝游戏愉快！", 2000);
+            } else {
+                botSendChatFull(getChr(), "here is the 10k nx code... be sure to write it down. Remember to NOT include dashes", 3000);
+                botSendChatFull(getChr(), nxCode, 7000);
+                botSendChatFull(getChr(), "enjoy it!", 2000);
+            }
 
             BotTiming.after(2000, () -> botLeaveMessenger(getChr()));
             waitFor(2500); // hold CONVERT_BACK until the messenger leave lands
         } else {
-            SocialCommands.BotSpeak(getChr(), "You didn't accept the messenger invite... too bad noob.");
+            SocialCommands.BotSpeak(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "你没接受私聊邀请... 太遗憾了。" : "You didn't accept the messenger invite... too bad noob.");
         }
 
         resetLastTradeResult();

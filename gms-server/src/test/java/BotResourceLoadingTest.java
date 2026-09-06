@@ -52,6 +52,34 @@ public class BotResourceLoadingTest {
     }
 
     @Test
+    public void testChinesePriceFormatting() {
+        Assertions.assertEquals("39万", org.gms.soloMapling.FreeMarket.FMEconomyManager.formatPriceToShorthand(390_000));
+        Assertions.assertEquals("76万", org.gms.soloMapling.FreeMarket.FMEconomyManager.formatPriceToShorthand(760_000));
+        Assertions.assertEquals("210万", org.gms.soloMapling.FreeMarket.FMEconomyManager.formatPriceToShorthand(2_100_000));
+        Assertions.assertEquals("5000万", org.gms.soloMapling.FreeMarket.FMEconomyManager.formatPriceToShorthand(50_000_000));
+        Assertions.assertEquals("1亿", org.gms.soloMapling.FreeMarket.FMEconomyManager.formatPriceToShorthand(100_000_000));
+        Assertions.assertEquals("500", org.gms.soloMapling.FreeMarket.FMEconomyManager.formatPriceToShorthand(500));
+    }
+
+    @Test
+    public void testMerchantBotChineseMessages() {
+        for (int i = 0; i < 20; i++) {
+            String buyMsg = org.gms.soloMapling.ArtificialPlayer.BotTypes.BuyingMerchantBot.buildBuyingMessage("拳套攻击卷轴", 390_000);
+            Assertions.assertTrue(buyMsg.contains("拳套攻击卷轴"), "Must contain item name: " + buyMsg);
+            Assertions.assertTrue(buyMsg.contains("39万"), "Must contain Chinese price: " + buyMsg);
+            Assertions.assertFalse(buyMsg.contains("Buying"), "Must not contain English 'Buying': " + buyMsg);
+            Assertions.assertFalse(buyMsg.contains("hmu"), "Must not contain English 'hmu': " + buyMsg);
+            Assertions.assertFalse(buyMsg.contains("scammers"), "Must not contain English 'scammers': " + buyMsg);
+
+            String sellMsg = org.gms.soloMapling.ArtificialPlayer.BotTypes.SellingMerchantBot.buildSellingMessage("齿轮镖");
+            Assertions.assertTrue(sellMsg.contains("齿轮镖"), "Must contain item name: " + sellMsg);
+            Assertions.assertFalse(sellMsg.contains("Selling"), "Must not contain English 'Selling': " + sellMsg);
+            Assertions.assertFalse(sellMsg.contains("Spanish"), "Must not contain English 'Spanish': " + sellMsg);
+            Assertions.assertFalse(sellMsg.contains("Offer"), "Must not contain English 'Offer': " + sellMsg);
+        }
+    }
+
+    @Test
     public void testChineseDialogueLoading() {
         String resolved = org.gms.soloMapling.server.SoloMaplingI18n.resolveLocalizedResource("BotDialoguePack/", "FollowerBotDialogue.yaml");
         Assertions.assertTrue(resolved.contains("zh-CN"), "Resolved path should contain zh-CN: " + resolved);
@@ -59,5 +87,16 @@ public class BotResourceLoadingTest {
         java.util.Map<String, Object> node = org.gms.soloMapling.ArtificialPlayer.BotDialogueHandler.readDialogueYaml("FollowerBotDialogue.yaml", "FollowerBot", "FollowStart");
         Assertions.assertNotNull(node, "FollowStart node should not be null");
         Assertions.assertNotNull(node.get("text"), "text property should not be null");
+    }
+
+    @Test
+    public void testFMShopOfferableDescriptions() {
+        for (int i = 0; i < 20; i++) {
+            String offerDesc = org.gms.soloMapling.FreeMarket.FMShopDescGen.getOfferableDescription();
+            Assertions.assertNotNull(offerDesc);
+            Assertions.assertFalse(offerDesc.equalsIgnoreCase("leave offer"), "Must not contain 'leave offer': " + offerDesc);
+            Assertions.assertFalse(offerDesc.equalsIgnoreCase("l/o"), "Must not contain 'l/o': " + offerDesc);
+            Assertions.assertTrue(offerDesc.matches(".*[\\u4e00-\\u9fa5]+.*"), "Must contain Chinese characters: " + offerDesc);
+        }
     }
 }

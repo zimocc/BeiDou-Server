@@ -145,7 +145,9 @@ public class DropGameBot extends BotSM {
             dprint("REJECT trade from " + incoming.getName()
                     + " — already engaged with " + player.getName());
             BotTradeCommands.writeTradeChat(getChr(),
-                    "Busy with " + player.getName() + "! Try again after this game.");
+                    org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                            ("正忙着和 " + player.getName() + " 玩呢！等这局结束再来。") :
+                            ("Busy with " + player.getName() + "! Try again after this game."));
             BotTiming.after(1500, () -> BotTradeCommands.cancelTrade(getChr()));
             waitFor(2000); // hold ticks until the delayed cancel lands
             cleanupTradeState();
@@ -276,9 +278,13 @@ public class DropGameBot extends BotSM {
         dprint("TRADE_WAIT: writing rules, starting 60s timer");
         // Show rules in trade chat
         BotTradeCommands.writeTradeChat(getChr(),
-                "Drop Game! Medium: 10m / Elite: 50m");
+                org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                        "丢丢乐游戏！中级: 1000万 / 高级: 5000万" :
+                        "Drop Game! Medium: 10m / Elite: 50m");
         BotTradeCommands.writeTradeChat(getChr(),
-                "Put in your mesos and confirm!");
+                org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                        "放入金币并点击确定！" :
+                        "Put in your mesos and confirm!");
         startTimer(60_000); // 60s trade timeout
         setDropGameState(DropGameState.TRADE_VALIDATE);
     }
@@ -287,7 +293,7 @@ public class DropGameBot extends BotSM {
     // Poll until partner locks in, then read mesos and decide tier.
     private void tradeValidate() {
         if (!isTradeActive()) {
-            cancelAndReset("Trade cancelled.");
+            cancelAndReset(org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "交易已取消。" : "Trade cancelled.");
             return;
         }
 
@@ -295,7 +301,7 @@ public class DropGameBot extends BotSM {
         if (!BotTradeCommands.isPartnerLocked(getChr())) {
             if (System.currentTimeMillis() > stateEndTime) {
                 dprint("TRADE_VALIDATE: partner lock timed out");
-                BotTradeCommands.writeTradeChat(getChr(), "Too slow! Trade timed out.");
+                BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "太慢了！交易超时。" : "Too slow! Trade timed out.");
                 BotTiming.after(2000, () -> BotTradeCommands.cancelTrade(getChr()));
                 waitFor(2500); // resume after the delayed cancel lands
                 cleanupTradeAndReset();
@@ -317,7 +323,7 @@ public class DropGameBot extends BotSM {
             // dialogue below blocks for its YAML duration and must finish
             // before the bot resets to advertising.
             dprint("TRADE_VALIDATE: invalid meso amount, rejecting");
-            BotTradeCommands.writeTradeChat(getChr(), "Wrong amount! 10m or 50m only.");
+            BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "金额不对！仅限 1000万 或 5000万 金币。" : "Wrong amount! 10m or 50m only.");
             BotHelpers.blockingSleep(2000);
             BotTradeCommands.cancelTrade(getChr());
             getDialogueHandler().executeBotFlavorDialogue("InvalidMeso", DropGameBot.this);
@@ -327,7 +333,9 @@ public class DropGameBot extends BotSM {
 
         // Valid amount - confirm trade
         dprint("TRADE_VALIDATE: tier=" + selectedTier + ", confirming trade");
-        BotTradeCommands.writeTradeChat(getChr(), selectedTier.toUpperCase() + " tier locked in!");
+        BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                ((selectedTier.equals("elite") ? "高级" : "中级") + " 档位已锁定！") :
+                (selectedTier.toUpperCase() + " tier locked in!"));
         BotTiming.after(1000, () -> BotTradeCommands.confirmTrade(getChr()));
         waitFor(3000); // confirm lands at +1s; settle ~2s after it, as before
         setDropGameState(DropGameState.TRADE_FINALIZE);

@@ -22,8 +22,11 @@ public class ShopOfferWelcome {
     private static final double WELCOME_CHANCE = 0.60;
     private static final int HINT_AFTER_MESSAGES = 2;
 
-    private static final String HINT_MSG =
-            "Tip: To offer, type the price (50m, 1.5b) and item name. Use 1st/2nd/3rd for duplicates!";
+    private static String getHintMsg() {
+        return org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                "提示：如需出价，请输入价格（如 5000万、50m）和道具名称。多个同名道具可用 第1个/第2个 区分！" :
+                "Tip: To offer, type the price (50m, 1.5b) and item name. Use 1st/2nd/3rd for duplicates!";
+    }
 
     private static final Map<String, Integer> playerMessageCounts = new ConcurrentHashMap<>();
     private static final Set<String> hintedPlayers = ConcurrentHashMap.newKeySet();
@@ -64,7 +67,7 @@ public class ShopOfferWelcome {
             int delay = 2000 + random.nextInt(2000);
             MethodScheduler.runAfterDelay(() -> {
                 if (player.getPlayerShop() != shop) return;
-                shop.chat(shop.getOwner(), HINT_MSG);
+                shop.chat(shop.getOwner(), getHintMsg());
             }, delay);
         }
     }

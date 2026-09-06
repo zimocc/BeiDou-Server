@@ -121,7 +121,7 @@ public class BotTradeSM {
                     setTradeState(TradeState.WAITING_RESPONSE);
                 } else {
                     //null
-                    BotTradeCommands.writeTradeChat(getChr(), "I don't have anything at the moment");
+                    BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "我现在没有什么想要交易的" : "I don't have anything at the moment");
                     setTradeState(TradeState.WAITING_RESPONSE);
                 }
                 break;
@@ -165,7 +165,7 @@ public class BotTradeSM {
             case CONFIRMING:
                 setTradeStartTime();
                 setOfferAccepted();
-                BotTradeCommands.writeTradeChat(getChr(), "trade looks good to go!");
+                BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "交易没问题，确认了！" : "trade looks good to go!");
                 BotTradeCommands.confirmTrade(getChr());
                 setTradeState(TradeState.CONFIRMED_LOCKED);
                 break;
@@ -184,10 +184,10 @@ public class BotTradeSM {
 
                 if (lastTradeResult != Trade.TradeResult.SUCCESSFUL) {
                     BotEmote(getChr(), 4);
-                    BotSpeak(getChr(), "Why did you decline?");
+                    BotSpeak(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "为什么取消交易了？" : "Why did you decline?");
                 } else {
                     BotEmote(getChr(), 2);
-                    BotSpeak(getChr(), "Thank you!");
+                    BotSpeak(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "多谢，合作愉快！" : "Thank you!");
                     getParent().setLastTradeResult(Trade.TradeResult.SUCCESSFUL);
                 }
                 getParent().waitFor(2000); // farewell beat before COMPLETED ticks
@@ -199,7 +199,7 @@ public class BotTradeSM {
                 setTradeCompleted();
                 break;
             case TIMED_OUT:
-                BotTradeCommands.writeTradeChat(getChr(), "Timed Out!");
+                BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "交易超时！" : "Timed Out!");
                 // decline (closes the trade window) lands 2s after the message; hold
                 // the bot slightly past it so nothing runs while the window is open
                 BotTiming.after(2000, () -> BotTradeCommands.declineTradeInvite(getChr()));
@@ -236,7 +236,9 @@ public class BotTradeSM {
         int mesoOffering = getParent().getTradeWants().getMesoOffering();
         if (mesoOffering > 0) {
             BotTradeCommands.setMeso(getChr(), mesoOffering);
-            BotTradeCommands.writeTradeChat(getChr(), "Here's " + mesoOffering + " mesos for your item!");
+            BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                    ("这是给你道具的 " + formatPriceToShorthand(mesoOffering) + " 金币！") :
+                    ("Here's " + mesoOffering + " mesos for your item!"));
         }
 
         // Also offer any items we might be exchanging
@@ -281,18 +283,18 @@ public class BotTradeSM {
     protected boolean postItemsForSale() {
         Item itemForSale = getParent().getTradeInventory().getMainItemForSale();
         if (itemForSale == null) {
-            BotTradeCommands.writeTradeChat(getChr(), "I don't have anything for sale currently, sorry");
+            BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "不好意思，我现在没有出售任何东西" : "I don't have anything for sale currently, sorry");
             return false;
         }
 
         if (isEquip(itemForSale)) {
             Equip eqForSale = (Equip) getParent().getTradeInventory().getMainItemForSale();
             BotTradeCommands.addEquipToTrade(getChr(), eqForSale, 1);
-            BotTradeCommands.writeTradeChat(getChr(), "Here is what I've got. check it out!");
+            BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "这是我要出售的，看看吧！" : "Here is what I've got. check it out!");
             return true;
         } else {
             BotTradeCommands.addItemToTrade(getChr(), itemForSale.getItemId(), 1, 1);
-            BotTradeCommands.writeTradeChat(getChr(), "Here is what I've got. check it out!");
+            BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "这是我要出售的，看看吧！" : "Here is what I've got. check it out!");
             return true;
         }
     }
@@ -305,15 +307,19 @@ public class BotTradeSM {
     protected String generateWantsMessageString() {
         int mesoWanted = getParent().getTradeWants().getMesoWanted();
         List<ItemQuantity> itemsWanted = getParent().getTradeWants().getItemsWanted();
-        StringBuilder wantsMessage = new StringBuilder("I want ");
+        boolean isZh = org.gms.soloMapling.server.SoloMaplingI18n.isChinese();
+        StringBuilder wantsMessage = new StringBuilder(isZh ? "想要 " : "I want ");
 
         // Meso part
         if (mesoWanted > 0) {
 //            wantsMessage.append(mesoWanted).append(" mesos");
             wantsMessage.append(formatPriceToShorthand(mesoWanted));
+            if (isZh) {
+                wantsMessage.append("金币");
+            }
             // Add "and" if there are also items
             if (itemsWanted != null && !itemsWanted.isEmpty()) {
-                wantsMessage.append(" and ");
+                wantsMessage.append(isZh ? " 和 " : " and ");
             }
         }
 
@@ -323,45 +329,31 @@ public class BotTradeSM {
                 ItemQuantity item = itemsWanted.get(0);
                 String itemName = convertItemIdToName(item.getItemId());
                 if (item.getQuantity() > 1) {
-                    wantsMessage.append("").append(item.getQuantity()).append("x ").append(itemName);
+                    wantsMessage.append(item.getQuantity()).append(isZh ? "个 " : "x ").append(itemName);
                 } else {
-                    wantsMessage.append("").append(itemName);
+                    wantsMessage.append(itemName);
                 }
             } else {
-                wantsMessage.append("");
                 for (int i = 0; i < itemsWanted.size(); i++) {
                     ItemQuantity item = itemsWanted.get(i);
                     String itemName = convertItemIdToName(item.getItemId());
 
                     if (item.getQuantity() > 1) {
-                        wantsMessage.append("").append(item.getQuantity()).append("x ").append(itemName);
+                        wantsMessage.append(item.getQuantity()).append(isZh ? "个 " : "x ").append(itemName);
                     } else {
-                        wantsMessage.append("").append(itemName);
+                        wantsMessage.append(itemName);
                     }
 
                     if (i < itemsWanted.size() - 1) {
-                        wantsMessage.append(", ");
+                        wantsMessage.append(isZh ? "、" : ", ");
                     }
                 }
             }
         }
-//        if (itemsWanted != null && !itemsWanted.isEmpty()) {
-//            if (itemsWanted.size() == 1) {
-//                wantsMessage.append("").append(convertItemIdToName(itemsWanted.get(0).getItemId()));
-//            } else {
-//                wantsMessage.append("");
-//                for (int i = 0; i < itemsWanted.size(); i++) {
-//                    wantsMessage.append("").append(convertItemIdToName(itemsWanted.get(i).getItemId()));
-//                    if (i < itemsWanted.size() - 1) {
-//                        wantsMessage.append(", ");
-//                    }
-//                }
-//            }
-//        }
 
         // Nothing wanted
         if (mesoWanted == 0 && (itemsWanted == null || itemsWanted.isEmpty())) {
-            wantsMessage.append("nothing specific");
+            wantsMessage.append(isZh ? "随便给点什么都行" : "nothing specific");
         }
 
         return wantsMessage.toString();
@@ -369,7 +361,7 @@ public class BotTradeSM {
 
     protected void declineTradeOffer() {
         BotBlockList.getInstance().addToBlockList(getChr().getId(), getTradePartnerCharacter(getChr()).getId());
-        BotTradeCommands.writeTradeChat(getChr(), "Nah I'm good. Good bye.");
+        BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "算了，不换了。再见。" : "Nah I'm good. Good bye.");
         BotTiming.after(2000, () -> BotTradeCommands.declineTradeInvite(getChr()));
         getParent().waitFor(2500); // hold until the delayed decline lands
     }

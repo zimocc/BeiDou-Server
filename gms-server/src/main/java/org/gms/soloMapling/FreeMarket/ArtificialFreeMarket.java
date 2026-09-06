@@ -353,18 +353,18 @@ public class ArtificialFreeMarket {
         int roll = random.nextInt(10_000);
         if (roll == 0) { // 1 in 10,000 chance
             setOneMesoShop(merchant);
-            setMerchantDescription(merchant, " 1 MESO SHOP!!!");
+            setMerchantDescription(merchant, org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? " 1金币店!!!" : " 1 MESO SHOP!!!");
             return;
         }
         if (roll < 100) { // 100 in 10,000 chance (1%)
             // Quitting Sale
             applyQuittingSaleDiscount(merchant);
-            appendMerchantDescription(merchant, " QUITTING SALE");
+            appendMerchantDescription(merchant, org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? " 退坑甩卖" : " QUITTING SALE");
             return;
         }
         if (roll < 800) { // 800 in 10,000 chance (7%)
             applyCheapSaleDiscount(merchant);
-            appendMerchantDescription(merchant, " Cheap");
+            appendMerchantDescription(merchant, org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? " 特价" : " Cheap");
             return;
         }
     }

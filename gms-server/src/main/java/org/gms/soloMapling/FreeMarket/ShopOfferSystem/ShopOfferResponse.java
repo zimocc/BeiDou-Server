@@ -85,9 +85,12 @@ public class ShopOfferResponse {
             shop.broadcast(PacketCreator.getPlayerShopItemUpdate(shop));
 
             if (player.isLoggedin()) {
+                String notification = org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                        ("你好，我已经把 " + itemName + " 的价格改成了 " + formatPrice(acceptedPrice) + "。快来买吧！ " + roomLabel) :
+                        ("Hey, I updated the price on " + itemName + " to " + formatPrice(acceptedPrice) + ". Come grab it! " + roomLabel);
                 player.sendPacket(PacketCreator.getWhisperReceive(
                         ownerName, player.getClient().getChannel(), false,
-                        "Hey, I updated the price on " + itemName + " to " + formatPrice(acceptedPrice) + ". Come grab it! " + roomLabel
+                        notification
                 ));
             }
         }, delay);
@@ -117,9 +120,12 @@ public class ShopOfferResponse {
             if (broadcastUpdate != null) broadcastUpdate.run();
 
             if (player.isLoggedin()) {
+                String notification = org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ?
+                        ("你好，我已经把 " + itemName + " 的价格改成了 " + formatPrice(acceptedPrice) + "。快来买吧！ " + roomLabel) :
+                        ("Hey, I updated the price on " + itemName + " to " + formatPrice(acceptedPrice) + ". Come grab it! " + roomLabel);
                 player.sendPacket(PacketCreator.getWhisperReceive(
                         ownerName, player.getClient().getChannel(), false,
-                        "Hey, I updated the price on " + itemName + " to " + formatPrice(acceptedPrice) + ". Come grab it! " + roomLabel
+                        notification
                 ));
             }
         }, delay);
@@ -175,12 +181,19 @@ public class ShopOfferResponse {
     private static String getFMRoomLabel(int mapId) {
         int room = mapId - 910000000;
         if (room >= 1 && room <= 22) {
-            return "FM " + room;
+            return org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? ("自由市场 " + room + " 洞") : ("FM " + room);
         }
         return "";
     }
 
     public static String formatPrice(long price) {
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+            if (price >= 100_000_000 && price % 100_000_000 == 0) {
+                return (price / 100_000_000) + "亿";
+            } else if (price >= 10_000 && price % 10_000 == 0) {
+                return (price / 10_000) + "万";
+            }
+        }
         if (price >= 1_000_000_000 && price % 1_000_000_000 == 0) {
             return (price / 1_000_000_000) + "b";
         } else if (price >= 1_000_000 && price % 1_000_000 == 0) {

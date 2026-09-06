@@ -145,6 +145,18 @@ public class FMShopDescGen {
     }
 
     protected static String advertiseRWTCurrencies() {
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+            List<String> rwtCurrencies = new ArrayList<>(List.of("点卷", "金币", "白卷", "枫叶", "混沌"));
+            Random random = new Random();
+            int numberOfCurrencies = random.nextInt(3) + 1;
+            List<String> selectedCurrencies = rwtCurrencies.subList(0, numberOfCurrencies);
+            StringBuilder result = new StringBuilder("|");
+            for (String currency : selectedCurrencies) {
+                result.append(currency).append("|");
+            }
+            return result.toString();
+        }
+
         // Define the list of currencies
         List<String> rwtCurrencies = new ArrayList<>(List.of("NX", "PP", "WS", "WU", "MP"));
 
@@ -162,7 +174,16 @@ public class FMShopDescGen {
         return result.toString();
     }
 
-    protected static String getOfferableDescription() {
+    public static String getOfferableDescription() {
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+            List<String> offerStrings = new ArrayList<>(List.of(
+                    "带价来", "代价密", "诚心留言", "自带价", "留言出价", "带诚意代价", "不墨迹代价", "诚心带价"
+            ));
+            Random random = new Random();
+            int randomIndex = random.nextInt(offerStrings.size());
+            return offerStrings.get(randomIndex);
+        }
+
         List<String> offerStrings = new ArrayList<>(List.of("L/O", "L/N/O"));
         offerStrings.add("Offer");
         offerStrings.add("Leave Offer");
@@ -212,6 +233,11 @@ public class FMShopDescGen {
             return str; // Return as is for null or empty input
         }
 
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+            str = str.replace("[技能册] ", "").replace("[技能册]", "").trim();
+            return str;
+        }
+
         // Define the list of words/phrases to remove
         List<String> substringsToRemove = List.of("Dark Scroll ", "Dark scroll ", "Scroll ", "for ", "[Mastery Book] ",
                 "Throwing-Knives", "Throwing-Stars");
@@ -233,6 +259,23 @@ public class FMShopDescGen {
         return str.trim();
     }
 
+    private static String translateStatName(String stat) {
+        if (stat == null) return "";
+        return switch (stat.toLowerCase()) {
+            case "str" -> "力量";
+            case "dex" -> "敏捷";
+            case "int" -> "智力";
+            case "luk" -> "运气";
+            case "watt" -> "物攻";
+            case "matt" -> "魔攻";
+            case "speed", "spd" -> "移速";
+            case "jump" -> "跳跃";
+            case "hp" -> "生命";
+            case "mp" -> "魔法";
+            default -> stat;
+        };
+    }
+
     protected static String advertiseBestEquip(Item bestItem, boolean writeStat) {
         ItemInformationProvider ii = ItemInformationProvider.getInstance();
         int itemId = bestItem.getItemId();
@@ -247,12 +290,16 @@ public class FMShopDescGen {
 
         if (numSuccessfulScrolls != 0) {
             if (writeStat) {
+                if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+                    String cnStat = translateStatName(bestStatName);
+                    return (highestStatValue + cnStat + " " + itemName);
+                }
                 return (highestStatValue + " " + bestStatName + " " + itemName);
             } else {
-                return ("Godly" + " " + itemName);
+                return (org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "极品 " : "Godly ") + itemName;
             }
         } else {
-            return ("clean " + itemName);
+            return (org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "天然 " : "clean ") + itemName;
         }
     }
 

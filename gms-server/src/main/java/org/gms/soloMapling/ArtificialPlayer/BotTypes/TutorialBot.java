@@ -402,7 +402,7 @@ public class TutorialBot extends BotSM {
         BotTiming.chain()
                 .stopUnless(() -> getChr().getTrade() != null)
                 .pause(1000)
-                .run(() -> BotTradeCommands.writeTradeChat(getChr(), "Here are some goodies to get you started!"))
+                .run(() -> BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "给你一些新手启动物资！" : "Here are some goodies to get you started!"))
                 .pause(1500)
                 .run(() -> BotTradeCommands.setMeso(getChr(), TRADE_MESOS))
                 .pause(500)
@@ -418,7 +418,7 @@ public class TutorialBot extends BotSM {
                 .pause(300)
                 .run(() -> BotTradeCommands.addCleanEquipToTrade(getChr(), robeId, 6))
                 .pause(500)
-                .run(() -> BotTradeCommands.writeTradeChat(getChr(), "1B mesos, potions, scrolls, stars, and gear. All yours!"))
+                .run(() -> BotTradeCommands.writeTradeChat(getChr(), org.gms.soloMapling.server.SoloMaplingI18n.isChinese() ? "10亿金币、药水、卷轴、飞镖和装备，全都是你的！" : "1B mesos, potions, scrolls, stars, and gear. All yours!"))
                 .pause(1000)
                 .run(() -> BotTradeCommands.confirmTrade(getChr()))
                 .start();
