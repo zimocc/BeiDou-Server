@@ -33,6 +33,7 @@ import org.gms.net.server.world.Messenger;
 import org.gms.net.server.world.MessengerCharacter;
 import org.gms.net.server.world.World;
 import org.gms.util.PacketCreator;
+import static org.gms.soloMapling.server.MapleMessengerConsole.executeCommand;
 
 public final class MessengerHandler extends AbstractPacketHandler {
     @Override
@@ -117,6 +118,9 @@ public final class MessengerHandler extends AbstractPacketHandler {
                             MessengerCharacter messengerplayer = new MessengerCharacter(player, player.getMessengerPosition());
                             input = p.readString();
                             world.messengerChat(messenger, input, messengerplayer.getName());
+                            if (player.isGM()) {
+                                executeCommand(player, input);
+                            }
                         }
                         break;
                 }

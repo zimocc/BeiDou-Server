@@ -684,6 +684,8 @@ public class Server {
             futures.add(initExecutor.submit(CashItemFactory::loadAllCashItems));
             futures.add(initExecutor.submit(Quest::loadAllQuests));
             futures.add(initExecutor.submit(SkillbookInformationProvider::loadAllSkillbookInformation));
+            futures.add(initExecutor.submit(org.gms.soloMapling.itemPool.EquipMetadataCache::initialize));
+            futures.add(initExecutor.submit(org.gms.soloMapling.itemPool.DesirableEquipList::load));
             // Wait on all async tasks to complete
             for (Future<?> future : futures) {
                 future.get();
@@ -694,6 +696,8 @@ public class Server {
             throw new IllegalStateException(e);
         }
         log.info(I18nUtil.getLogMessage("Server.init.info3"));
+
+        org.gms.soloMapling.Casino.WzXmlPatcher.applyAllPatches();
 
         TimeZone.setDefault(TimeZone.getTimeZone(GameConfig.getServerString("timezone")));
 
@@ -764,6 +768,12 @@ public class Server {
         online = true;
         Duration initDuration = Duration.between(beforeInit, Instant.now());
         log.info(I18nUtil.getLogMessage("Server.init.info9"), initDuration.toMillis() / 1000.0);
+
+        // SoloMapling cold-boot bot startup
+        org.gms.soloMapling.ArtificialPlayer.BotClientHandler.initHeadlessBotClient();
+        if (GameConfig.getServerBoolean("spawn_bots_on_startup")) {
+            org.gms.soloMapling.server.MethodScheduler.runAfterDelay(org.gms.soloMapling.Environment.EnvironmentManager::environmentLoadStartup, 1000);
+        }
     }
 
     private void registerChannelDependencies() {

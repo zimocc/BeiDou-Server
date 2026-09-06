@@ -217,6 +217,58 @@ public final class ItemConstants {
         return itemType == 543 && itemId != 5430000;
     }
 
+    public static int getItemPrefix(int itemId) {
+        return itemId / 10000;
+    }
+
+    public static int getEquipSlotType(int itemId) {
+        int itemPrefix = getItemPrefix(itemId);
+
+        if (isWeapon(itemId)) {
+            return org.gms.client.inventory.BodyPart.WEAPON.getValue();
+        }
+
+        switch (itemPrefix) {
+            case 100:
+                return org.gms.client.inventory.BodyPart.CAP.getValue();
+            case 101:
+                return org.gms.client.inventory.BodyPart.FACE_ACCESSORY.getValue();
+            case 102:
+                return org.gms.client.inventory.BodyPart.EYE_ACCESSORY.getValue();
+            case 103:
+                return org.gms.client.inventory.BodyPart.EAR_ACCESSORY.getValue();
+            case 104:
+                return org.gms.client.inventory.BodyPart.COAT.getValue();
+            case 105:
+                return org.gms.client.inventory.BodyPart.LONGCOAT.getValue();
+            case 106:
+                return org.gms.client.inventory.BodyPart.PANTS.getValue();
+            case 107:
+                return org.gms.client.inventory.BodyPart.SHOES.getValue();
+            case 108:
+                return org.gms.client.inventory.BodyPart.GLOVE.getValue();
+            case 109:
+            case 119:
+            case 134:
+                return org.gms.client.inventory.BodyPart.SHIELD.getValue();
+            case 110:
+                return org.gms.client.inventory.BodyPart.CAPE.getValue();
+            case 111:
+                return org.gms.client.inventory.BodyPart.RING_1.getValue();
+            case 112:
+                return org.gms.client.inventory.BodyPart.PENDANT.getValue();
+            case 113:
+                return org.gms.client.inventory.BodyPart.BELT.getValue();
+            case 114:
+                return org.gms.client.inventory.BodyPart.MEDAL.getValue();
+            case 115:
+                return org.gms.client.inventory.BodyPart.SHOULDER.getValue();
+            case 118:
+                return org.gms.client.inventory.BodyPart.BADGE.getValue();
+        }
+        return 0;
+    }
+
     public static boolean isWeapon(int itemId) {
         return itemId >= 1302000 && itemId < 1493000;
     }

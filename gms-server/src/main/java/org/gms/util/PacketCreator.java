@@ -72,6 +72,7 @@ import org.gms.net.server.PlayerCoolDownValueHolder;
 import org.gms.net.server.Server;
 import org.gms.net.server.channel.Channel;
 import org.gms.net.server.channel.handlers.PlayerInteractionHandler;
+import org.gms.net.server.channel.handlers.AbstractDealDamageHandler.AttackTarget;
 import org.gms.net.server.channel.handlers.SummonDamageHandler.SummonAttackEntry;
 import org.gms.net.server.channel.handlers.WhisperHandler;
 import org.gms.net.server.guild.Alliance;
@@ -1804,6 +1805,10 @@ public class PacketCreator {
     }
 
     public static Packet dropItemFromMapObject(Character player, MapItem drop, Point dropfrom, Point dropto, byte mod) {
+        return dropItemFromMapObject(player, drop, dropfrom, dropto, mod, (short) 0);
+    }
+
+    public static Packet dropItemFromMapObject(Character player, MapItem drop, Point dropfrom, Point dropto, byte mod, short delay) {
         int dropType = drop.getDropType();
         if (drop.hasClientsideOwnership(player) && dropType < 3) {
             dropType = 2;
@@ -1821,7 +1826,7 @@ public class PacketCreator {
 
         if (mod != 2) {
             p.writePos(dropfrom);
-            p.writeShort(0);//Fh?
+            p.writeShort(delay);//Fh?
         }
         if (drop.getMeso() == 0) {
             addExpirationTime(p, drop.getItem().getExpiration());
@@ -2333,9 +2338,26 @@ public class PacketCreator {
         return p;
     }
 
+    public static Packet closeRangeAttackBot(Character chr, int skill, int skilllevel, int stance,
+                                             int numAttackedAndDamage, Map<Integer, AttackTarget> targets, int speed,
+                                             int direction, int display) {
+        final OutPacket p = OutPacket.create(SendOpcode.CLOSE_RANGE_ATTACK);
+        addAttackBodyWithTargets(p, chr, skill, skilllevel, stance, numAttackedAndDamage, 0, targets, speed, direction, display);
+        return p;
+    }
+
     public static Packet rangedAttack(Character chr, int skill, int skilllevel, int stance, int numAttackedAndDamage, int projectile, Map<Integer, List<Integer>> damage, int speed, int direction, int display) {
         final OutPacket p = OutPacket.create(SendOpcode.RANGED_ATTACK);
         addAttackBody(p, chr, skill, skilllevel, stance, numAttackedAndDamage, projectile, damage, speed, direction, display);
+        p.writeInt(0);
+        return p;
+    }
+
+    public static Packet rangedAttackBot(Character chr, int skill, int skilllevel, int stance, int numAttackedAndDamage,
+                                         int projectile, Map<Integer, AttackTarget> targets, int speed, int direction,
+                                         int display) {
+        final OutPacket p = OutPacket.create(SendOpcode.RANGED_ATTACK);
+        addAttackBodyWithTargets(p, chr, skill, skilllevel, stance, numAttackedAndDamage, projectile, targets, speed, direction, display);
         p.writeInt(0);
         return p;
     }
@@ -2347,6 +2369,48 @@ public class PacketCreator {
             p.writeInt(charge);
         }
         return p;
+    }
+
+    public static Packet magicAttackBot(Character chr, int skill, int skilllevel, int stance, int numAttackedAndDamage,
+                                        Map<Integer, AttackTarget> targets, int charge, int speed, int direction,
+                                        int display) {
+        final OutPacket p = OutPacket.create(SendOpcode.MAGIC_ATTACK);
+        addAttackBodyWithTargets(p, chr, skill, skilllevel, stance, numAttackedAndDamage, 0, targets, speed, direction, display);
+        if (charge != -1) {
+            p.writeInt(charge);
+        }
+        return p;
+    }
+
+    private static void addAttackBodyWithTargets(OutPacket p, Character chr, int skill, int skilllevel, int stance,
+                                                 int numAttackedAndDamage, int projectile, Map<Integer, AttackTarget> targets,
+                                                 int speed, int direction, int display) {
+        p.writeInt(chr.getId());
+        p.writeByte(numAttackedAndDamage);
+        p.writeByte(0x5B);//?
+        p.writeByte(skilllevel);
+        if (skilllevel > 0) {
+            p.writeInt(skill);
+        }
+        p.writeByte(display);
+        p.writeByte(direction);
+        p.writeByte(stance);
+        p.writeByte(speed);
+        p.writeByte(0x0A);
+        p.writeInt(projectile);
+        for (Map.Entry<Integer, AttackTarget> target : targets.entrySet()) {
+            AttackTarget value = target.getValue();
+            if (value != null) {
+                p.writeInt(target.getKey());
+                p.writeByte(0x0);
+                if (skill == 4211006) {
+                    p.writeByte(value.damageLines().size());
+                }
+                for (Integer damageLine : value.damageLines()) {
+                    p.writeInt(damageLine);
+                }
+            }
+        }
     }
 
     private static void addAttackBody(OutPacket p, Character chr, int skill, int skilllevel, int stance, int numAttackedAndDamage, int projectile, Map<Integer, List<Integer>> damage, int speed, int direction, int display) {

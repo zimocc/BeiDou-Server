@@ -31,6 +31,7 @@ import org.gms.util.PacketCreator;
 import java.awt.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import static org.gms.soloMapling.server.MapleVersionManager.isPortalinCurrentVersion;
 
 public class GenericPortal implements Portal {
     private String name;
@@ -142,7 +143,9 @@ public class GenericPortal implements Portal {
             }
         } else if (getTargetMapId() != MapId.NONE) {
             Character chr = c.getPlayer();
-            if (!(chr.getChalkboard() != null && GameConstants.isFreeMarketRoom(getTargetMapId()))) {
+            if (!isPortalinCurrentVersion(getTargetMapId())) {
+                chr.dropMessage(5, "A Mysterious Force prevents you from entering.");
+            } else if (!(chr.getChalkboard() != null && GameConstants.isFreeMarketRoom(getTargetMapId()))) {
                 MapleMap to = chr.getEventInstance() == null ? c.getChannelServer().getMapFactory().getMap(getTargetMapId()) : chr.getEventInstance().getMapInstance(getTargetMapId());
                 Portal pto = to.getPortal(getTarget());
                 if (pto == null) {// fallback for missing portals - no real life case anymore - interesting for not implemented areas

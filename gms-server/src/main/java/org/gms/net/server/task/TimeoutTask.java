@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 
+import static org.gms.soloMapling.ArtificialPlayer.BotHelpers.isBot;
+
 /**
  * @author Shavit
  */
@@ -20,9 +22,11 @@ public class TimeoutTask extends BaseTask implements Runnable {
         Collection<Character> chars = wserv.getPlayerStorage().getAllCharacters();
         for (Character chr : chars) {
             if (time - chr.getClient().getLastPacket() > GameConfig.getServerLong("timeout_duration")) {
-                log.info("Chr {} auto-disconnected due to inactivity", chr.getName());
-                // 默认1h还没有发过任何包，那就是异常连接，直接断开
-                chr.getClient().timeoutDisconnect();
+                if (!isBot(chr)) {
+                    log.info("Chr {} auto-disconnected due to inactivity", chr.getName());
+                    // 默认1h还没有发过任何包，那就是异常连接，直接断开
+                    chr.getClient().timeoutDisconnect();
+                }
             }
         }
     }

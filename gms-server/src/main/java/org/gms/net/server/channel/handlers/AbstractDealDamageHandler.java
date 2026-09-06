@@ -75,6 +75,8 @@ public abstract class AbstractDealDamageHandler extends AbstractPacketHandler {
         return encodedDamage < 0 ? encodedDamage & Integer.MAX_VALUE : encodedDamage;
     }
 
+    public record AttackTarget(short delay, List<Integer> damageLines) {}
+
     public static class AttackInfo {
 
         public int numAttacked, numDamage, numAttackedAndDamage, skill, skilllevel, stance, direction, rangedirection, charge, display;

@@ -42,6 +42,7 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import static org.gms.soloMapling.ArtificialPlayer.BotHelpers.isBot;
 
 /**
  * @author Matze
@@ -335,11 +336,51 @@ public class PlayerShop extends AbstractMapObject {
         }
     }
 
+    public boolean botBuy(Character fakechar, PlayerShopItem pItem, int itemPosition, short quantity) {
+        synchronized (items) {
+            Item newItem = pItem.getItem().copy();
+            newItem.setQuantity((short) ((pItem.getItem().getQuantity() * quantity)));
+            visitorLock.lock();
+            try {
+                int price = (int) Math.min((float) pItem.getPrice() * quantity, Integer.MAX_VALUE);
+
+                if (!owner.canHoldMeso(price)) {
+                    fakechar.dropMessage(1, "Transaction failed since the shop owner can't hold any more mesos.");
+                    return false;
+                }
+
+                price -= Trade.getFee(price);
+                owner.gainMeso(price, true);
+
+                SoldItem soldItem = new SoldItem(fakechar.getName(), pItem.getItem().getItemId(), quantity, price);
+                owner.sendPacket(PacketCreator.getPlayerShopOwnerUpdate(soldItem, itemPosition));
+
+                synchronized (sold) {
+                    sold.add(soldItem);
+                }
+
+                pItem.setBundles((short) (pItem.getBundles() - quantity));
+                if (pItem.getBundles() < 1) {
+                    pItem.setDoesExist(false);
+                    if (++boughtnumber == items.size()) {
+                        owner.setPlayerShop(null);
+                        this.setOpen(false);
+                        this.closeShop();
+                        owner.dropMessage(1, "Your items are sold out, and therefore your shop is closed.");
+                    }
+                }
+                return true;
+            } finally {
+                visitorLock.unlock();
+            }
+        }
+    }
+
     public void broadcastToVisitors(Packet packet) {
         visitorLock.lock();
         try {
             for (int i = 0; i < 3; i++) {
-                if (visitors[i] != null) {
+                if (visitors[i] != null && !isBot(visitors[i])) {
                     visitors[i].sendPacket(packet);
                 }
             }
@@ -432,6 +473,12 @@ public class PlayerShop extends AbstractMapObject {
         }
 
         broadcast(PacketCreator.getPlayerShopChat(c.getPlayer(), chat, s));
+    }
+
+    public void chat(Character chr, String chat) {
+        if (chr != null && chr.getClient() != null) {
+            chat(chr.getClient(), chat);
+        }
     }
 
     private void recoverChatLog() {
@@ -536,6 +583,12 @@ public class PlayerShop extends AbstractMapObject {
         return bannedList.contains(name);
     }
 
+    public void setItems(List<PlayerShopItem> premadeShop) {
+        synchronized (items) {
+            items.addAll(premadeShop);
+        }
+    }
+
     public synchronized boolean visitShop(Character chr) {
         if (this.isBanned(chr.getName())) {
             chr.dropMessage(1, "You have been banned from this store.");
@@ -552,7 +605,12 @@ public class PlayerShop extends AbstractMapObject {
             if (this.hasFreeSlot() && !this.isVisitor(chr)) {
                 this.addVisitor(chr);
                 chr.setPlayerShop(this);
-                this.sendShop(chr.getClient());
+                if (!isBot(chr)) {
+                    this.sendShop(chr.getClient());
+                    if (isBot(owner)) {
+                        org.gms.soloMapling.FreeMarket.ShopOfferSystem.ShopOfferWelcome.onPlayerEnterShop(this, chr);
+                    }
+                }
 
                 return true;
             }

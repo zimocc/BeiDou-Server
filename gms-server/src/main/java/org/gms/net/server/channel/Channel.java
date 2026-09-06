@@ -234,7 +234,7 @@ public final class Channel {
         closeChannelServices();
     }
 
-    private void closeAllMerchants() {
+    public void closeAllMerchants() {
         List<HiredMerchant> merchs;
 
         merchWlock.lock();

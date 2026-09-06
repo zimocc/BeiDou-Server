@@ -31,6 +31,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.gms.server.ChatLogger;
 import org.gms.util.PacketCreator;
+import org.gms.soloMapling.ArtificialPlayer.BotBuffRequestSystem.BotBuffRequestHandler;
+import org.gms.soloMapling.ArtificialPlayer.BotMessagingSystem.ChatMessage;
+import org.gms.soloMapling.ArtificialPlayer.BotMessagingSystem.MessageQueue;
 
 public final class GeneralChatHandler extends AbstractPacketHandler {
     private static final Logger log = LoggerFactory.getLogger(GeneralChatHandler.class);
@@ -58,6 +61,10 @@ public final class GeneralChatHandler extends AbstractPacketHandler {
                 chr.dropMessage(5, "The map you are in is currently muted. Please try again later.");
                 return;
             }
+
+            MessageQueue.getInstance().addMessage("primary", new ChatMessage(c.getPlayer(), s)); // SM NOTE Allows player to interact with bots.
+
+            BotBuffRequestHandler.tryHandle(chr, s); // SM: "hs pls" etc -> nearest eligible bot grants the buff
 
             if (!chr.isHidden()) {
                 chr.getMap().broadcastMessage(PacketCreator.getChatText(chr.getId(), s, chr.getWhiteChat(), show));

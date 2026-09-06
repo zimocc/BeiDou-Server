@@ -41,6 +41,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.gms.server.ItemInformationProvider;
 import org.gms.server.Trade;
+import org.gms.soloMapling.FreeMarket.ShopOfferSystem.OfferParser;
+import org.gms.soloMapling.FreeMarket.ShopOfferSystem.ShopOfferSystem;
+import org.gms.soloMapling.FreeMarket.ShopOfferSystem.ShopOfferWelcome;
 import org.gms.server.maps.FieldLimit;
 import org.gms.server.maps.HiredMerchant;
 import org.gms.server.maps.MapObject;
@@ -344,21 +347,26 @@ public final class PlayerInteractionHandler extends AbstractPacketHandler {
                     }
                 }
             } else if (mode == Action.CHAT.getCode()) { // chat lol
+                String chatMsg = p.readString();
                 HiredMerchant merchant = chr.getHiredMerchant();
                 if (chr.getTrade() != null) {
-                    chr.getTrade().chat(p.readString());
+                    chr.getTrade().chat(chatMsg);
                 } else if (chr.getPlayerShop() != null) { //mini game
                     PlayerShop shop = chr.getPlayerShop();
                     if (shop != null) {
-                        shop.chat(c, p.readString());
+                        shop.chat(c, chatMsg);
+                        ShopOfferSystem.getInstance().onPlayerShopChat(chr, shop, chatMsg);
+                        boolean offerParsed = OfferParser.parse(chatMsg, shop.getItems()) != null;
+                        ShopOfferWelcome.onPlayerChat(chr, shop, offerParsed);
                     }
                 } else if (chr.getMiniGame() != null) {
                     MiniGame game = chr.getMiniGame();
                     if (game != null) {
-                        game.chat(c, p.readString());
+                        game.chat(c, chatMsg);
                     }
                 } else if (merchant != null) {
-                    merchant.sendMessage(chr, p.readString());
+                    merchant.sendMessage(chr, chatMsg);
+                    ShopOfferSystem.getInstance().onHiredMerchantChat(chr, merchant, chatMsg);
                 }
             } else if (mode == Action.EXIT.getCode()) {
                 if (chr.getTrade() != null) {

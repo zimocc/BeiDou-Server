@@ -48,6 +48,9 @@ import org.gms.constants.string.ExtendType;
 import org.gms.dao.entity.*;
 import org.gms.exception.NotEnabledException;
 import org.gms.manager.ServerManager;
+import org.gms.soloMapling.ArtificialPlayer.BotTier;
+import org.gms.soloMapling.server.EventMessageSystem.EventBus;
+import org.gms.soloMapling.server.EventMessageSystem.EventFactory;
 import org.gms.model.dto.InventorySearchReqDTO;
 import org.gms.model.dto.InventorySearchRtnDTO;
 import org.gms.model.pojo.NewYearCardRecord;
@@ -116,9 +119,27 @@ public class Character extends AbstractCharacterObject {
     @Getter
     @Setter
     private int world;
-    @Getter
-    @Setter
     private int id;
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getID() {
+        return this.id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
+    }
+
+    private boolean chasing = false;
+    private BotTier botTier = BotTier.getDefaultTier();
+
     @Getter
     @Setter
     private int accountId;
@@ -457,9 +478,23 @@ public class Character extends AbstractCharacterObject {
     private int partnerId = -1;
     private final List<Ring> crushRings = new ArrayList<>();
     private final List<Ring> friendshipRings = new ArrayList<>();
-    @Getter
-    @Setter
     private boolean loggedIn = false;
+
+    public boolean isLoggedIn() {
+        return this.loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    public boolean isLoggedin() {
+        return this.loggedIn;
+    }
+
+    public void setLoggedin(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
     @Getter
     private boolean useCS;  //chaos scroll upon crafting item.
     private long npcCd;
@@ -484,9 +519,6 @@ public class Character extends AbstractCharacterObject {
     @Getter
     @Setter
     private long loginTime;
-    @Setter
-    @Getter
-    private boolean chasing = false;
     private float mobExpRate = -1;
 
     @Getter
@@ -613,6 +645,10 @@ public class Character extends AbstractCharacterObject {
 
     public boolean isLoggedInWorld() {
         return this.isLoggedIn() && !this.isAwayFromWorld();
+    }
+
+    public boolean isLoggedinWorld() {
+        return isLoggedInWorld();
     }
 
     public boolean isAwayFromWorld() {
@@ -2994,6 +3030,7 @@ public class Character extends AbstractCharacterObject {
             if (show) {
                 announceExpGain(gain, equip, party, inChat, white);
             }
+            int levelBefore = level;
             while (exp.get() >= ExpTable.getExpNeededForLevel(level)) {
                 levelUp(true);
 
@@ -3014,6 +3051,9 @@ public class Character extends AbstractCharacterObject {
                     break;
                 }
                 if (GameConfig.getServerBoolean("use_level_up_protect")) break;
+            }
+            if (level > levelBefore) {
+                EventBus.getInstance().publish(EventFactory.createLevelUpEvent(this));
             }
 
             if (leftover > 0) {
@@ -3230,6 +3270,34 @@ public class Character extends AbstractCharacterObject {
             chrLock.unlock();
             effLock.unlock();
         }
+    }
+
+    public int getTotalMoveSpeedStat() {
+        int total = 100;
+        for (Item item : getInventory(InventoryType.EQUIPPED)) {
+            if (item instanceof Equip equip) {
+                total += equip.getSpeed();
+            }
+        }
+        Integer speedBuff = getBuffedValue(BuffStat.SPEED);
+        if (speedBuff != null) {
+            total += speedBuff;
+        }
+        return Math.max(1, total);
+    }
+
+    public int getTotalJumpStat() {
+        int total = 100;
+        for (Item item : getInventory(InventoryType.EQUIPPED)) {
+            if (item instanceof Equip equip) {
+                total += equip.getJump();
+            }
+        }
+        Integer jumpBuff = getBuffedValue(BuffStat.JUMP);
+        if (jumpBuff != null) {
+            total += jumpBuff;
+        }
+        return Math.max(1, total);
     }
 
     public int getBuffSource(BuffStat stat) {
@@ -6926,7 +6994,7 @@ public class Character extends AbstractCharacterObject {
         }
     }
 
-    private void setChair(int chair) {
+    public void setChair(int chair) {
         this.chair.set(chair);
     }
 
@@ -10198,5 +10266,21 @@ public class Character extends AbstractCharacterObject {
     /** 更新全局攻击时间戳，只被正常主动技能调用 */
     public void updateGlobalTime(long now) {
         globalAttackTime = now;
+    }
+
+    public boolean isChasing() {
+        return chasing;
+    }
+
+    public void setChasing(boolean chasing) {
+        this.chasing = chasing;
+    }
+
+    public void setTier(BotTier newTier) {
+        this.botTier = BotTier.TierManager.safeTierSet(this.botTier, newTier);
+    }
+
+    public BotTier getTier() {
+        return BotTier.TierManager.getSafeTier(botTier);
     }
 }

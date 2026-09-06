@@ -63,6 +63,7 @@ import org.gms.server.loot.LootManager;
 import org.gms.server.maps.AbstractAnimatedMapObject;
 import org.gms.server.maps.MapObjectType;
 import org.gms.server.maps.MapleMap;
+import org.gms.soloMapling.ArtificialPlayer.BotHelpers;
 import org.gms.server.maps.Summon;
 import org.gms.server.partyquest.Pyramid;
 import org.gms.server.quest.medal.SpecialChallengeMedal;
@@ -764,8 +765,11 @@ public class Monster extends AbstractLoadedLife {
 
             int _partyExp = expValueToInteger(partyExp);
 
-            attacker.gainExp(_personalExp, _partyExp, true, false, white);
-            attacker.increaseEquipExp(_personalExp);
+            boolean isBot = BotHelpers.isBot(attacker);
+            attacker.gainExp(_personalExp, _partyExp, !isBot, false, white);
+            if (!isBot) {
+                attacker.increaseEquipExp(_personalExp);
+            }
             attacker.raiseQuestMobCount(getId());
             VeteranHunterMedal.onMonsterKilled(attacker, this);
             // 特级挑战勋章复用怪物死亡事件，在角色已接任务时写入个人击杀进度。
@@ -1857,7 +1861,7 @@ public class Monster extends AbstractLoadedLife {
         Character newControllerWithPuppet = null;
 
         for (Character chr : getMap().getAllPlayers()) {
-            if (!chr.isHidden() && chr.isLoggedInWorld()) {   // 过滤已断线/awayFromWorld 的幽灵玩家，避免被选为 controller 候选
+            if (!chr.isHidden() && chr.isLoggedInWorld() && !BotHelpers.isBot(chr)) {   // 过滤已断线/awayFromWorld 的幽灵玩家及Bot，避免被选为 controller 候选
                 int ctrlMonsSize = chr.getNumControlledMonsters();
 
                 if (isCharacterPuppetInVicinity(chr)) {
@@ -1920,6 +1924,9 @@ public class Monster extends AbstractLoadedLife {
      * player controller.
      */
     public void aggroSwitchController(Character newController, boolean immediateAggro) {
+        if (newController != null && BotHelpers.isBot(newController)) {
+            return;
+        }
         if (aggroUpdateLock.tryLock()) {
             try {
                 Character prevController = getController();
