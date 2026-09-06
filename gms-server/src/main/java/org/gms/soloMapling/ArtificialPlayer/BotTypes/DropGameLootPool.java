@@ -12,7 +12,7 @@ import static org.gms.soloMapling.BotLogger.log;
 
 public class DropGameLootPool {
 
-    private static final String LOOT_POOL_PATH = "src/main/resources/soloMapling/ArtificialPlayer/BotDialoguePack/DropGameLootPool.yaml";
+    private static final String LOOT_POOL_PATH = "BotDialoguePack/DropGameLootPool.yaml";
     private static final Random random = new Random();
     private static final int SPECIAL_CHANCE_PERCENT = 33;
 
@@ -37,7 +37,7 @@ public class DropGameLootPool {
     public static DropGameLootPool load(String tier) {
         DropGameLootPool pool = new DropGameLootPool();
         try {
-            YamlReader reader = new YamlReader(new FileReader(LOOT_POOL_PATH));
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(LOOT_POOL_PATH));
             Map<String, Object> root = (Map<String, Object>) reader.read();
             Map<String, Object> tierNode = (Map<String, Object>) root.get(tier);
             if (tierNode == null) {

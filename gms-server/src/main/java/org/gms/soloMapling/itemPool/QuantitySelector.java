@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class QuantitySelector {
     private static ItemQuantityConfig config;
-    static String filePath = "src/main/resources/soloMapling/itemPool/itemConfig/itemQuantities.yaml";
+    static String filePath = "itemPool/itemConfig/itemQuantities.yaml";
 
     // Load configuration at the start
     public static void loadConfig() {

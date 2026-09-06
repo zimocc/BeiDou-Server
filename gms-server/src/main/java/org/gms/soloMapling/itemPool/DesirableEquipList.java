@@ -2,12 +2,14 @@ package org.gms.soloMapling.itemPool;
 
 import com.esotericsoftware.yamlbeans.YamlReader;
 
+import org.gms.soloMapling.server.SoloMaplingResourceLoader;
+
 import java.io.FileReader;
 import java.util.*;
 
 public class DesirableEquipList {
 
-    private static final String YAML_PATH = "src/main/resources/soloMapling/itemPool/itemConfig/desirableEquips.yaml";
+    private static final String YAML_PATH = "itemPool/itemConfig/desirableEquips.yaml";
     private static final Set<Integer> desirableIds = new HashSet<>();
     private static boolean loaded = false;
 
@@ -15,7 +17,7 @@ public class DesirableEquipList {
         if (loaded) return;
         long start = System.currentTimeMillis();
         try {
-            YamlReader reader = new YamlReader(new FileReader(YAML_PATH));
+            YamlReader reader = new YamlReader(SoloMaplingResourceLoader.getReader(YAML_PATH));
             @SuppressWarnings("unchecked")
             Map<String, List<String>> categories = (Map<String, List<String>>) reader.read();
             if (categories == null) {

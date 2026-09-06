@@ -20,7 +20,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class NXItemPool {
 
     private static final String YAML_PATH =
-            "src/main/resources/soloMapling/ArtificialPlayer/BotDecoratorSystem/NXItemPool.yaml";
+            "BotDecoratorSystem/NXItemPool.yaml";
 
     public static final int GENDER_MALE = 0;
     public static final int GENDER_FEMALE = 1;
@@ -77,7 +77,7 @@ public class NXItemPool {
         if (loaded) return;
 
         try {
-            YamlReader reader = new YamlReader(new FileReader(YAML_PATH));
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(YAML_PATH));
             Map<String, Object> root = (Map<String, Object>) reader.read();
             if (root == null) root = Collections.emptyMap();
 

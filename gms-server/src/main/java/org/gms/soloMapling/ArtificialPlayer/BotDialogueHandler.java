@@ -129,12 +129,12 @@ public class BotDialogueHandler {
     }
 
     public static Map<String, Object> readDialogueYaml(String dialoguePack, String dialogueType, String dialogueNode) {
-        String dialoguePackBase = "src/main/resources/soloMapling/ArtificialPlayer/BotDialoguePack/";
+        String dialoguePackBase = "BotDialoguePack/";
         String filePath = String.format("%s%s", dialoguePackBase, dialoguePack);
 
         Map<String, Object> dialogueConstructorNode = null;
         try {
-            YamlReader reader = new YamlReader(new FileReader(filePath));
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(filePath));
 
             // Read the root node
             Map<String, Object> root = (Map<String, Object>) reader.read();

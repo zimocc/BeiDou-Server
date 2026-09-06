@@ -13,7 +13,7 @@ public class ItemSelector {
     private Map<String, List<ItemNode>> items;
 
     public ItemSelector(String yamlFile) throws Exception {
-        YamlReader reader = new YamlReader(new FileReader(yamlFile));
+        YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(yamlFile));
         items = (Map<String, List<ItemNode>>) reader.read();
     }
 
@@ -162,7 +162,7 @@ public class ItemSelector {
     public static ItemNode getRandomItemFull(String itemPool, String itemType, String tier) {
         try {
             int version = MapleVersionManager.getItemPoolVersion();
-            ItemSelector itemSelector = new ItemSelector("src/main/resources/soloMapling/itemPool/itemConfig/" + itemPool);
+            ItemSelector itemSelector = new ItemSelector("itemPool/itemConfig/" + itemPool);
             ItemNode randomItem = itemSelector.getRandomItem(itemType, tier, version);
             if (randomItem != null) {
                 return randomItem;

@@ -21,7 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class GenericEquipPool {
 
     private static final String YAML_PATH =
-            "src/main/resources/soloMapling/ArtificialPlayer/BotDecoratorSystem/GenericEquipPool.yaml";
+            "BotDecoratorSystem/GenericEquipPool.yaml";
 
     // Higher = stricter preference for gear near the bot's level. 0.05 gives a gentle tail
     // so a level 95 bot can still occasionally roll a level-35 whip for fashion.
@@ -68,7 +68,7 @@ public class GenericEquipPool {
         if (loaded) return;
 
         try {
-            YamlReader reader = new YamlReader(new FileReader(YAML_PATH));
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(YAML_PATH));
             Map<String, Object> root = (Map<String, Object>) reader.read();
 
             ItemInformationProvider iip = ItemInformationProvider.getInstance();

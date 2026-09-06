@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
  */
 public class PlatformParser {
 
-    private static final String BASE_PATH = "src/main/resources/soloMapling/ArtificialPlayer/BotMovementSystem/movementDataPackets";
+    private static final String BASE_PATH = "movementDataPackets";
 
     /** Y variance threshold to determine if platform is sloped (in pixels) */
     private static final int SLOPE_THRESHOLD = 50;
@@ -39,9 +39,9 @@ public class PlatformParser {
      */
     public static List<Point> parseCoordinates(int mapId, String fileName) {
         List<Point> coordinates = new ArrayList<>();
-        Path filePath = Paths.get(BASE_PATH, "map" + mapId, fileName + ".csv");
+        String relPath = String.format("movementDataPackets/map%d/%s.csv", mapId, fileName);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath.toFile()))) {
+        try (BufferedReader reader = new BufferedReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(relPath))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
@@ -61,7 +61,7 @@ public class PlatformParser {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Failed to parse coordinates from: " + filePath);
+            System.err.println("Failed to parse coordinates from: " + relPath);
             e.printStackTrace();
         }
 

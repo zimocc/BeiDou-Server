@@ -35,8 +35,8 @@ public class ItemDatabase {
                 "useables.yaml"); // Add more options as needed
 
         for (String itemPool : itemPools) {
-            String yamlFile = "src/main/resources/soloMapling/itemPool/itemConfig/" + itemPool;
-            YamlReader reader = new YamlReader(new FileReader(yamlFile));
+            String yamlFile = "itemPool/itemConfig/" + itemPool;
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(yamlFile));
             Map<String, List<ItemNode>> thiefitems = (Map<String, List<ItemNode>>) reader.read();
 
             for (Map.Entry<String, List<ItemNode>> entry : thiefitems.entrySet()) {

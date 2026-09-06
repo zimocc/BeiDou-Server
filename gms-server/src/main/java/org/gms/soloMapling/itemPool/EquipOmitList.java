@@ -27,10 +27,12 @@ import java.util.Set;
  * off. Fails open: if the YAML cannot be read the list is treated as empty so
  * bots still equip (with flags) rather than spawning naked.
  */
+import org.gms.soloMapling.server.SoloMaplingResourceLoader;
+
 public class EquipOmitList {
 
     private static final String YAML_PATH =
-            "src/main/resources/soloMapling/itemPool/EquipOmitList.yaml";
+            "itemPool/EquipOmitList.yaml";
 
     private static volatile boolean enabled = true;
     private static volatile boolean loaded = false;
@@ -46,7 +48,7 @@ public class EquipOmitList {
         if (loaded) return;
 
         try {
-            YamlReader reader = new YamlReader(new FileReader(YAML_PATH));
+            YamlReader reader = new YamlReader(SoloMaplingResourceLoader.getReader(YAML_PATH));
             Map<String, Object> root = (Map<String, Object>) reader.read();
 
             if (root != null) {

@@ -20,7 +20,7 @@ public class ItemQuantityConfig {
 
     public static ItemQuantityConfig readYaml(String filePath) {
         try {
-            YamlReader reader = new YamlReader(new FileReader(filePath));
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(filePath));
             return reader.read(ItemQuantityConfig.class);
         } catch (IOException e) {
             e.printStackTrace();

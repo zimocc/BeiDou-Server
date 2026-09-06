@@ -21,12 +21,15 @@ public final class TownPinsStore {
     }
 
     private static final String PATH =
-            "src/main/resources/soloMapling/ArtificialPlayer/BotTownSystem/TownPins.txt";
+            "BotTownSystem/TownPins.txt";
 
     // Append one pin. Writes a header the first time the file is created.
     public static synchronized void addPin(int mapId, int x, int y) {
         try {
-            File f = new File(PATH);
+            File f = org.gms.soloMapling.server.SoloMaplingResourceLoader.resolvePath(PATH).toFile();
+            if (f.getParentFile() != null && !f.getParentFile().exists()) {
+                f.getParentFile().mkdirs();
+            }
             boolean writeHeader = !f.exists();
             try (FileWriter fw = new FileWriter(f, true)) {
                 if (writeHeader) {
@@ -44,11 +47,7 @@ public final class TownPinsStore {
     // mapId -> its pinned points. Empty if the file doesn't exist yet.
     public static synchronized Map<Integer, List<Point>> load() {
         Map<Integer, List<Point>> out = new HashMap<>();
-        File f = new File(PATH);
-        if (!f.exists()) {
-            return out;
-        }
-        try (BufferedReader r = new BufferedReader(new FileReader(f))) {
+        try (BufferedReader r = new BufferedReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(PATH))) {
             String line;
             while ((line = r.readLine()) != null) {
                 String s = line.trim();

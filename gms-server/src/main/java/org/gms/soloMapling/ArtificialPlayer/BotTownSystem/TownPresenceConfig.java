@@ -22,7 +22,7 @@ public final class TownPresenceConfig {
     }
 
     private static final String YAML_PATH =
-            "src/main/resources/soloMapling/ArtificialPlayer/BotTownSystem/TownPresence.yaml";
+            "BotTownSystem/TownPresence.yaml";
 
     // One map within a town's family: how many ambient bots stand there, plus its curation overrides
     // (ban/boost zones + pins, hand-authored in the YAML and merged with any marked pins from the sidecar).
@@ -75,7 +75,7 @@ public final class TownPresenceConfig {
     private static List<TownEntry> load() {
         List<TownEntry> out = new ArrayList<>();
         try {
-            YamlReader reader = new YamlReader(new FileReader(YAML_PATH));
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(YAML_PATH));
             Map<String, Object> root = (Map<String, Object>) reader.read();
             if (root == null) {
                 return out;

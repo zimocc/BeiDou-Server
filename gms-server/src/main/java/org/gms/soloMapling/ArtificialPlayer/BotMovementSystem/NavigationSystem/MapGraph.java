@@ -38,7 +38,7 @@ public class MapGraph {
 
     public MapGraph(int mapId) {
         this.mapId = mapId; // convertFMMapDirectoryID(mapId);
-        this.directory = new File("src/main/resources/soloMapling/ArtificialPlayer/BotMovementSystem/movementDataPackets/map" + this.mapId);
+        this.directory = org.gms.soloMapling.server.SoloMaplingResourceLoader.resolveDirectory("movementDataPackets/map" + this.mapId);
         this.setMainAreas();
         this.setConnectors();
         this.buildGraph();

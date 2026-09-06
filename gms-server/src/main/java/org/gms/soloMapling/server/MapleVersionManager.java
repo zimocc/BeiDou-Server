@@ -13,8 +13,8 @@ public class MapleVersionManager {
     private static Map<String, String> npcReleaseVersions;
     private static Map<String, String> portalReleaseVersions;
 
-    private static final String portalVersionYaml = "src/main/resources/soloMapling/server/portal_versions.yaml";
-    private static final String npcVersionYaml = "src/main/resources/soloMapling/server/npc_versions.yaml";
+    private static final String portalVersionYaml = "server/portal_versions.yaml";
+    private static final String npcVersionYaml = "server/npc_versions.yaml";
 
 
     public static int getItemPoolVersion() {
@@ -28,7 +28,7 @@ public class MapleVersionManager {
 
     public static void loadNPCVersions(String yamlFilePath) {
         try {
-            YamlReader reader = new YamlReader(new FileReader(yamlFilePath));
+            YamlReader reader = new YamlReader(SoloMaplingResourceLoader.getReader(yamlFilePath));
             Map<String, Map<String, String>> data = (Map<String, Map<String, String>>) reader.read();
             npcReleaseVersions = data.get("npc_versions");
         } catch (Exception e) {
@@ -51,7 +51,7 @@ public class MapleVersionManager {
 
     public static void loadPortalVersions(String yamlFilePath) {
         try {
-            YamlReader reader = new YamlReader(new FileReader(yamlFilePath));
+            YamlReader reader = new YamlReader(SoloMaplingResourceLoader.getReader(yamlFilePath));
             Map<String, Map<String, String>> data = (Map<String, Map<String, String>>) reader.read();
             portalReleaseVersions = data.get("portal_versions");
         } catch (Exception e) {

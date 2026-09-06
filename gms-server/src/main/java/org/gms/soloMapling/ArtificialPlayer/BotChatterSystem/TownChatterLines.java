@@ -19,7 +19,7 @@ public final class TownChatterLines {
     }
 
     private static final String YAML_PATH =
-            "src/main/resources/soloMapling/ArtificialPlayer/BotDialoguePack/TownChatterDialogue.yaml";
+            "BotDialoguePack/TownChatterDialogue.yaml";
 
     private static volatile List<List<String>> cached;
     private static final Random RANDOM = new Random();
@@ -53,7 +53,7 @@ public final class TownChatterLines {
     private static List<List<String>> load() {
         List<List<String>> out = new ArrayList<>();
         try {
-            YamlReader reader = new YamlReader(new FileReader(YAML_PATH));
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(YAML_PATH));
             Map<String, Object> root = (Map<String, Object>) reader.read();
             if (root == null) {
                 return out;

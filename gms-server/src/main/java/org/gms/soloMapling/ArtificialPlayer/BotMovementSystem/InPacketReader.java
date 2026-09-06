@@ -13,11 +13,13 @@ import org.gms.soloMapling.ArtificialPlayer.BotMovementSystem.MovementStructures
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -31,7 +33,7 @@ import static org.gms.soloMapling.DebugUtilities.debugprint;
 
 public class InPacketReader {
 
-    private static final String movementDataPacketsPath = "src/main/resources/soloMapling/ArtificialPlayer/BotMovementSystem/movementDataPackets/";
+    private static final String movementDataPacketsPath = "movementDataPackets/";
 
     public static boolean boolRecordMovementData = false;
     public static String movementDataRecordingName = "default_movement_recording";
@@ -49,7 +51,11 @@ public class InPacketReader {
 
     public static List<MovementPacket> readPacketsFromFile(String binaryFileName) {
         List<MovementPacket> packets = new ArrayList<>();
-        try (DataInputStream dis = new DataInputStream(new FileInputStream(binaryFileName))) {
+        InputStream is = org.gms.soloMapling.server.SoloMaplingResourceLoader.getInputStream(binaryFileName);
+        if (is == null) {
+            throw new RuntimeException("Cannot find movement binary file: " + binaryFileName);
+        }
+        try (DataInputStream dis = new DataInputStream(is)) {
             while (dis.available() > 0) {
                 packets.add(readSinglePacket(dis));
             }
@@ -62,7 +68,7 @@ public class InPacketReader {
     public static List<MovementPacketRaw> readRawPacketsFromFile(String csvFileName) {
         List<MovementPacketRaw> packetList = new LinkedList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(csvFileName))) {
+        try (BufferedReader reader = new BufferedReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(csvFileName))) {
             LineReader lineReader = new LineReader(reader);
             String line;
 
@@ -195,8 +201,9 @@ public class InPacketReader {
 
     // Method to write packets to a binary file
     public static void writePacketToFile(String fullFileName, MovementPacket packet) throws IOException {
-        ensureDirectoryExists(fullFileName);
-        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(fullFileName, true))) {
+        File f = org.gms.soloMapling.server.SoloMaplingResourceLoader.resolvePath(fullFileName).toFile();
+        ensureDirectoryExists(f.getAbsolutePath());
+        try (DataOutputStream dos = new DataOutputStream(new FileOutputStream(f, true))) {
             dos.writeLong(packet.getTimestamp()); // Write the timestamp (8 bytes)
             byte[] data = packet.getPacket().getBytes();
             dos.writeInt(data.length); // Write the length of the binary data (4 bytes)

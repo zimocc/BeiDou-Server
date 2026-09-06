@@ -24,7 +24,13 @@ public class SoloMaplingResourceLoader {
     private static final List<Path> SEARCH_DIRS = new ArrayList<>();
 
     static {
-        // Standard resources path
+        // Multi-module root directory support (e.g. running from root BeiDou-Server in IDE)
+        SEARCH_DIRS.add(Paths.get("gms-server", "src", "main", "resources", "soloMapling"));
+        SEARCH_DIRS.add(Paths.get("gms-server", "target", "classes", "soloMapling"));
+        SEARCH_DIRS.add(Paths.get("gms-server", "resources", "soloMapling"));
+        SEARCH_DIRS.add(Paths.get("gms-server", "soloMapling"));
+
+        // Single-module / direct directory support (e.g. running from gms-server module directory)
         SEARCH_DIRS.add(Paths.get("src", "main", "resources", "soloMapling"));
         SEARCH_DIRS.add(Paths.get("target", "classes", "soloMapling"));
         SEARCH_DIRS.add(Paths.get("resources", "soloMapling"));
@@ -34,8 +40,7 @@ public class SoloMaplingResourceLoader {
     }
 
     /**
-     * Normalizes a legacy path string (e.g. "src/main/resources/soloMapling/ArtificialPlayer/BotDialoguePack/foo.yaml")
-     * into a relative subpath (e.g. "BotDialoguePack/foo.yaml").
+     * Normalizes a legacy path string into a relative subpath under soloMapling resources.
      */
     public static String normalizePath(String rawPath) {
         if (rawPath == null) {
@@ -45,22 +50,37 @@ public class SoloMaplingResourceLoader {
 
         // Strip known prefixes
         String[] prefixes = {
+                "gms-server/src/main/resources/soloMapling/ArtificialPlayer/BotMovementSystem/",
+                "gms-server/src/main/resources/soloMapling/ArtificialPlayer/",
+                "gms-server/src/main/resources/soloMapling/FreeMarket/",
+                "gms-server/src/main/resources/soloMapling/",
                 "src/main/resources/soloMapling/ArtificialPlayer/BotMovementSystem/",
                 "src/main/resources/soloMapling/ArtificialPlayer/",
                 "src/main/resources/soloMapling/FreeMarket/",
                 "src/main/resources/soloMapling/",
-                "src/main/resources/soloMapling/",
                 "soloMapling/ArtificialPlayer/BotMovementSystem/",
                 "soloMapling/ArtificialPlayer/",
                 "soloMapling/FreeMarket/",
-                "soloMapling/"
+                "soloMapling/",
+                "ArtificialPlayer/BotMovementSystem/",
+                "ArtificialPlayer/",
+                "FreeMarket/"
         };
 
         for (String prefix : prefixes) {
             if (p.startsWith(prefix)) {
-                return p.substring(prefix.length());
+                p = p.substring(prefix.length());
+                break;
             }
         }
+
+        if (p.startsWith("FreeMarket/")) {
+            p = p.substring("FreeMarket/".length());
+        }
+        if (p.startsWith("ArtificialPlayer/")) {
+            p = p.substring("ArtificialPlayer/".length());
+        }
+
         return p;
     }
 
@@ -68,6 +88,9 @@ public class SoloMaplingResourceLoader {
      * Resolves a relative or legacy path to an existing filesystem Path.
      */
     public static Path resolvePath(String rawPath) {
+        if (rawPath == null) {
+            return Paths.get("");
+        }
         String normalized = normalizePath(rawPath);
 
         // 1. Direct file check on rawPath if exists
@@ -76,7 +99,13 @@ public class SoloMaplingResourceLoader {
             return direct;
         }
 
-        // 2. Check search directories with normalized path
+        // 2. Direct check on normalized
+        Path directNorm = Paths.get(normalized);
+        if (Files.exists(directNorm)) {
+            return directNorm;
+        }
+
+        // 3. Check search directories with normalized path
         for (Path base : SEARCH_DIRS) {
             Path candidate = base.resolve(normalized);
             if (Files.exists(candidate)) {
@@ -84,7 +113,7 @@ public class SoloMaplingResourceLoader {
             }
         }
 
-        // 3. Check search directories with rawPath
+        // 4. Check search directories with rawPath
         for (Path base : SEARCH_DIRS) {
             Path candidate = base.resolve(rawPath.replace('\\', '/'));
             if (Files.exists(candidate)) {
@@ -92,7 +121,27 @@ public class SoloMaplingResourceLoader {
             }
         }
 
-        // Fallback: return preferred destination path under src/main/resources/soloMapling
+        // 5. Check search directories with raw filename if leaf file
+        try {
+            Path p = Paths.get(rawPath);
+            if (p.getFileName() != null) {
+                String fileName = p.getFileName().toString();
+                for (Path base : SEARCH_DIRS) {
+                    Path candidate = base.resolve(fileName);
+                    if (Files.exists(candidate)) {
+                        return candidate;
+                    }
+                }
+            }
+        } catch (Exception ignored) {
+        }
+
+        // Fallback: return preferred destination path under first existing SEARCH_DIR
+        for (Path base : SEARCH_DIRS) {
+            if (Files.exists(base)) {
+                return base.resolve(normalized);
+            }
+        }
         return SEARCH_DIRS.get(0).resolve(normalized);
     }
 
@@ -111,14 +160,27 @@ public class SoloMaplingResourceLoader {
         String normalized = normalizePath(rawPath);
 
         // Try ClassLoader
-        ClassLoader cl = SoloMaplingResourceLoader.class.getClassLoader();
-        InputStream is = cl.getResourceAsStream(BASE_RESOURCE_DIR + normalized);
-        if (is != null) {
-            return is;
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        if (cl == null) {
+            cl = SoloMaplingResourceLoader.class.getClassLoader();
         }
-        is = cl.getResourceAsStream(normalized);
-        if (is != null) {
-            return is;
+
+        String[] candidates = {
+                BASE_RESOURCE_DIR + normalized,
+                normalized,
+                rawPath.replace('\\', '/'),
+                BASE_RESOURCE_DIR + rawPath.replace('\\', '/')
+        };
+
+        for (String candidate : candidates) {
+            InputStream is = cl.getResourceAsStream(candidate);
+            if (is != null) {
+                return is;
+            }
+            if (!candidate.startsWith("/")) {
+                is = cl.getResourceAsStream("/" + candidate);
+                if (is != null) return is;
+            }
         }
 
         // Try filesystem

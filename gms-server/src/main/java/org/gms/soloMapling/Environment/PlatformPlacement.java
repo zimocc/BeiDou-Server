@@ -39,7 +39,6 @@ import static org.gms.soloMapling.server.SoloMaplingUtilities.getMapleMapById;
 // the wave orchestration. Ours (SoloMapling).
 public class PlatformPlacement {
 
-    private static final String BASE_PATH = "src/main/resources/soloMapling/ArtificialPlayer/BotMovementSystem/movementDataPackets";
     // Tolerance for Y-coordinate matching when determining if a character is on a platform;
     // characters within this vertical distance of the platform are considered "on" it.
     private static final int Y_TOLERANCE = 10;
@@ -476,7 +475,7 @@ public class PlatformPlacement {
      */
     public static List<String> getAvailablePlatformIds(int mapId) {
         List<String> platformIds = new ArrayList<>();
-        File mapDir = new File(BASE_PATH + "/map" + mapId);
+        File mapDir = org.gms.soloMapling.server.SoloMaplingResourceLoader.resolveDirectory("movementDataPackets/map" + mapId);
 
         if (!mapDir.exists() || !mapDir.isDirectory()) {
             return platformIds;

@@ -66,8 +66,6 @@ import java.util.stream.Collectors;
 
 public class EnvironmentManager {
 
-    private static final String BASE_PATH = "src/main/resources/soloMapling/ArtificialPlayer/BotMovementSystem/movementDataPackets";
-
     /**
      * Tolerance for Y-coordinate matching when determining if a character is on a platform.
      * Characters within this vertical distance of the platform are considered "on" it.
