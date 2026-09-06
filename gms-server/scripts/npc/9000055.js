@@ -122,8 +122,11 @@ function action(mode, type, selection) {
                 break;
 
             case 5: // 野外召唤
+                var range = getMapRecommendedLevelRange(player.getMap(), player);
                 var text = "#e#b请选择召唤野外打怪 Bot 的职业类型：#k#n\r\n\r\n";
-                text += "生成的 Bot 将在当前地图自动寻找怪物打怪，不占用队伍名额。\r\n\r\n";
+                text += "生成的 Bot 将在当前地图自动寻找怪物打怪，不占用队伍名额。\r\n";
+                text += "当前地图怪物推荐等级：#r" + (range.mapLevel > 0 ? range.mapLevel + " 级" : "无怪物(自适应)") + "#k\r\n";
+                text += "生成的野外 Bot 等级将适配为：#b" + range.minLevel + " ~ " + range.maxLevel + " 级#k。\r\n\r\n";
                 text += "#L51##b[战士]#k 战士 (Warrior)#l\r\n";
                 text += "#L52##r[法师]#k 魔法师 (Magician)#l\r\n";
                 text += "#L53##g[弓手]#k 弓箭手 (Bowman)#l\r\n";
@@ -134,8 +137,8 @@ function action(mode, type, selection) {
 
             case 6: // 清理地图
                 var text = "#e#b请选择您要执行的地图清理类型：#k#n\r\n\r\n";
-                text += "#L61##b[仅清理野外Bot]#k 仅清除本地图野外自主刷怪Bot (保留队伍伴侣)#l\r\n";
-                text += "#L62##r[全图彻底清理]#k 清除本地图所有Bot (包括队伍伴侣并退队)#l\r\n";
+                text += "#L61##b[清理野外Bot]#k 仅清理野外无队伍Bot (保留所有队伍伴侣)#l\r\n";
+                text += "#L62##r[清理本地图与我的伴侣]#k 清理野外无队伍Bot及我的伴侣 (绝不影响他人伴侣)#l\r\n";
                 cm.sendSimple(text);
                 break;
 
@@ -346,19 +349,85 @@ function handlePartyDismissBots(player) {
     cm.dispose();
 }
 
-// 召唤野外自主打怪 Bot
+// 计算当前地图适合生成的野外 Bot 等级区间（以地图怪物等级为准）
+function getMapRecommendedLevelRange(map, player) {
+    if (map == null) {
+        return { minLevel: 10, maxLevel: 20, mapLevel: -1 };
+    }
+
+    var mapId = map.getId();
+    var mapLevel = -1;
+    try {
+        mapLevel = MapMobIndex.level(mapId);
+    } catch (e) {}
+
+    // 若 MapMobIndex 中未收录，尝试从当前地图已刷新的怪物中统计
+    if (mapLevel <= 0) {
+        try {
+            var monsters = toJsArray(map.getAllMonsters());
+            if (monsters.length > 0) {
+                var mobLevels = [];
+                for (var m = 0; m < monsters.length; m++) {
+                    if (monsters[m] != null) {
+                        mobLevels.push(monsters[m].getLevel());
+                    }
+                }
+                if (mobLevels.length > 0) {
+                    mobLevels.sort(function(a, b) { return a - b; });
+                    mapLevel = mobLevels[Math.floor(mobLevels.length / 2)];
+                }
+            }
+        } catch (e) {}
+    }
+
+    var minLevel = 1;
+    var maxLevel = 10;
+    if (mapLevel > 0) {
+        // 符合地图等级：低级怪区(<=10级)生成低级新手/一转Bot，避免高级碾压
+        if (mapLevel <= 10) {
+            minLevel = Math.max(1, mapLevel - 2);
+            maxLevel = Math.max(minLevel + 1, Math.min(15, mapLevel + 3));
+        } else {
+            minLevel = Math.max(10, mapLevel - 5);
+            maxLevel = Math.min(200, Math.max(minLevel + 1, mapLevel + 5));
+        }
+    } else {
+        // 地图完全没有怪物（如主城、自由市场等），回退为安全合理等级
+        var pLevel = (player != null) ? player.getLevel() : 20;
+        minLevel = Math.max(10, Math.min(30, pLevel - 5));
+        maxLevel = Math.min(200, minLevel + 10);
+    }
+    return { minLevel: minLevel, maxLevel: maxLevel, mapLevel: mapLevel };
+}
+
+// 召唤野外自主打怪 Bot (符合地图等级，并具有单图数量上限保护)
 function handleSpawnWildBot(player, baseClass) {
     var map = player.getMap();
-    if (map == null || MapMobIndex.level(map.getId()) < 0) {
-        cm.sendOk("当前地图没有怪物，无法召唤野外打怪 Bot！请在狩猎地图使用此功能。");
+    if (map == null) {
+        cm.dispose();
+        return;
+    }
+
+    // 检查地图 Bot 数量上限，防止 Bot 泛滥堆积
+    var MAX_MAP_WILD_BOTS = 5;
+    var chrs = toJsArray(map.getCharacters());
+    var currentWildBots = 0;
+    for (var i = 0; i < chrs.length; i++) {
+        var c = chrs[i];
+        if (c != null && BotHelpers.isBot(c) && c.getParty() == null) {
+            currentWildBots++;
+        }
+    }
+    if (currentWildBots >= MAX_MAP_WILD_BOTS) {
+        cm.sendOk("当前地图已有 #r" + currentWildBots + "#k 位野外打怪 Bot（已达单张地图上限 " + MAX_MAP_WILD_BOTS + " 人）。\r\n为了服务器流畅度与生态平衡，请勿在同一地图生成过多 Bot！\r\n\r\n如需重新召唤，可先使用【清理地图】功能。");
         cm.dispose();
         return;
     }
 
     var pos = player.getPosition();
-    var pLevel = player.getLevel();
-    var minLevel = Math.max(10, pLevel - 10);
-    var maxLevel = Math.min(200, Math.max(minLevel + 1, pLevel + 10));
+    var range = getMapRecommendedLevelRange(map, player);
+    var minLevel = range.minLevel;
+    var maxLevel = range.maxLevel;
 
     var botId = BotGeneration.createBot(pos, map, baseClass, minLevel, maxLevel);
     var botChr = BotHelpers.getCharFromChannelStorage(botId);
@@ -366,14 +435,14 @@ function handleSpawnWildBot(player, baseClass) {
     if (botChr != null) {
         BotRecruitManager.markStationHere(botChr.getId());
         BotTypeManager.convertBotType(botChr, BotTypeManager.BotType.TRAINING_BOT);
-        cm.sendOk("野外打怪 Bot #b#e" + botChr.getName() + "#k#n (等级 #r" + botChr.getLevel() + "#k) 已在当前地图生成并开始打怪！");
+        cm.sendOk("野外打怪 Bot #b#e" + botChr.getName() + "#k#n (等级 #r" + botChr.getLevel() + "#k) 已在当前地图生成并开始打怪！\r\n(等级已根据当前地图等级 " + (range.mapLevel > 0 ? range.mapLevel + " 级" : "自适应") + " 生成)");
     } else {
         cm.sendOk("野外打怪 Bot 生成成功（角色 ID：" + botId + "）。");
     }
     cm.dispose();
 }
 
-// 仅清理本地图野外自主 Bot（保留队伍内的伴侣）
+// 仅清理本地图野外无队伍的 Bot（绝不清理他人或自己的队伍伴侣）
 function handleClearWildBots(player) {
     var map = player.getMap();
     if (map == null) {
@@ -381,24 +450,13 @@ function handleClearWildBots(player) {
         return;
     }
 
-    var party = player.getParty();
-    var partyBotIds = {};
-    if (party != null) {
-        var members = toJsArray(party.getMembers());
-        for (var i = 0; i < members.length; i++) {
-            if (members[i] != null) {
-                partyBotIds[members[i].getId()] = true;
-            }
-        }
-    }
-
     var botList = [];
     var chrs = toJsArray(map.getCharacters());
     for (var i = 0; i < chrs.length; i++) {
         var c = chrs[i];
-        if (BotHelpers.isBot(c)) {
-            // 排除当前队伍伴侣
-            if (partyBotIds[c.getId()]) {
+        if (c != null && BotHelpers.isBot(c)) {
+            // 只要 Bot 在任何队伍中（不论自己的还是别人的），绝对保留！
+            if (c.getParty() != null) {
                 continue;
             }
             botList.push(c);
@@ -409,11 +467,11 @@ function handleClearWildBots(player) {
         BotGeneration.removeBotFromServer(botList[j]);
     }
 
-    cm.sendOk("已成功清理当前地图上的 #r" + botList.length + "#k 位野外自主 Bot，队伍伴侣已为您保留！");
+    cm.sendOk("已成功清理当前地图上的 #r" + botList.length + "#k 位野外无队伍 Bot！\r\n所有队伍伴侣（包括您和他人队伍）均已为您完整保留。");
     cm.dispose();
 }
 
-// 清理本地图全部虚拟 Bot（包括队伍伴侣并将其退队）
+// 清理本地图野外无队伍 Bot 与自己队伍的伴侣（绝不清理别人队伍里的 Bot）
 function handleClearAllMapBots(player) {
     var map = player.getMap();
     if (map == null) {
@@ -421,27 +479,43 @@ function handleClearAllMapBots(player) {
         return;
     }
 
-    var party = player.getParty();
-    var botList = [];
+    var myParty = player.getParty();
+    var wildBots = [];
+    var myPartyBots = [];
+
     var chrs = toJsArray(map.getCharacters());
     for (var i = 0; i < chrs.length; i++) {
         var c = chrs[i];
-        if (BotHelpers.isBot(c)) {
-            botList.push(c);
+        if (c != null && BotHelpers.isBot(c)) {
+            var botParty = c.getParty();
+            if (botParty == null) {
+                // 1. 无队伍的野外 Bot：清理
+                wildBots.push(c);
+            } else if (myParty != null && myParty.getId() == botParty.getId()) {
+                // 2. 自己队伍里的 Bot 伴侣：清理并退队
+                myPartyBots.push(c);
+            } else {
+                // 3. 别人队伍里的 Bot：绝对保护，不清理！
+                continue;
+            }
         }
     }
 
-    for (var j = 0; j < botList.length; j++) {
-        var botChr = botList[j];
-        if (party != null && party.getMemberById(botChr.getId()) != null) {
-            try {
-                Party.expelFromParty(party, player.getClient(), botChr.getId());
-            } catch (e) {}
-        }
-        BotGeneration.removeBotFromServer(botChr);
+    // 清理自己队伍里的伴侣
+    for (var k = 0; k < myPartyBots.length; k++) {
+        var pBot = myPartyBots[k];
+        try {
+            Party.expelFromParty(myParty, player.getClient(), pBot.getId());
+        } catch (e) {}
+        BotGeneration.removeBotFromServer(pBot);
     }
 
-    cm.sendOk("已彻底清理当前地图上的 #r" + botList.length + "#k 位虚拟 Bot（包含队伍伴侣）。");
+    // 清理野外无队伍 Bot
+    for (var j = 0; j < wildBots.length; j++) {
+        BotGeneration.removeBotFromServer(wildBots[j]);
+    }
+
+    cm.sendOk("清理完成！已清理野外无队伍 Bot #r" + wildBots.length + "#k 位，退队并移除您的队伍伴侣 #r" + myPartyBots.length + "#k 位。\r\n#b注意：其他玩家队伍中的 Bot 伴侣不受任何影响，已完整保留。#k");
     cm.dispose();
 }
 
@@ -457,8 +531,13 @@ function handleShowHelp() {
     text += "   - 队伍内的 Bot 默认处于【跟随模式】，紧跟队长跑图穿门。\r\n";
     text += "   - 队长可以在野外狩猎地图打开本 NPC，点击【战斗指令】，一键命令全队在场 Bot 展开攻击！\r\n";
     text += "   - 同样可在普通白字聊天输入 Bot 名字，在弹出的互动气泡中选择【Train here with me!】或【Follow me!】进行单体指挥。\r\n\r\n";
-    text += "#e3. 经验共享：#n\r\n";
-    text += "   - 组队打怪期间，Bot 击杀怪物的经验值会自动与队伍成员共享！\r\n";
+    text += "#e3. 地图生成与上限保护：#n\r\n";
+    text += "   - 地图不会在玩家进入时自动生成 Bot，避免数量泛滥；\r\n";
+    text += "   - 使用【野外召唤】时，Bot 等级严格根据当前地图的怪物等级生成；\r\n";
+    text += "   - 单张地图设有野外 Bot 数量上限（最大 5 人），保障游戏流畅度。\r\n\r\n";
+    text += "#e4. 清理安全保护规则：#n\r\n";
+    text += "   - 本控制中心的所有清理功能，均受到队伍归属保护；\r\n";
+    text += "   - 无论是清理野外还是全图清理，绝不会清理或影响其他玩家队伍中的 Bot 伴侣！\r\n";
 
     cm.sendOk(text);
     cm.dispose();
