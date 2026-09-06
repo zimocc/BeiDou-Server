@@ -11,7 +11,7 @@ const BotHelpers = Java.type('org.gms.soloMapling.ArtificialPlayer.BotHelpers');
 const CharacterStorage = Java.type('org.gms.soloMapling.ArtificialPlayer.BotMessagingSystem.CharacterStorage');
 const GCMovement = Java.type('org.gms.soloMapling.ArtificialPlayer.GCMoveSystem.GCMovement');
 const Party = Java.type('org.gms.net.server.world.Party');
-const MapMobIndex = Java.type('org.gms.soloMapling.Field.MapMobIndex');
+const MapMobIndex = Java.type('org.gms.soloMapling.ArtificialPlayer.BotGrindSystem.MapMobIndex');
 
 var status = -1;
 var selectedOption = -1;
