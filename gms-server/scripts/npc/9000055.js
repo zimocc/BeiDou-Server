@@ -82,21 +82,25 @@ function action(mode, type, selection) {
         text += "当前队伍 Bot 伴侣数量：#r" + partyBotCount + "#k 人 (队伍上限 6 人)\r\n";
         text += "当前地图 Bot 总数量：#b" + mapBotCount + "#k 人\r\n\r\n";
 
-        text += "#L1##b[招募伴侣]#k 召唤 Bot 队友加入队伍 (自动跟随)#l\r\n";
+        text += "#L1##b[招募伴侣]#k 召唤 Bot 队友加入队伍 (等级差10级以内, 自动跟随)#l\r\n";
         text += "#L2##r[战斗指令]#k 命令队伍内所有 Bot 开始打怪 (就地战斗)#l\r\n";
         text += "#L3##g[行军指令]#k 命令队伍内所有 Bot 停止打怪并跟随队长#l\r\n";
         text += "#L4##d[离队管理]#k 将队伍内的所有 Bot 请离队伍#l\r\n";
         text += "#L5##b[野外召唤]#k 在本地图召唤自主刷怪 Bot (不入队)#l\r\n";
         text += "#L6##r[清理地图]#k 清理本地图上的虚拟 Bot#l\r\n";
-        text += "#L7##k[帮助说明]#k 查看 Bot 玩法与快捷聊天指令说明#l\r\n";
+        text += "#L7##k[帮助说明]#k 查看 Bot 玩法与等级限制说明#l\r\n";
 
         cm.sendSimple(text);
     } else if (status === 1) {
         selectedOption = selection;
         switch (selection) {
             case 1: // 召唤 Bot 入队
+                var pLevel = player.getLevel();
+                var minL = Math.max(10, pLevel - 10);
+                var maxL = Math.min(200, Math.max(minL, pLevel + 10));
                 var text = "#e#b请选择您希望招募的 Bot 职业伴侣：#k#n\r\n\r\n";
-                text += "伴侣将自动适配您的等级，召唤后直接加入您的队伍并跟随您！\r\n\r\n";
+                text += "伴侣等级将根据您的当前等级（#r" + pLevel + " 级#k）自动生成在 #b" + minL + " ~ " + maxL + " 级#k 之间（±10级以内）。\r\n";
+                text += "召唤后将直接加入您的队伍并跟随您！\r\n\r\n";
                 text += "#L11##b[战士]#k 强力近战与防御 (Warrior)#l\r\n";
                 text += "#L12##r[法师]#k 华丽范围法术 (Magician)#l\r\n";
                 text += "#L13##g[弓手]#k 远程精准射击 (Bowman)#l\r\n";
@@ -151,6 +155,7 @@ function action(mode, type, selection) {
             else if (selection === 12) baseClass = 2;
             else if (selection === 13) baseClass = 3;
             else if (selection === 14) baseClass = 4;
+            else if (selection === 15) baseClass = (Math.floor(Math.random() * 4) + 1);
             handleSpawnPartyBot(player, baseClass);
         } else if (selectedOption === 5) {
             // 召唤野外打怪 Bot
@@ -159,6 +164,7 @@ function action(mode, type, selection) {
             else if (selection === 52) baseClass = 2;
             else if (selection === 53) baseClass = 3;
             else if (selection === 54) baseClass = 4;
+            else if (selection === 55) baseClass = (Math.floor(Math.random() * 4) + 1);
             handleSpawnWildBot(player, baseClass);
         } else if (selectedOption === 6) {
             // 清理地图
@@ -177,7 +183,7 @@ function action(mode, type, selection) {
     }
 }
 
-// 召唤伴侣并加入队伍
+// 召唤伴侣并加入队伍 (限制在玩家等级差值10级以内)
 function handleSpawnPartyBot(player, baseClass) {
     var party = player.getParty();
     if (party == null) {
@@ -197,9 +203,11 @@ function handleSpawnPartyBot(player, baseClass) {
 
     var map = player.getMap();
     var pos = player.getPosition();
-    var level = Math.max(10, Math.min(200, player.getLevel()));
+    var pLevel = player.getLevel();
+    var minLevel = Math.max(10, pLevel - 10);
+    var maxLevel = Math.min(200, Math.max(minLevel + 1, pLevel + 10));
 
-    var botId = BotGeneration.createBot(pos, map, baseClass, level, level);
+    var botId = BotGeneration.createBot(pos, map, baseClass, minLevel, maxLevel);
     var botChr = BotHelpers.getCharFromChannelStorage(botId);
 
     if (botChr != null) {
@@ -207,7 +215,7 @@ function handleSpawnPartyBot(player, baseClass) {
         BotRecruitManager.setPendingLeader(botChr.getId(), player.getId());
         BotTypeManager.convertBotType(botChr, BotTypeManager.BotType.FOLLOWER_BOT);
 
-        cm.sendOk("#b#e" + botChr.getName() + "#k#n (等级 " + botChr.getLevel() + ") 已成功召唤并加入您的队伍！\r\n\r\n当前处于#r[跟随状态]#k。进入战斗地图后，您可以通过本 NPC 发送【战斗指令】让其就地打怪！");
+        cm.sendOk("#b#e" + botChr.getName() + "#k#n (等级 #r" + botChr.getLevel() + "#k) 已成功招募并加入您的队伍！\r\n\r\n伴侣等级在您（" + pLevel + " 级）的 #r±10 级#k 范围内。\r\n当前处于#r[跟随状态]#k。进入战斗地图后，您可以通过本 NPC 发送【战斗指令】让其就地打怪！");
     } else {
         cm.sendOk("Bot 伴侣召唤成功（角色 ID：" + botId + "），正在进入世界...");
     }
@@ -348,15 +356,17 @@ function handleSpawnWildBot(player, baseClass) {
     }
 
     var pos = player.getPosition();
-    var level = Math.max(10, Math.min(200, player.getLevel()));
+    var pLevel = player.getLevel();
+    var minLevel = Math.max(10, pLevel - 10);
+    var maxLevel = Math.min(200, Math.max(minLevel + 1, pLevel + 10));
 
-    var botId = BotGeneration.createBot(pos, map, baseClass, level, level);
+    var botId = BotGeneration.createBot(pos, map, baseClass, minLevel, maxLevel);
     var botChr = BotHelpers.getCharFromChannelStorage(botId);
 
     if (botChr != null) {
         BotRecruitManager.markStationHere(botChr.getId());
         BotTypeManager.convertBotType(botChr, BotTypeManager.BotType.TRAINING_BOT);
-        cm.sendOk("野外打怪 Bot #b#e" + botChr.getName() + "#k#n 已在当前地图生成并开始打怪！");
+        cm.sendOk("野外打怪 Bot #b#e" + botChr.getName() + "#k#n (等级 #r" + botChr.getLevel() + "#k) 已在当前地图生成并开始打怪！");
     } else {
         cm.sendOk("野外打怪 Bot 生成成功（角色 ID：" + botId + "）。");
     }
@@ -438,12 +448,14 @@ function handleClearAllMapBots(player) {
 // 玩法与帮助说明
 function handleShowHelp() {
     var text = "\t\t\t#e#b[ Bot 虚拟伴侣交互指南 ]#k#n\r\n\r\n";
-    text += "#e1. 组队与邀请：#n\r\n";
-    text += "   - 在野外或城镇右键点击任意 Bot，选择【组队邀请】，Bot 将 100% 同意入队。\r\n";
-    text += "   - 也可在本 NPC 直接选择【招募伴侣】，一键将 Bot 召唤并拉进队伍。\r\n\r\n";
+    text += "#e1. 组队与等级限制规则：#n\r\n";
+    text += "   - 手动邀请 Bot 组队时，要求双方等级差距在 #r10 级以内#k；\r\n";
+    text += "   - 右键点击等级差距 10 级以内的 Bot 选择【组队邀请】，Bot 将 100% 直接同意入队；\r\n";
+    text += "   - 真实玩家之间的组队完全不受 10 级差距限制；\r\n";
+    text += "   - 在本 NPC 选择【招募伴侣】，系统将自动生成与您等级差在 #r10 级以内#k 的 Bot 并加入队伍。\r\n\r\n";
     text += "#e2. 打怪与跟随：#n\r\n";
     text += "   - 队伍内的 Bot 默认处于【跟随模式】，紧跟队长跑图穿门。\r\n";
-    text += "   - 队长可以在本地图打开本 NPC，点击【战斗指令】，一键命令全队 Bot 展开攻击！\r\n";
+    text += "   - 队长可以在野外狩猎地图打开本 NPC，点击【战斗指令】，一键命令全队在场 Bot 展开攻击！\r\n";
     text += "   - 同样可在普通白字聊天输入 Bot 名字，在弹出的互动气泡中选择【Train here with me!】或【Follow me!】进行单体指挥。\r\n\r\n";
     text += "#e3. 经验共享：#n\r\n";
     text += "   - 组队打怪期间，Bot 击杀怪物的经验值会自动与队伍成员共享！\r\n";

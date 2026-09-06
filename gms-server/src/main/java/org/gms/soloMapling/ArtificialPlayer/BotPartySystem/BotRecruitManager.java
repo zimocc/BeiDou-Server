@@ -43,9 +43,13 @@ public class BotRecruitManager {
     private static final Map<Integer, Integer> PENDING_LEADER = new ConcurrentHashMap<>(); // bot id -> leader id
     private static final Set<Integer> PENDING_STATION = ConcurrentHashMap.newKeySet();   // bot ids
 
-    // The dialogue option was picked: 100% accept and arm invite window.
+    // The dialogue option was picked: check level difference within 10, then accept and arm invite window.
     public static RecruitAnswer rollPartyAsk(Character botChr, Character player, double acceptChance,
                                              boolean willBecomeFollower) {
+        if (player != null && Math.abs(player.getLevel() - botChr.getLevel()) > 10) {
+            debugprint("rollPartyAsk: " + botChr.getName() + " DECLINED " + player.getName() + " due to level diff > 10");
+            return RecruitAnswer.DECLINED;
+        }
         ARMED.put(botChr.getId(), new Armed(player.getId(), System.currentTimeMillis() + INVITE_WINDOW_MS));
         debugprint("rollPartyAsk: " + botChr.getName() + " ACCEPTED " + player.getName()
                 + " (invite window " + (INVITE_WINDOW_MS / 1000) + "s)");

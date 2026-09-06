@@ -80,7 +80,13 @@ public final class PartyOperationHandler extends AbstractPacketHandler {
                 String name = p.readString();
                 Character invited = world.getPlayerStorage().getCharacterByName(name);
                 if (invited != null) {
-                    if (!isBot(invited)) {
+                    if (isBot(invited)) {
+                        // 手动组Bot限制等级差距在10级以内 (真实玩家组队不受此限制)
+                        if (Math.abs(player.getLevel() - invited.getLevel()) > 10) {
+                            c.sendPacket(PacketCreator.serverNotice(5, "无法邀请与您等级相差超过10级的Bot伴侣加入队伍。"));
+                            return;
+                        }
+                    } else {
                         if (invited.getLevel() < 10 && (!GameConfig.getServerBoolean("use_party_for_starters") || player.getLevel() >= 10)) { //min requirement is level 10
                             c.sendPacket(PacketCreator.serverNotice(5, "The player you have invited does not meet the requirements."));
                             return;

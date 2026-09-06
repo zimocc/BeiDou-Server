@@ -91,7 +91,10 @@ public class BotGeneration {
         placeBotOnMap(bot, pos, map);
         // Decorate before the drop-down plays so the bot arrives fully dressed
         // (decoration is an in-memory cache lookup, takes microseconds).
-        if (baseClass <= 0) {
+        int targetBaseClass = (baseClass <= 0) ? org.gms.soloMapling.ArtificialPlayer.BotDecoratorSystem.BotDecorate.rollBaseClass() : baseClass;
+        if (minLevel > 0 && maxLevel > 0) {
+            setBotVariables(bot, targetBaseClass, minLevel, maxLevel, forcedJobId);
+        } else if (baseClass <= 0) {
             setBotVariables(bot);
         } else {
             setBotVariables(bot, baseClass, minLevel, maxLevel, forcedJobId);

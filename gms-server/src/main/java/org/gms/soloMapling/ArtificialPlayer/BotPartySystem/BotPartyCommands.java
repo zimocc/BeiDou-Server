@@ -73,6 +73,13 @@ public class BotPartyCommands {
             return false;
         }
 
+        Character inviter = entry.getInviter();
+        if (inviter != null && Math.abs(inviter.getLevel() - fakechar.getLevel()) > 10) {
+            inviter.sendPacket(PacketCreator.serverNotice(5, fakechar.getName() + " 与您的等级相差超过10级，无法加入队伍。"));
+            BotPartyQueue.getInstance().removePartyInvite(fakechar);
+            return false;
+        }
+
         int partyId = entry.getPartyId();
         InviteResult res = InviteCoordinator.answerInvite(InviteType.PARTY, fakechar.getId(), partyId, true);
         BotPartyQueue.getInstance().removePartyInvite(fakechar);
@@ -82,13 +89,11 @@ public class BotPartyCommands {
             if (!joined) {
                 // joinParty fails silently to the inviter (party disbanded / full / bot already
                 // partied) - tell them so a clean re-invite is the obvious next move.
-                Character inviter = entry.getInviter();
                 if (inviter != null) {
                     inviter.sendPacket(PacketCreator.serverNotice(5, fakechar.getName()
                             + " couldn't join your party (it was full or disbanded) - try inviting again."));
                 }
             } else {
-                Character inviter = entry.getInviter();
                 if (inviter != null) {
                     BotRecruitManager.setPendingLeader(fakechar.getId(), inviter.getId());
                 }
