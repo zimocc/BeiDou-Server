@@ -16,6 +16,17 @@ const MapMobIndex = Java.type('org.gms.soloMapling.ArtificialPlayer.BotGrindSyst
 var status = -1;
 var selectedOption = -1;
 
+function toJsArray(javaCollection) {
+    var arr = [];
+    if (javaCollection != null) {
+        var it = javaCollection.iterator();
+        while (it.hasNext()) {
+            arr.push(it.next());
+        }
+    }
+    return arr;
+}
+
 function start() {
     action(1, 0, 0);
 }
@@ -40,11 +51,17 @@ function action(mode, type, selection) {
         var party = player.getParty();
         var partyBotCount = 0;
         if (party != null) {
-            var members = party.getMembers();
-            for (var i = 0; i < members.size(); i++) {
-                var pc = members.get(i);
-                if (pc != null && pc.getPlayer() != null && BotHelpers.isBot(pc.getPlayer())) {
-                    partyBotCount++;
+            var members = toJsArray(party.getMembers());
+            for (var i = 0; i < members.length; i++) {
+                var pc = members[i];
+                if (pc != null) {
+                    var p = pc.getPlayer();
+                    if (p == null) {
+                        p = BotHelpers.getCharFromChannelStorage(pc.getId());
+                    }
+                    if (p != null && BotHelpers.isBot(p)) {
+                        partyBotCount++;
+                    }
                 }
             }
         }
@@ -52,9 +69,9 @@ function action(mode, type, selection) {
         var map = player.getMap();
         var mapBotCount = 0;
         if (map != null) {
-            var chrs = map.getCharacters();
-            for (var i = 0; i < chrs.size(); i++) {
-                if (BotHelpers.isBot(chrs.get(i))) {
+            var chrs = toJsArray(map.getCharacters());
+            for (var i = 0; i < chrs.length; i++) {
+                if (BotHelpers.isBot(chrs[i])) {
                     mapBotCount++;
                 }
             }
@@ -160,7 +177,7 @@ function handleSpawnPartyBot(player, baseClass) {
         party = player.getParty();
     }
 
-    if (party.getMembers().size() >= 6) {
+    if (toJsArray(party.getMembers()).length >= 6) {
         cm.sendOk("您的队伍人数已满（最多 6 人），无法再招募新的 Bot 伴侣！");
         cm.dispose();
         return;
@@ -202,11 +219,14 @@ function handlePartyAttack(player) {
     }
 
     var count = 0;
-    var members = party.getMembers();
-    for (var i = 0; i < members.size(); i++) {
-        var pc = members.get(i);
+    var members = toJsArray(party.getMembers());
+    for (var i = 0; i < members.length; i++) {
+        var pc = members[i];
         if (pc != null) {
             var p = pc.getPlayer();
+            if (p == null) {
+                p = BotHelpers.getCharFromChannelStorage(pc.getId());
+            }
             if (p != null && BotHelpers.isBot(p)) {
                 BotRecruitManager.markStationHere(p.getId());
                 GCMovement.stop(p);
@@ -234,11 +254,14 @@ function handlePartyFollow(player) {
     }
 
     var count = 0;
-    var members = party.getMembers();
-    for (var i = 0; i < members.size(); i++) {
-        var pc = members.get(i);
+    var members = toJsArray(party.getMembers());
+    for (var i = 0; i < members.length; i++) {
+        var pc = members[i];
         if (pc != null) {
             var p = pc.getPlayer();
+            if (p == null) {
+                p = BotHelpers.getCharFromChannelStorage(pc.getId());
+            }
             if (p != null && BotHelpers.isBot(p)) {
                 BotRecruitManager.setPendingLeader(p.getId(), player.getId());
                 BotTypeManager.convertBotType(p, BotTypeManager.BotType.FOLLOWER_BOT);
@@ -266,11 +289,14 @@ function handlePartyDismissBots(player) {
 
     var count = 0;
     var botList = [];
-    var members = party.getMembers();
-    for (var i = 0; i < members.size(); i++) {
-        var pc = members.get(i);
+    var members = toJsArray(party.getMembers());
+    for (var i = 0; i < members.length; i++) {
+        var pc = members[i];
         if (pc != null) {
             var p = pc.getPlayer();
+            if (p == null) {
+                p = BotHelpers.getCharFromChannelStorage(pc.getId());
+            }
             if (p != null && BotHelpers.isBot(p)) {
                 botList.push(p);
             }
@@ -325,9 +351,9 @@ function handleClearMapBots(player) {
     }
 
     var botList = [];
-    var chrs = map.getCharacters();
-    for (var i = 0; i < chrs.size(); i++) {
-        var c = chrs.get(i);
+    var chrs = toJsArray(map.getCharacters());
+    for (var i = 0; i < chrs.length; i++) {
+        var c = chrs[i];
         if (BotHelpers.isBot(c)) {
             botList.push(c);
         }
