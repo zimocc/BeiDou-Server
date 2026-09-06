@@ -2879,7 +2879,7 @@ public class MapleMap {
         chrRLock.lock();
         try {
             for (Character c : characters) {
-                if (c != null && c.isAwayFromWorld()) {
+                if (c != null && !isBot(c) && c.isAwayFromWorld()) {
                     ghosts.add(c);
                 }
             }

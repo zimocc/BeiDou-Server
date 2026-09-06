@@ -31,10 +31,16 @@ public class BotHelpers {
     }
 
     public static boolean isBot(Character chr) {
+        if (chr == null) {
+            return false;
+        }
+        if (chr.getClient() instanceof org.gms.client.BotClient) {
+            return true;
+        }
         return isBot(chr.getId());
     }
 
-    private static boolean isBot(int id) {
+    public static boolean isBot(int id) {
         return isArtificial(id) || isConsole(id);
     }
 

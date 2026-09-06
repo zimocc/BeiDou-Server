@@ -181,6 +181,7 @@ public class BotGeneration {
     }
 
     public static void removeBotFromServer(Character fakechar) {
+        fakechar.setDisconnectedFromChannelWorld();
         fakechar.getMap().removePlayer(fakechar);
         channel.removePlayer(fakechar);
         world.getPlayerStorage().removePlayer(fakechar.getId());
@@ -194,6 +195,7 @@ public class BotGeneration {
         channel.addPlayer(fakechar);
 //        World world = Server.getInstance().getWorld(BotSM.GameConstants.WORLD_SCANIA);
         world.getPlayerStorage().addPlayer(fakechar);
+        fakechar.setEnteredChannelWorld();
     }
 
     public static void spawnBotFm(Character fakechar, Point pt) {

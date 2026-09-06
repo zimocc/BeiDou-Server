@@ -644,6 +644,9 @@ public class Character extends AbstractCharacterObject {
     }
 
     public boolean isLoggedInWorld() {
+        if (org.gms.soloMapling.ArtificialPlayer.BotHelpers.isBot(this)) {
+            return !this.isAwayFromWorld();
+        }
         return this.isLoggedIn() && !this.isAwayFromWorld();
     }
 
@@ -652,15 +655,26 @@ public class Character extends AbstractCharacterObject {
     }
 
     public boolean isAwayFromWorld() {
+        if (org.gms.soloMapling.ArtificialPlayer.BotHelpers.isBot(this)) {
+            return false;
+        }
         return awayFromWorld.get();
+    }
+
+    public void setAwayFromWorld(boolean away) {
+        awayFromWorld.set(away);
     }
 
     public void setEnteredChannelWorld() {
         awayFromWorld.set(false);
-        client.getChannelServer().removePlayerAway(id);
+        if (client != null && client.getChannelServer() != null) {
+            client.getChannelServer().removePlayerAway(id);
+        }
 
-        if (canRecvPartySearchInvite) {
-            this.getWorldServer().getPartySearchCoordinator().attachPlayer(this);
+        if (!org.gms.soloMapling.ArtificialPlayer.BotHelpers.isBot(this)) {
+            if (canRecvPartySearchInvite && this.getWorldServer() != null) {
+                this.getWorldServer().getPartySearchCoordinator().attachPlayer(this);
+            }
         }
     }
 
@@ -676,9 +690,18 @@ public class Character extends AbstractCharacterObject {
         awayFromWorld.set(true);
 
         if (!disconnect) {
-            client.getChannelServer().insertPlayerAway(id);
+            if (client != null && client.getChannelServer() != null) {
+                client.getChannelServer().insertPlayerAway(id);
+            }
         } else {
-            client.getChannelServer().removePlayerAway(id);
+            if (!org.gms.soloMapling.ArtificialPlayer.BotHelpers.isBot(this)) {
+                if (canRecvPartySearchInvite && this.getWorldServer() != null) {
+                    this.getWorldServer().getPartySearchCoordinator().detachPlayer(this);
+                }
+            }
+            if (client != null && client.getChannelServer() != null) {
+                client.getChannelServer().removePlayerAway(id);
+            }
         }
     }
 
