@@ -10,6 +10,13 @@ import org.gms.net.server.world.PartyCharacter;
 import org.gms.net.server.world.PartyOperation;
 import org.gms.net.server.world.World;
 import org.gms.server.maps.MapleMap;
+import org.gms.soloMapling.ArtificialPlayer.BotCommandsPack.SocialCommands;
+import org.gms.soloMapling.ArtificialPlayer.BotMessagingSystem.CharacterStorage;
+import org.gms.soloMapling.ArtificialPlayer.BotSM;
+import org.gms.soloMapling.ArtificialPlayer.BotTypeManager;
+import org.gms.soloMapling.ArtificialPlayer.BotTypes.SocialBot;
+import org.gms.soloMapling.ArtificialPlayer.BotTypes.TownWandererBot;
+import org.gms.soloMapling.ArtificialPlayer.BotTypes.TrainingBot;
 import org.gms.util.PacketCreator;
 
 import static org.gms.soloMapling.DebugUtilities.debugprint;
@@ -79,6 +86,17 @@ public class BotPartyCommands {
                 if (inviter != null) {
                     inviter.sendPacket(PacketCreator.serverNotice(5, fakechar.getName()
                             + " couldn't join your party (it was full or disbanded) - try inviting again."));
+                }
+            } else {
+                Character inviter = entry.getInviter();
+                if (inviter != null) {
+                    BotRecruitManager.setPendingLeader(fakechar.getId(), inviter.getId());
+                }
+                BotSM currentBot = CharacterStorage.getBotById(fakechar.getId());
+                if (currentBot instanceof SocialBot || currentBot instanceof TownWandererBot || currentBot instanceof TrainingBot) {
+                    BotTypeManager.convertBotType(fakechar, BotTypeManager.BotType.FOLLOWER_BOT);
+                } else if (fakechar.getMap() != null) {
+                    SocialCommands.BotSpeak(fakechar, "Let's team up!");
                 }
             }
             debugprint("botAcceptPartyInvite: joined=" + joined + " partyId=" + partyId);

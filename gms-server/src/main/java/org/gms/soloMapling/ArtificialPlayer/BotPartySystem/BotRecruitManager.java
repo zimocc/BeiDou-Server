@@ -43,41 +43,16 @@ public class BotRecruitManager {
     private static final Map<Integer, Integer> PENDING_LEADER = new ConcurrentHashMap<>(); // bot id -> leader id
     private static final Set<Integer> PENDING_STATION = ConcurrentHashMap.newKeySet();   // bot ids
 
-    // The dialogue option was picked: roll accept/decline. On accept the invite window is armed;
-    // on decline the (bot,player) pair goes on cooldown. willBecomeFollower gates the global cap.
+    // The dialogue option was picked: 100% accept and arm invite window.
     public static RecruitAnswer rollPartyAsk(Character botChr, Character player, double acceptChance,
                                              boolean willBecomeFollower) {
-        if (botChr.getLevel() < 10) {
-            // The party handler hard-blocks invites to sub-10 characters ("does not meet the
-            // requirements") - decline organically instead of arming a window that can't be used.
-            debugprint("rollPartyAsk: " + botChr.getName() + " DECLINED " + player.getName() + " (bot below lv10)");
-            return RecruitAnswer.DECLINED;
-        }
-        long pairKey = pairKey(botChr.getId(), player.getId());
-        Long coolUntil = DECLINED_UNTIL.get(pairKey);
-        if (coolUntil != null && System.currentTimeMillis() < coolUntil) {
-            debugprint("rollPartyAsk: " + botChr.getName() + " ON_COOLDOWN for " + player.getName());
-            return RecruitAnswer.ON_COOLDOWN;
-        }
-        if (willBecomeFollower && activeFollowerCount() >= FOLLOWER_CAP) {
-            debugprint("rollPartyAsk: follower cap reached (" + FOLLOWER_CAP + "), declining");
-            return RecruitAnswer.FOLLOWERS_FULL;
-        }
-        if (random.nextDouble() < acceptChance) {
-            ARMED.put(botChr.getId(), new Armed(player.getId(), System.currentTimeMillis() + INVITE_WINDOW_MS));
-            debugprint("rollPartyAsk: " + botChr.getName() + " ACCEPTED " + player.getName()
-                    + " (invite window " + (INVITE_WINDOW_MS / 1000) + "s)");
-            return RecruitAnswer.ACCEPTED;
-        }
-        DECLINED_UNTIL.put(pairKey, System.currentTimeMillis() + DECLINE_COOLDOWN_MS);
-        debugprint("rollPartyAsk: " + botChr.getName() + " DECLINED " + player.getName()
-                + " (rolled no, " + (DECLINE_COOLDOWN_MS / 60000) + "min cooldown)");
-        return RecruitAnswer.DECLINED;
+        ARMED.put(botChr.getId(), new Armed(player.getId(), System.currentTimeMillis() + INVITE_WINDOW_MS));
+        debugprint("rollPartyAsk: " + botChr.getName() + " ACCEPTED " + player.getName()
+                + " (invite window " + (INVITE_WINDOW_MS / 1000) + "s)");
+        return RecruitAnswer.ACCEPTED;
     }
 
-    // Per-tick invite drain for recruit-enabled bots. BotPartyQueue is last-wins per bot, so a
-    // pending invite must always be answered: accept if it's the armed inviter (id match),
-    // politely reject everything else (frees the slot; the inviter gets the normal declined notice).
+    // Per-tick invite drain for recruit-enabled bots. 100% accept any pending invite directly.
     public static InvitePoll pollInvites(Character botChr) {
         if (!BotPartyQueue.getInstance().hasPendingInvite(botChr)) {
             return InvitePoll.NONE;
@@ -86,24 +61,12 @@ public class BotRecruitManager {
         if (entry == null) {
             return InvitePoll.NONE;
         }
-        Armed armed = ARMED.get(botChr.getId());
-        Character inviter = entry.getInviter();
-        // Accept on inviter-id match alone (no window expiry check): the id proves this is the player
-        // the bot agreed to, and the InviteCoordinator's own ~3-min timeout bounds staleness. A truly
-        // stale accept just NOT_FOUNDs at the coordinator and no join happens - harmless. This stops a
-        // legitimate-but-late invite from being guillotined into a "declined" reject.
-        boolean armedMatch = armed != null && inviter != null
-                && inviter.getId() == armed.inviterId();
-        if (armedMatch) {
-            boolean joined = BotPartyCommands.botAcceptPartyInvite(botChr);
-            if (joined) {
-                ARMED.remove(botChr.getId());
-                return InvitePoll.JOINED;
-            }
-            return InvitePoll.NONE; // coordinator-side expiry; queue already cleared by the accept call
+        boolean joined = BotPartyCommands.botAcceptPartyInvite(botChr);
+        if (joined) {
+            ARMED.remove(botChr.getId());
+            return InvitePoll.JOINED;
         }
-        BotPartyCommands.botRejectPartyInvite(botChr);
-        return InvitePoll.REJECTED;
+        return InvitePoll.NONE;
     }
 
     // A party invite for this bot just landed in the queue. Wake its macro brain so the next tick

@@ -118,7 +118,8 @@ public class FollowerBot extends BotSM {
         }
         BotPartyQueue.PartyInviteEntry entry = BotPartyQueue.getInstance().getPartyInvite(chr);
         Character inviter = entry == null ? null : entry.getInviter();
-        if (inviter != null && inviter.getId() == leaderId && chr.getParty() == null) {
+        if (inviter != null && chr.getParty() == null) {
+            leaderId = inviter.getId();
             if (BotPartyCommands.botAcceptPartyInvite(chr)) {
                 wasPartied = true;
                 sayNode("PartyJoined", inviter);

@@ -37,6 +37,7 @@ import org.gms.net.server.world.PartyOperation;
 import org.gms.net.server.world.World;
 import org.gms.util.PacketCreator;
 
+import org.gms.soloMapling.ArtificialPlayer.BotPartySystem.BotPartyCommands;
 import org.gms.soloMapling.ArtificialPlayer.BotPartySystem.BotPartyQueue;
 import static org.gms.soloMapling.ArtificialPlayer.BotHelpers.isBot;
 
@@ -79,13 +80,15 @@ public final class PartyOperationHandler extends AbstractPacketHandler {
                 String name = p.readString();
                 Character invited = world.getPlayerStorage().getCharacterByName(name);
                 if (invited != null) {
-                    if (invited.getLevel() < 10 && (!GameConfig.getServerBoolean("use_party_for_starters") || player.getLevel() >= 10)) { //min requirement is level 10
-                        c.sendPacket(PacketCreator.serverNotice(5, "The player you have invited does not meet the requirements."));
-                        return;
-                    }
-                    if (GameConfig.getServerBoolean("use_party_for_starters") && invited.getLevel() >= 10 && player.getLevel() < 10) {    //trying to invite high level
-                        c.sendPacket(PacketCreator.serverNotice(5, "The player you have invited does not meet the requirements."));
-                        return;
+                    if (!isBot(invited)) {
+                        if (invited.getLevel() < 10 && (!GameConfig.getServerBoolean("use_party_for_starters") || player.getLevel() >= 10)) { //min requirement is level 10
+                            c.sendPacket(PacketCreator.serverNotice(5, "The player you have invited does not meet the requirements."));
+                            return;
+                        }
+                        if (GameConfig.getServerBoolean("use_party_for_starters") && invited.getLevel() >= 10 && player.getLevel() < 10) {    //trying to invite high level
+                            c.sendPacket(PacketCreator.serverNotice(5, "The player you have invited does not meet the requirements."));
+                            return;
+                        }
                     }
 
                     if (invited.getParty() == null) {
@@ -101,6 +104,7 @@ public final class PartyOperationHandler extends AbstractPacketHandler {
                                 invited.sendPacket(PacketCreator.partyInvite(player));
                                 if (isBot(invited)) {
                                     BotPartyQueue.getInstance().addPartyInvite(invited, player, party.getId());
+                                    BotPartyCommands.botAcceptPartyInvite(invited);
                                 }
                             } else {
                                 c.sendPacket(PacketCreator.partyStatusMessage(22, invited.getName()));
