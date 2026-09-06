@@ -17,6 +17,7 @@ import org.gms.soloMapling.ArtificialPlayer.BotTypeManager;
 import org.gms.soloMapling.ArtificialPlayer.BotTypes.SocialBot;
 import org.gms.soloMapling.ArtificialPlayer.BotTypes.TownWandererBot;
 import org.gms.soloMapling.ArtificialPlayer.BotTypes.TrainingBot;
+import org.gms.soloMapling.server.SoloMaplingI18n;
 import org.gms.util.PacketCreator;
 
 import static org.gms.soloMapling.DebugUtilities.debugprint;
@@ -91,7 +92,7 @@ public class BotPartyCommands {
                 // partied) - tell them so a clean re-invite is the obvious next move.
                 if (inviter != null) {
                     inviter.sendPacket(PacketCreator.serverNotice(5, fakechar.getName()
-                            + " couldn't join your party (it was full or disbanded) - try inviting again."));
+                            + (SoloMaplingI18n.isChinese() ? " 无法加入您的队伍（队伍已满或已解散），请重新邀请。" : " couldn't join your party (it was full or disbanded) - try inviting again.")));
                 }
             } else {
                 if (inviter != null) {
@@ -101,7 +102,7 @@ public class BotPartyCommands {
                 if (currentBot instanceof SocialBot || currentBot instanceof TownWandererBot || currentBot instanceof TrainingBot) {
                     BotTypeManager.convertBotType(fakechar, BotTypeManager.BotType.FOLLOWER_BOT);
                 } else if (fakechar.getMap() != null) {
-                    SocialCommands.BotSpeak(fakechar, "Let's team up!");
+                    SocialCommands.BotSpeak(fakechar, SoloMaplingI18n.isChinese() ? "咱们一起组队吧！" : "Let's team up!");
                 }
             }
             debugprint("botAcceptPartyInvite: joined=" + joined + " partyId=" + partyId);
@@ -126,7 +127,7 @@ public class BotPartyCommands {
         // would be misleading - clear the queue entry either way.
         Character inviter = entry.getInviter();
         if (inviter != null && res.result == InviteResultType.DENIED) {
-            inviter.sendPacket(PacketCreator.serverNotice(5, fakechar.getName() + " has declined your party request."));
+            inviter.sendPacket(PacketCreator.serverNotice(5, fakechar.getName() + (SoloMaplingI18n.isChinese() ? " 拒绝了您的组队邀请。" : " has declined your party request.")));
         }
         debugprint("botRejectPartyInvite: result=" + res.result + " inviter=" + (inviter == null ? "?" : inviter.getName()));
         return true;

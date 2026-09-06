@@ -37,7 +37,8 @@ public class DropGameLootPool {
     public static DropGameLootPool load(String tier) {
         DropGameLootPool pool = new DropGameLootPool();
         try {
-            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(LOOT_POOL_PATH));
+            String resolvedYaml = org.gms.soloMapling.server.SoloMaplingI18n.resolveLocalizedResource("BotDialoguePack/", "DropGameLootPool.yaml");
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(resolvedYaml));
             Map<String, Object> root = (Map<String, Object>) reader.read();
             Map<String, Object> tierNode = (Map<String, Object>) root.get(tier);
             if (tierNode == null) {

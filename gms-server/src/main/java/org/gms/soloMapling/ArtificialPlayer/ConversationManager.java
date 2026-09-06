@@ -361,7 +361,8 @@ public class ConversationManager {
     private void loadScripts() {
         allScripts = new ArrayList<>();
         try {
-            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(DIALOGUE_YAML));
+            String resolvedYaml = org.gms.soloMapling.server.SoloMaplingI18n.resolveLocalizedResource("BotDialoguePack/", "ConversationDialogue.yaml");
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(resolvedYaml));
             Map<String, Object> root = (Map<String, Object>) reader.read();
             Map<String, Object> conversations = (Map<String, Object>) root.get("conversations");
             if (conversations == null) return;

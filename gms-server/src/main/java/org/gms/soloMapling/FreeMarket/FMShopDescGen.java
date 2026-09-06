@@ -316,6 +316,7 @@ public class FMShopDescGen {
      */
     public static synchronized String getRandomCharacterIGN() {
         String name = getRandomIGN();
+        name = org.gms.soloMapling.server.SoloMaplingI18n.formatBotName(name);
         assignedCharacterNames.add(name);
         return name;
     }
@@ -330,7 +331,7 @@ public class FMShopDescGen {
         if (!assignedCharacterNames.isEmpty() && rand.nextInt(100) < 35) {
             return assignedCharacterNames.get(rand.nextInt(assignedCharacterNames.size()));
         }
-        return getRandomIGN();
+        return getRandomCharacterIGN();
     }
 
     /**
@@ -342,7 +343,11 @@ public class FMShopDescGen {
             namePool = loadAndShuffleNames();
             namePoolIndex = 0;
         }
-        return namePool.get(namePoolIndex++);
+        if (namePool.isEmpty()) {
+            return org.gms.soloMapling.server.SoloMaplingI18n.formatBotName("修仙者");
+        }
+        String drawn = namePool.get(namePoolIndex++);
+        return org.gms.soloMapling.server.SoloMaplingI18n.formatBotName(drawn);
     }
 
     private static List<String> loadAndShuffleNames() {
@@ -351,8 +356,14 @@ public class FMShopDescGen {
         try (BufferedReader reader = new BufferedReader(SoloMaplingResourceLoader.getReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if (!line.isEmpty() && line.length() <= 12) {
-                    names.add(line);
+                line = line.trim();
+                if (!line.isEmpty()) {
+                    if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese()) {
+                        line = org.gms.soloMapling.server.SoloMaplingI18n.formatBotName(line);
+                    }
+                    if (line.length() <= 12) {
+                        names.add(line);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -363,7 +374,17 @@ public class FMShopDescGen {
     }
 
     protected static String resolveFilePath(String type) {
-        return typeToFilePath.getOrDefault(type, ""); // Default to empty string if type not found
+        String subpath = typeToFilePath.getOrDefault(type, "");
+        if (subpath.isEmpty()) {
+            return "";
+        }
+        if (org.gms.soloMapling.server.SoloMaplingI18n.isChinese() && subpath.startsWith(filePath_FMNameDesc)) {
+            String localized = filePath_FMNameDesc + "zh-CN/" + subpath.substring(filePath_FMNameDesc.length());
+            if (SoloMaplingResourceLoader.hasResource(localized)) {
+                return localized;
+            }
+        }
+        return subpath;
     }
 
     protected static String getRandomStoreDescription(String type) {

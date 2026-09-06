@@ -1,0 +1,5157 @@
+conversations:
+  training_spot_debate:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+      emote: 5
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  training_spot_debate_2:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+  class_debate:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 新建号玩战士好还是玩法师好？
+    - speaker: B
+      text: 看你想怎么玩，战士血厚肉盾，法师全屏大招帅气
+      emote: 3
+    - speaker: A
+      text: 我想选个帅一点的
+    - speaker: B
+      text: 那直接黑骑士没毛病！
+    - speaker: A
+      text: 妥了，这就建号
+      emote: 1
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+  class_debate_2:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 新建号玩战士好还是玩法师好？
+    - speaker: B
+      text: 看你想怎么玩，战士血厚肉盾，法师全屏大招帅气
+    - speaker: A
+      text: 我想选个帅一点的
+    - speaker: B
+      text: 那直接黑骑士没毛病！
+      emote: 2
+    - speaker: A
+      text: 妥了，这就建号
+  item_price_haggle:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 出10%手套攻击卷轴！
+    - speaker: B
+      text: 多少钱？
+    - speaker: A
+      text: 一口价6000万
+    - speaker: B
+      text: 太贵了买不起买不起
+    - speaker: A
+      text: 5000万底价，要就拿走
+      emote: 2
+    - speaker: B
+      text: 算了算了祝你早出
+  item_price_haggle_2:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 出10%手套攻击卷轴！
+    - speaker: B
+      text: 多少钱？
+    - speaker: A
+      text: 一口价6000万
+    - speaker: B
+      text: 太贵了买不起买不起
+      emote: 4
+    - speaker: A
+      text: 5000万底价，要就拿走
+    - speaker: B
+      text: 算了算了祝你早出
+  quest_help:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你知道蘑菇神社怎么走吗？
+    - speaker: B
+      text: 从天空之城坐船就能到
+    - speaker: A
+      text: 天空之城居然还有去神社的船？？
+      emote: 5
+    - speaker: B
+      text: 对啊在天空塔顶层有专门的售票处
+    - speaker: A
+      text: 收到收到，太感谢了！
+      emote: 2
+  quest_help_2:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你知道蘑菇神社怎么走吗？
+    - speaker: B
+      text: 从天空之城坐船就能到
+    - speaker: A
+      text: 天空之城居然还有去神社的船？？
+    - speaker: B
+      text: 对啊在天空塔顶层有专门的售票处
+    - speaker: A
+      text: 收到收到，太感谢了！
+      emote: 7
+  real_life_school:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今晚晚餐吃的啥？
+    - speaker: B
+      text: 泡面加根肠哈哈
+    - speaker: A
+      text: 经典游戏玩家标配口粮
+      emote: 7
+    - speaker: B
+      text: 那可不，省钱又省时间
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  real_life_food:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今晚晚餐吃的啥？
+    - speaker: B
+      text: 泡面加根肠哈哈
+    - speaker: A
+      text: 经典游戏玩家标配口粮
+      emote: 2
+    - speaker: B
+      text: 那可不，省钱又省时间
+      emote: 4
+  real_life_late_night:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今天好冷啊不想动弹
+    - speaker: B
+      text: 被窝里玩电脑最舒服了
+    - speaker: A
+      text: 必须的，冬日限定享受
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  real_life_weather:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今天好冷啊不想动弹
+    - speaker: B
+      text: 被窝里玩电脑最舒服了
+      emote: 0
+    - speaker: A
+      text: 必须的，冬日限定享受
+  nostalgia_old_maple:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+      emote: 2
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+      emote: 4
+  nostalgia_maple_island:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+      emote: 7
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 2
+    - speaker: A
+      text: 好的多谢老哥！
+  flex_compare:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 快看我这把新砸出来的武器！
+      emote: 3
+    - speaker: B
+      text: 卧槽属性这么极品？！
+    - speaker: A
+      text: 砸了好多张60%卷才成的
+    - speaker: B
+      text: 欧气吸一吸，太强了大佬！
+      emote: 5
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 4
+  flex_level:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 快看我这把新砸出来的武器！
+      emote: 2
+    - speaker: B
+      text: 卧槽属性这么极品？！
+      emote: 2
+    - speaker: A
+      text: 砸了好多张60%卷才成的
+    - speaker: B
+      text: 欧气吸一吸，太强了大佬！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  afk_check:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+  scam_warning:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 1
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 4
+  guild_talk:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+  boss_planning:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: A
+      text: 多带点特药，今晚一次过！
+    - speaker: B
+      text: 没问题，必拿扎头！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  scroll_results:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+      emote: 6
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+  scroll_results_2:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+      emote: 2
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+      emote: 5
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  fashion_talk:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+      emote: 2
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 3
+  money_problems:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+      emote: 4
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 2
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 7
+  pet_talk:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  maple_gf:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+      emote: 4
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+  random_encounter:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  coming_back:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+      emote: 0
+  dc_frustration:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+      emote: 6
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+      emote: 1
+  fame_exchange:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+  job_advancement:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+      emote: 2
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  server_drama:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  pq_planning:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  pq_planning_2:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 2
+  best_town_debate:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 1
+  guild_drama:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  someone_flexing:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 快看我这把新砸出来的武器！
+      emote: 2
+    - speaker: B
+      text: 卧槽属性这么极品？！
+      emote: 5
+    - speaker: C
+      text: 砸了好多张60%卷才成的
+    - speaker: A
+      text: 欧气吸一吸，太强了大佬！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 5
+  boss_fight_recap:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+      emote: 7
+    - speaker: C
+      text: 多带点特药，今晚一次过！
+      emote: 4
+    - speaker: A
+      text: 没问题，必拿扎头！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  whos_strongest:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+      emote: 3
+    - speaker: C
+      text: 哪个升级更快一点？
+      emote: 2
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  late_night_group:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 7
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: C
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  training_recommendations:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  real_life_group:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 今晚晚餐吃的啥？
+    - speaker: B
+      text: 泡面加根肠哈哈
+    - speaker: C
+      text: 经典游戏玩家标配口粮
+    - speaker: A
+      text: 那可不，省钱又省时间
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+    - speaker: C
+      text: 对啊，确实是这样！
+  two_argue_third_mediates:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+      emote: 6
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+      emote: 0
+  halloween_event:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  party_formation:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: D
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  group_reaction:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+      emote: 5
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: D
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+  debate_2v2:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: D
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 1
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 3
+  guild_meeting:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: D
+      text: 对啊，确实是这样！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 0
+  roast_session:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+      emote: 2
+    - speaker: A
+      text: 哪个升级更快一点？
+      emote: 3
+    - speaker: C
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 2
+    - speaker: B
+      text: 好的多谢老哥！
+      emote: 4
+    - speaker: D
+      text: 对啊，确实是这样！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 0
+  maple_memories:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 3
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 0
+  scroll_advice:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  new_player_help:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你知道蘑菇神社怎么走吗？
+    - speaker: B
+      text: 从天空之城坐船就能到
+    - speaker: A
+      text: 天空之城居然还有去神社的船？？
+    - speaker: B
+      text: 对啊在天空塔顶层有专门的售票处
+    - speaker: A
+      text: 收到收到，太感谢了！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  maple_marriage_talk:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 2
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  zakum_prequest_pain:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 有人知道去冰峰雪山怎么走吗？
+    - speaker: B
+      text: 去天空之城，然后一路往下走天空塔
+    - speaker: A
+      text: 整整走完整座塔？？要走多久啊？
+    - speaker: B
+      text: 差不多二十多层吧哈哈
+      emote: 7
+    - speaker: A
+      text: 救命啊这也太远了
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 4
+  class_regret:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 新建号玩战士好还是玩法师好？
+    - speaker: B
+      text: 看你想怎么玩，战士血厚肉盾，法师全屏大招帅气
+    - speaker: A
+      text: 我想选个帅一点的
+      emote: 4
+    - speaker: B
+      text: 那直接黑骑士没毛病！
+    - speaker: A
+      text: 妥了，这就建号
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  meso_making_tips:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 4
+  keyboard_setup:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 5
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  inventory_hoarder:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  waiting_for_friend:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+  training_burnout:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  first_boss_kill:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+      emote: 2
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: A
+      text: 多带点特药，今晚一次过！
+    - speaker: B
+      text: 没问题，必拿扎头！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  chair_collection:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+  nx_discussion:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 7
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  late_night_philosophy:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 0
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  pet_dying:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+      emote: 4
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  maple_at_school:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今晚晚餐吃的啥？
+    - speaker: B
+      text: 泡面加根肠哈哈
+    - speaker: A
+      text: 经典游戏玩家标配口粮
+      emote: 2
+    - speaker: B
+      text: 那可不，省钱又省时间
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  class_tier_list:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你觉得这游戏哪个职业最厉害？
+    - speaker: B
+      text: 肯定飞侠隐士啊，爆发伤害天花板
+    - speaker: C
+      text: 主教不服，主教带人升级最实用了
+      emote: 5
+    - speaker: B
+      text: 实用是实用，但单体输出还是隐士猛
+    - speaker: A
+      text: 行吧各有千秋
+    - speaker: C
+      text: 哈哈打打boss就知道了
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 1
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  fm_window_shopping:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+      emote: 2
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 3
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  jump_quest_suffering:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 有人知道去冰峰雪山怎么走吗？
+    - speaker: B
+      text: 去天空之城，然后一路往下走天空塔
+      emote: 6
+    - speaker: C
+      text: 整整走完整座塔？？要走多久啊？
+    - speaker: A
+      text: 差不多二十多层吧哈哈
+      emote: 7
+    - speaker: B
+      text: 救命啊这也太远了
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 0
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  screenshot_moment:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  guild_name_brainstorm:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: C
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 1
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  random_event_happening:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  favorite_training_music:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  helping_a_noob:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你知道蘑菇神社怎么走吗？
+    - speaker: B
+      text: 从天空之城坐船就能到
+    - speaker: C
+      text: 天空之城居然还有去神社的船？？
+    - speaker: A
+      text: 对啊在天空塔顶层有专门的售票处
+    - speaker: B
+      text: 收到收到，太感谢了！
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+    - speaker: A
+      text: 对啊，确实是这样！
+  cursed_scroll_session:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 6
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 4
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+  what_did_you_name_your_char:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 3
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: D
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  spending_habits:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: C
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 7
+    - speaker: D
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 5
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: D
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  worst_maple_moments:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+      emote: 4
+    - speaker: D
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 4
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 2
+  what_class_to_make_next:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 新建号玩战士好还是玩法师好？
+    - speaker: B
+      text: 看你想怎么玩，战士血厚肉盾，法师全屏大招帅气
+    - speaker: C
+      text: 我想选个帅一点的
+    - speaker: D
+      text: 那直接黑骑士没毛病！
+    - speaker: A
+      text: 妥了，这就建号
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+      emote: 3
+    - speaker: D
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  party_quest_chaos:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你知道蘑菇神社怎么走吗？
+    - speaker: B
+      text: 从天空之城坐船就能到
+    - speaker: C
+      text: 天空之城居然还有去神社的船？？
+      emote: 7
+    - speaker: D
+      text: 对啊在天空塔顶层有专门的售票处
+      emote: 4
+    - speaker: A
+      text: 收到收到，太感谢了！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 2
+  town_hanging_out:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 0
+  mount_talk:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  accidental_npc:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+      emote: 4
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 4
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  buddy_list_full:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 4
+    - speaker: A
+      text: 好的多谢老哥！
+  boat_to_orbis:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  potion_math:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  storage_mule:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  trading_etiquette:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 0
+  grinding_music:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  daily_routine:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  failed_scroll_story:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 7
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  best_bgm:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 5
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+  fm_browsing:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  who_has_the_best_pet:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  planning_boss:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: C
+      text: 多带点特药，今晚一次过！
+    - speaker: A
+      text: 没问题，必拿扎头！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  event_discussion:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  random_henesys_encounter:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  fm_prices_debate:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 金金齿轮标多少钱出一组？
+    - speaker: B
+      text: 一组450万金币
+    - speaker: C
+      text: 有点小贵啊……400万出不？
+    - speaker: D
+      text: 最低420万，不能再少了
+    - speaker: A
+      text: 成，成交！
+    - speaker: B
+      text: 点我交易吧
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 0
+  henesys_vibes:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: D
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 2
+  who_is_the_richest:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 5
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 4
+  what_do_you_do_when_bored:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+  anime_recommendation:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+      emote: 5
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  gaming_setup_brag:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+      emote: 2
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+      emote: 3
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  fm_price_check:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 金金齿轮标多少钱出一组？
+    - speaker: B
+      text: 一组450万金币
+    - speaker: A
+      text: 有点小贵啊……400万出不？
+    - speaker: B
+      text: 最低420万，不能再少了
+    - speaker: A
+      text: 成，成交！
+    - speaker: B
+      text: 点我交易吧
+  zakum_prereq_help:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你知道蘑菇神社怎么走吗？
+    - speaker: B
+      text: 从天空之城坐船就能到
+    - speaker: C
+      text: 天空之城居然还有去神社的船？？
+      emote: 6
+    - speaker: A
+      text: 对啊在天空塔顶层有专门的售票处
+    - speaker: B
+      text: 收到收到，太感谢了！
+    - speaker: C
+      text: 对啊，确实是这样！
+  school_and_grind:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今天好冷啊不想动弹
+    - speaker: B
+      text: 被窝里玩电脑最舒服了
+    - speaker: A
+      text: 必须的，冬日限定享受
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  pq_party_waiting:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  old_maple_nostalgia:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 4
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  anime_break_talk:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 3
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  sleep_deprived_gamer:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  scrolling_meltdown:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+      emote: 4
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  fashion_show_off:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  lag_spike_hell:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 5
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+  coding_and_maple:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+      emote: 2
+    - speaker: D
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  winter_weather_chat:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今天好冷啊不想动弹
+    - speaker: B
+      text: 被窝里玩电脑最舒服了
+    - speaker: A
+      text: 必须的，冬日限定享受
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  guild_drama_whispers:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+      emote: 6
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  console_vs_pc:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  boss_practice_group:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: C
+      text: 多带点特药，今晚一次过！
+    - speaker: D
+      text: 没问题，必拿扎头！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+  after_work_vibes:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  wow_vs_maple:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+  pet_hunger_panic:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  japanese_imports_talk:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 2
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  random_stranger_chitchat:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  sunday_evening_blues:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 3
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  fm_price_shock:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 金金齿轮标多少钱出一组？
+    - speaker: B
+      text: 一组450万金币
+      emote: 6
+    - speaker: A
+      text: 有点小贵啊……400万出不？
+    - speaker: B
+      text: 最低420万，不能再少了
+    - speaker: A
+      text: 成，成交！
+      emote: 5
+    - speaker: B
+      text: 点我交易吧
+  runescape_vs_maple:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: C
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  pc_flex:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 历时一个月，终于升到70级三转了！
+    - speaker: B
+      text: 恭喜三转！技能帅炸了！
+      emote: 6
+    - speaker: A
+      text: 晚上一起打boss庆祝！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 3
+    - speaker: B
+      text: 对啊，确实是这样！
+  gamer_fuel:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+      emote: 3
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  monochrome_fashion:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  skate_injury:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 2
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 4
+  game_maker_hobbyist:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: D
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  sleep_deprived:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+      emote: 6
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+  pineapple_pizza_war:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 5
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+  nostalgia_trip:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+      emote: 2
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  scrolled_weapon_flex:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 快看我这把新砸出来的武器！
+    - speaker: B
+      text: 卧槽属性这么极品？！
+      emote: 6
+    - speaker: C
+      text: 砸了好多张60%卷才成的
+    - speaker: A
+      text: 欧气吸一吸，太强了大佬！
+      emote: 3
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  lurk_and_return:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  anime_hot_take:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  jump_quest_rage:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你知道蘑菇神社怎么走吗？
+    - speaker: B
+      text: 从天空之城坐船就能到
+    - speaker: A
+      text: 天空之城居然还有去神社的船？？
+    - speaker: B
+      text: 对啊在天空塔顶层有专门的售票处
+      emote: 4
+    - speaker: A
+      text: 收到收到，太感谢了！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 5
+  guild_drama_tea:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+      emote: 6
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  winamp_grind_vibes:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+  awkward_strangers:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  manga_snob:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 2
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  fame_trade:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 3
+    - speaker: A
+      text: 好的多谢老哥！
+  training_spot_recommendation:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  fm_price_complaint:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 出10%手套攻击卷轴！
+    - speaker: B
+      text: 多少钱？
+    - speaker: C
+      text: 一口价6000万
+    - speaker: A
+      text: 太贵了买不起买不起
+    - speaker: B
+      text: 5000万底价，要就拿走
+    - speaker: C
+      text: 算了算了祝你早出
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  pq_fail_story:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  guild_drama_spill:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  boss_strategy_talk:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: C
+      text: 多带点特药，今晚一次过！
+    - speaker: A
+      text: 没问题，必拿扎头！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  jump_quest_rant:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你知道蘑菇神社怎么走吗？
+    - speaker: B
+      text: 从天空之城坐船就能到
+    - speaker: A
+      text: 天空之城居然还有去神社的船？？
+    - speaker: B
+      text: 对啊在天空塔顶层有专门的售票处
+    - speaker: A
+      text: 收到收到，太感谢了！
+    - speaker: B
+      text: 对啊，确实是这样！
+  server_lag_frustration:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  other_mmo_comparison:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  gaming_setup_talk:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  retro_games_chat:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  esports_debate:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  anime_current_season:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  music_grind_style:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  school_exam_stress:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今天好冷啊不想动弹
+    - speaker: B
+      text: 被窝里玩电脑最舒服了
+    - speaker: A
+      text: 必须的，冬日限定享受
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  gamer_food_talk:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 唉，明天又要考试了好烦啊
+    - speaker: B
+      text: 同感，考数学吗？
+    - speaker: C
+      text: 对啊，完全没复习呜呜呜
+    - speaker: A
+      text: 我也差不多，生死看淡哈哈
+    - speaker: B
+      text: 希望别挂科吧！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  sleep_schedule_rant:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  weekend_plans:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  pineapple_pizza_debate:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+  scroll_anxiety:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 6
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  runescape_comparison:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  exam_procrastination:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+      emote: 6
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  sleep_schedule_destroyed:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 4
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  fm_price_outrage:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 出10%手套攻击卷轴！
+    - speaker: B
+      text: 多少钱？
+    - speaker: C
+      text: 一口价6000万
+    - speaker: A
+      text: 太贵了买不起买不起
+      emote: 5
+    - speaker: B
+      text: 5000万底价，要就拿走
+    - speaker: C
+      text: 算了算了祝你早出
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  anime_music_grind:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  food_while_gaming:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 今晚晚餐吃的啥？
+    - speaker: B
+      text: 泡面加根肠哈哈
+    - speaker: C
+      text: 经典游戏玩家标配口粮
+    - speaker: A
+      text: 那可不，省钱又省时间
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  dying_at_boss:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: C
+      text: 多带点特药，今晚一次过！
+    - speaker: D
+      text: 没问题，必拿扎头！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 5
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: D
+      text: 哈哈，大家都这么觉得。
+      emote: 7
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  typing_speed:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+      emote: 4
+    - speaker: B
+      text: 对啊，确实是这样！
+  fashion_compliment:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+      emote: 7
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  death_note_debate:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+  build_pc_advice:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  stranger_interaction:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  weekend_plans_convo:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: D
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: D
+      text: 对啊，确实是这样！
+      emote: 6
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  afk_return:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: A
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: B
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 6
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: A
+      text: 对啊，确实是这样！
+  conspiracy_theory_silly:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 3
+    - speaker: B
+      text: 对啊，确实是这样！
+  scroll_gamble_regret:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+      emote: 4
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 5
+    - speaker: B
+      text: 对啊，确实是这样！
+  henesys_nostalgia:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  training_map_crowded:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 5
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  guild_drama_aftermath:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 6
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+  rare_drop_moment:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+      emote: 12
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 11
+    - speaker: B
+      text: 对啊，确实是这样！
+  bishop_appreciation:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 5
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  meso_saving_debate:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+      emote: 6
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+  class_switch_temptation:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你觉得这游戏哪个职业最厉害？
+    - speaker: B
+      text: 肯定飞侠隐士啊，爆发伤害天花板
+    - speaker: A
+      text: 主教不服，主教带人升级最实用了
+    - speaker: B
+      text: 实用是实用，但单体输出还是隐士猛
+    - speaker: A
+      text: 行吧各有千秋
+    - speaker: B
+      text: 哈哈打打boss就知道了
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  free_market_haggling:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  skill_build_argument:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: C
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 5
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  orbis_pq_memories:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  dark_knight_vs_hero:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 3
+    - speaker: B
+      text: 对啊，确实是这样！
+  party_buffing_etiquette:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: C
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  late_night_grind:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+      emote: 14
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  quitting_and_returning:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  fame_farming_discussion:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+      emote: 6
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  fm_room_navigation:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 3
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  boss_prep_checklist:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: A
+      text: 多带点特药，今晚一次过！
+    - speaker: B
+      text: 没问题，必拿扎头！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 7
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  alt_character_confession:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: C
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 3
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+  nx_cosmetic_priorities:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+  el_nath_cold_complaints:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 4
+  pq_partner_search:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: C
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 11
+  scroll_success_witness:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 12
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  leveling_speed_comparison:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  guild_boss_run_planning:
+    participants: 4
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: C
+      text: 多带点特药，今晚一次过！
+    - speaker: D
+      text: 没问题，必拿扎头！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: D
+      text: 哈哈，大家都这么觉得。
+      emote: 5
+  losing_track_of_time:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 3
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  training_spot_etiquette:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 6
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  mage_skill_rotation:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  henesys_market_gossip:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 6
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  slow_leveling_acceptance:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 3
+    - speaker: B
+      text: 对啊，确实是这样！
+  warrior_weapon_debate:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  drop_rate_conspiracy:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  maple_anniversary_memories:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  party_finding_struggle:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  potion_expense_complaining:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: C
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 6
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+  guild_recruitment_pitch:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  job_advance_celebration:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+      emote: 12
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  losing_a_good_scroll:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 4
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  unexpected_pk_encounter:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 6
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  old_friend_reunion:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: C
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 11
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: B
+      text: 对啊，确实是这样！
+  hp_washing_debate:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+      emote: 6
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  trade_gone_wrong:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+      emote: 7
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 5
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  falling_asleep_at_keyboard:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: A
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 6
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  pet_naming_stories:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 2
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+      emote: 6
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  best_map_for_level_range:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  dark_scroll_gamble:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 5
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 7
+  mount_quest_struggle:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 有人知道去冰峰雪山怎么走吗？
+    - speaker: B
+      text: 去天空之城，然后一路往下走天空塔
+    - speaker: A
+      text: 整整走完整座塔？？要走多久啊？
+    - speaker: B
+      text: 差不多二十多层吧哈哈
+    - speaker: A
+      text: 救命啊这也太远了
+      emote: 5
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  random_defame_rage:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+      emote: 5
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  comparing_ping:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+      emote: 6
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  ap_reset_advice:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+      emote: 4
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  if_i_were_a_gm:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+      emote: 3
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+      emote: 6
+    - speaker: A
+      text: 对啊，确实是这样！
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  kerning_pq_puzzle_memories:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  archer_underpowered_debate:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+      emote: 3
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 5
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+  stop_being_afk:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 4
+  boat_ride_boredom:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  wrong_scroll_wrong_item:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 金金齿轮标多少钱出一组？
+      emote: 4
+    - speaker: B
+      text: 一组450万金币
+    - speaker: A
+      text: 有点小贵啊……400万出不？
+    - speaker: B
+      text: 最低420万，不能再少了
+    - speaker: A
+      text: 成，成交！
+    - speaker: B
+      text: 点我交易吧
+      emote: 7
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  npc_vs_fm_sell:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  party_wipe_blame:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 7
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: C
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  how_i_found_maple:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 2
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  channel_change_courtesy:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 0
+  buff_begging_struggle:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 4
+  wrong_channel_mishap:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+      emote: 7
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  mule_account_life:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+  secret_best_channel:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 3
+  slime_tree_memories:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: C
+      text: 对啊，确实是这样！
+  third_job_nerves:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+      emote: 2
+  gachapon_spiral:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 5
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 6
+  who_taught_you_maple:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 2
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  henesys_standing_contest:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 0
+  early_morning_grind:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 2
+    - speaker: B
+      text: 对啊，确实是这样！
+  skill_book_nightmare:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+      emote: 4
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: C
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 5
+  cat_keyboard_trade:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+      emote: 6
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  ludi_tower_walk:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 0
+  smega_spam_fatigue:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: A
+      text: 对啊，确实是这样！
+      emote: 6
+    - speaker: C
+      text: 哈哈，大家都这么觉得。
+  map_level_scaling:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  pet_loot_difference:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+  exp_curve_rant:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: C
+      text: 那不会有点慢吗？
+      emote: 4
+    - speaker: A
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+  grinding_vs_questing:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 有人知道去冰峰雪山怎么走吗？
+    - speaker: B
+      text: 去天空之城，然后一路往下走天空塔
+    - speaker: A
+      text: 整整走完整座塔？？要走多久啊？
+    - speaker: B
+      text: 差不多二十多层吧哈哈
+    - speaker: A
+      text: 救命啊这也太远了
+  training_music_matters:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+      emote: 2
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  solo_vs_party_grind:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+  price_checking_nightmare:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 金金齿轮标多少钱出一组？
+    - speaker: B
+      text: 一组450万金币
+      emote: 2
+    - speaker: A
+      text: 有点小贵啊……400万出不？
+    - speaker: B
+      text: 最低420万，不能再少了
+    - speaker: A
+      text: 成，成交！
+  shop_setup_stress:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  selling_hot_items:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 出10%手套攻击卷轴！
+    - speaker: B
+      text: 多少钱？
+    - speaker: A
+      text: 一口价6000万
+    - speaker: B
+      text: 太贵了买不起买不起
+      emote: 4
+    - speaker: A
+      text: 5000万底价，要就拿走
+  negotiation_standoff:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  item_identity_crisis:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 出10%手套攻击卷轴！
+    - speaker: B
+      text: 多少钱？
+    - speaker: A
+      text: 一口价6000万
+    - speaker: B
+      text: 太贵了买不起买不起
+    - speaker: A
+      text: 5000万底价，要就拿走
+      emote: 6
+    - speaker: B
+      text: 算了算了祝你早出
+  gacha_horror_story:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 3
+    - speaker: A
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+  pq_new_player_energy:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+      emote: 2
+  hidden_minigame_finds:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  blackjack_curse:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  maplewedd_awkwardness:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+      emote: 6
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  guildmate_crush_energy:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+      emote: 3
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: C
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: B
+      text: 倒也是哈哈
+  virtual_couple_goals:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 4
+  awkward_compliment:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+      emote: 6
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+      emote: 2
+    - speaker: A
+      text: 倒也是哈哈
+  thief_speed_flex:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 快看我这把新砸出来的武器！
+    - speaker: B
+      text: 卧槽属性这么极品？！
+    - speaker: C
+      text: 砸了好多张60%卷才成的
+    - speaker: B
+      text: 欧气吸一吸，太强了大佬！
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  mage_aoe_superiority:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  gunslinger_underrated:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  cleric_blessing_wars:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  server_economy_collapse:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+  population_shifted:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  patch_notes_confusion:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  new_player_waves:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  original_server_player:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  class_balance_complainers:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 新建号玩战士好还是玩法师好？
+    - speaker: B
+      text: 看你想怎么玩，战士血厚肉盾，法师全屏大招帅气
+    - speaker: A
+      text: 我想选个帅一点的
+    - speaker: B
+      text: 那直接黑骑士没毛病！
+    - speaker: A
+      text: 妥了，这就建号
+  prebbq_grind_memories:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！
+  fm_culture_shift:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  typo_in_broadcast:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 2
+    - speaker: A
+      text: 好的多谢老哥！
+  pet_dragging_chaos:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 2
+    - speaker: A
+      text: 好的多谢老哥！
+  accidental_pk_provoke:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+      emote: 3
+    - speaker: B
+      text: 对啊，确实是这样！
+  buff_spaghetti:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: C
+      text: 好的多谢老哥！
+    - speaker: B
+      text: 对啊，确实是这样！
+      emote: 2
+  passive_income_hustle:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  surprise_high_damage:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 2
+    - speaker: A
+      text: 好的多谢老哥！
+  wrong_job_advance:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  free_to_play_struggle:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  boss_loot_bad_luck:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 今晚扎昆门票准备好了吗？
+    - speaker: B
+      text: 早就做完了，随时可以进！
+    - speaker: C
+      text: 多带点特药，今晚一次过！
+    - speaker: A
+      text: 没问题，必拿扎头！
+      emote: 4
+    - speaker: B
+      text: 哈哈，大家都这么觉得。
+    - speaker: A
+      text: 对啊，确实是这样！
+  equip_downgrade_fear:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  level_bracket_anxiety:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  duoing_challenge:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  equipment_aesthetic_priority:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  secret_shortcut_found:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  pet_expiration_panic:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: B
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: A
+      text: 好的多谢老哥！
+  real_life_maple_balance:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 今晚晚餐吃的啥？
+    - speaker: B
+      text: 泡面加根肠哈哈
+    - speaker: A
+      text: 经典游戏玩家标配口粮
+    - speaker: B
+      text: 那可不，省钱又省时间
+    - speaker: A
+      text: 哈哈，大家都这么觉得。
+  new_skill_wow_moment:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: A
+      text: 哪个升级更快一点？
+    - speaker: C
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+      emote: 3
+    - speaker: A
+      text: 好的多谢老哥！
+  community_event_hype:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  scrolling_addiction:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  endgame_goal_setting:
+    participants: 2
+    lines:
+    - speaker: A
+      text: 你平时都在哪练级啊？
+    - speaker: B
+      text: 大部分时间都在猪猪海岸蹲着
+    - speaker: A
+      text: 那不会有点慢吗？
+    - speaker: B
+      text: 是有点慢，但很安逸，没人抢怪打扰
+    - speaker: A
+      text: 倒也是哈哈
+  map_ownership_territory:
+    participants: 3
+    lines:
+    - speaker: A
+      text: 45级去哪练级比较快？
+    - speaker: B
+      text: 幽灵船或者去水下世界打鱼
+    - speaker: C
+      text: 哪个升级更快一点？
+    - speaker: A
+      text: 有宠物捡金币就去打鱼，没有就去幽灵船
+    - speaker: B
+      text: 好的多谢老哥！
+    - speaker: C
+      text: 对啊，确实是这样！

@@ -198,6 +198,25 @@ public class SoloMaplingResourceLoader {
     }
 
     /**
+     * Checks whether a given resource exists either on classpath or in filesystem.
+     */
+    public static boolean hasResource(String rawPath) {
+        if (rawPath == null || rawPath.trim().isEmpty()) {
+            return false;
+        }
+        String normalized = normalizePath(rawPath);
+        ClassLoader cl = Thread.currentThread().getContextClassLoader();
+        if (cl == null) {
+            cl = SoloMaplingResourceLoader.class.getClassLoader();
+        }
+        if (cl.getResource(BASE_RESOURCE_DIR + normalized) != null || cl.getResource(normalized) != null) {
+            return true;
+        }
+        Path resolved = resolvePath(rawPath);
+        return Files.exists(resolved) && !Files.isDirectory(resolved);
+    }
+
+    /**
      * Obtains a Reader for the given resource path (UTF-8).
      */
     public static Reader getReader(String rawPath) {

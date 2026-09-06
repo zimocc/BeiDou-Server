@@ -32,6 +32,7 @@ import org.gms.soloMapling.ArtificialPlayer.GCMoveSystem.GCMovement;
 import org.gms.soloMapling.server.EventMessageSystem.EventBus;
 import org.gms.soloMapling.server.EventMessageSystem.EventFactory;
 import org.gms.soloMapling.server.ExecutorServiceManager;
+import org.gms.soloMapling.server.SoloMaplingI18n;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -281,14 +282,20 @@ public class TrainingBot extends BotSM {
     // keywords narrow so a typed sentence like "how about joining my party" can't hijack the
     // party roll (greedy "how"/"train" did exactly that in live test round 2).
     private final BotOptionMenu soloMenu = new BotOptionMenu(this,
-            List.of("How's the training?", "Wanna party up?", "Goodbye"),
-            List.of(List.of("hows", "how is", "how goes"),
+            SoloMaplingI18n.isChinese() ? List.of("练级还顺利吗？", "想一起组队吗？", "再见") : List.of("How's the training?", "Wanna party up?", "Goodbye"),
+            SoloMaplingI18n.isChinese() ? List.of(List.of("hows", "how is", "how goes", "怎么样", "顺利吗", "练级", "打怪"),
+                    List.of("party", "team", "join", "组队", "一起", "队伍", "入队"),
+                    List.of("bye", "goodbye", "cya", "later", "再见", "拜拜", "走了"))
+                    : List.of(List.of("hows", "how is", "how goes"),
                     List.of("party", "team", "join"),
                     List.of("bye", "goodbye", "cya", "later")),
             this::onSoloMenuSelect);
     private final BotOptionMenu partyMenu = new BotOptionMenu(this,
-            List.of("How's the training?", "Follow me!", "Goodbye"),
-            List.of(List.of("hows", "how is", "how goes"),
+            SoloMaplingI18n.isChinese() ? List.of("练级还顺利吗？", "跟我来！", "再见") : List.of("How's the training?", "Follow me!", "Goodbye"),
+            SoloMaplingI18n.isChinese() ? List.of(List.of("hows", "how is", "how goes", "怎么样", "顺利吗", "练级", "打怪"),
+                    List.of("follow", "come", "lead", "跟我来", "跟我走", "过来", "带路", "跟随"),
+                    List.of("bye", "goodbye", "cya", "later", "再见", "拜拜", "走了"))
+                    : List.of(List.of("hows", "how is", "how goes"),
                     List.of("follow", "come", "lead"),
                     List.of("bye", "goodbye", "cya", "later")),
             this::onPartyMenuSelect);

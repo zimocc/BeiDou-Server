@@ -129,8 +129,7 @@ public class BotDialogueHandler {
     }
 
     public static Map<String, Object> readDialogueYaml(String dialoguePack, String dialogueType, String dialogueNode) {
-        String dialoguePackBase = "BotDialoguePack/";
-        String filePath = String.format("%s%s", dialoguePackBase, dialoguePack);
+        String filePath = org.gms.soloMapling.server.SoloMaplingI18n.resolveLocalizedResource("BotDialoguePack/", dialoguePack);
 
         Map<String, Object> dialogueConstructorNode = null;
         try {

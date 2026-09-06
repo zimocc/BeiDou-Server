@@ -38,4 +38,26 @@ public class BotResourceLoadingTest {
         EquipOmitList.load();
         Assertions.assertDoesNotThrow(() -> GachaFillerSystem.createGachaListWithPrize(1002000));
     }
+
+    @Test
+    public void testChineseBotNames() throws Exception {
+        Assertions.assertTrue(org.gms.soloMapling.server.SoloMaplingI18n.isChinese());
+        for (int i = 0; i < 50; i++) {
+            String ign = FMShopDescGen.getRandomCharacterIGN();
+            Assertions.assertNotNull(ign);
+            Assertions.assertTrue(ign.startsWith("仙"), "Bot name must start with '仙': " + ign);
+            byte[] bytes = ign.getBytes("GBK");
+            Assertions.assertTrue(bytes.length <= 12, "Bot name exceeds 12 bytes in GBK: " + ign + " (" + bytes.length + " bytes)");
+        }
+    }
+
+    @Test
+    public void testChineseDialogueLoading() {
+        String resolved = org.gms.soloMapling.server.SoloMaplingI18n.resolveLocalizedResource("BotDialoguePack/", "FollowerBotDialogue.yaml");
+        Assertions.assertTrue(resolved.contains("zh-CN"), "Resolved path should contain zh-CN: " + resolved);
+        
+        java.util.Map<String, Object> node = org.gms.soloMapling.ArtificialPlayer.BotDialogueHandler.readDialogueYaml("FollowerBotDialogue.yaml", "FollowerBot", "FollowStart");
+        Assertions.assertNotNull(node, "FollowStart node should not be null");
+        Assertions.assertNotNull(node.get("text"), "text property should not be null");
+    }
 }

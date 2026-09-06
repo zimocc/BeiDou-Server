@@ -13,6 +13,7 @@ import org.gms.soloMapling.ArtificialPlayer.BotPartySystem.BotPartyQueue;
 import org.gms.soloMapling.ArtificialPlayer.BotPartySystem.BotRecruitManager;
 import org.gms.soloMapling.ArtificialPlayer.GCMoveSystem.GCMovement;
 import org.gms.soloMapling.server.BotTickService;
+import org.gms.soloMapling.server.SoloMaplingI18n;
 
 import java.util.List;
 
@@ -49,8 +50,8 @@ public class FollowerBot extends BotSM {
 
     // NOTE: no "here" keyword - "there" contains "here", so a casual "hi there" would trigger it.
     private final BotOptionMenu menu = new BotOptionMenu(this,
-            List.of("Train here with me!", "Nevermind"),
-            List.of(List.of("train", "grind", "station"), List.of("nevermind", "bye", "nah", "nope")),
+            SoloMaplingI18n.isChinese() ? List.of("陪我在这里打怪！", "取消") : List.of("Train here with me!", "Nevermind"),
+            SoloMaplingI18n.isChinese() ? List.of(List.of("train", "grind", "station", "打怪", "练级", "刷怪", "停在这"), List.of("nevermind", "bye", "nah", "nope", "取消", "算了", "再见")) : List.of(List.of("train", "grind", "station"), List.of("nevermind", "bye", "nah", "nope")),
             this::onMenuSelect);
 
     public FollowerBot(Character character) {

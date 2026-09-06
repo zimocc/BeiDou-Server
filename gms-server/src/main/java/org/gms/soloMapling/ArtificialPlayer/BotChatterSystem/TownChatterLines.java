@@ -53,7 +53,8 @@ public final class TownChatterLines {
     private static List<List<String>> load() {
         List<List<String>> out = new ArrayList<>();
         try {
-            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(YAML_PATH));
+            String resolvedYaml = org.gms.soloMapling.server.SoloMaplingI18n.resolveLocalizedResource("BotDialoguePack/", "TownChatterDialogue.yaml");
+            YamlReader reader = new YamlReader(org.gms.soloMapling.server.SoloMaplingResourceLoader.getReader(resolvedYaml));
             Map<String, Object> root = (Map<String, Object>) reader.read();
             if (root == null) {
                 return out;
