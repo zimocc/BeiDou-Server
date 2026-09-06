@@ -176,10 +176,57 @@ public class BotGeneration {
     }
 
     public static void removeBotFromServer(Character fakechar) {
+        if (fakechar == null) {
+            return;
+        }
         fakechar.setDisconnectedFromChannelWorld();
+
+        // 1. 停止 Bot 决策与定时任务，从 BotTickService 彻底注销
+        try {
+            BotSM bot = CharacterStorage.getBotById(fakechar.getId());
+            if (bot != null) {
+                bot.setRunning(false);
+                bot.stopScheduledTask();
+            }
+        } catch (Throwable ignored) {
+        }
+
+        // 2. 停止动态物理移动引擎并取消跟随/寻路
+        try {
+            org.gms.soloMapling.ArtificialPlayer.GCMoveSystem.GCMovement.disable(fakechar);
+        } catch (Throwable ignored) {
+        }
+
+        // 3. 清理活跃状态、Buff 驱动与交互请求
+        try {
+            CharacterStorage.removeActiveBot(fakechar.getId());
+            BotBuffDriver.clearBot(fakechar.getId());
+            BotBuffRequestHandler.clearBot(fakechar.getId());
+        } catch (Throwable ignored) {
+        }
+
+        // 4. 从地图中移除玩家并广播离场封包
         if (fakechar.getMap() != null) {
             fakechar.getMap().removePlayer(fakechar);
         }
+
+        // 5. 若 Bot 在队伍中，安全脱离队伍并广播队伍更新
+        try {
+            org.gms.net.server.world.Party party = fakechar.getParty();
+            if (party != null && party.getMemberById(fakechar.getId()) != null) {
+                org.gms.net.server.world.PartyCharacter pc = party.getMemberById(fakechar.getId());
+                org.gms.net.server.world.World w = getWorld();
+                if (w != null) {
+                    w.updateParty(party.getId(), org.gms.net.server.world.PartyOperation.LEAVE, pc);
+                } else {
+                    party.removeMember(pc);
+                }
+                fakechar.setParty(null);
+            }
+        } catch (Throwable ignored) {
+        }
+
+        // 6. 从频道和世界角色缓存注销
         org.gms.net.server.channel.Channel ch = getChannel();
         if (ch != null) {
             ch.removePlayer(fakechar);
@@ -188,9 +235,6 @@ public class BotGeneration {
         if (w != null && w.getPlayerStorage() != null) {
             w.getPlayerStorage().removePlayer(fakechar.getId());
         }
-        CharacterStorage.removeActiveBot(fakechar.getId());//
-        BotBuffDriver.clearBot(fakechar.getId());   // Phase 3a: release buff recast timers
-        BotBuffRequestHandler.clearBot(fakechar.getId());   // release chat-buff-request cooldown
     }
 
     private static void addBotToServer(Character fakechar) {

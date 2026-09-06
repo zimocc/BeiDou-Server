@@ -77,18 +77,18 @@ function action(mode, type, selection) {
             }
         }
 
-        var text = "\t\t\t#e#b★ BeiDou 虚拟伴侣控制中心 ★#k#n\r\n\r\n";
+        var text = "\t\t\t#e#b[ BeiDou 虚拟伴侣控制中心 ]#k#n\r\n\r\n";
         text += "您好，#r#e" + player.getName() + "#k#n！在这里您可以召唤虚拟同伴或指挥队伍内的 Bot。\r\n";
         text += "当前队伍 Bot 伴侣数量：#r" + partyBotCount + "#k 人 (队伍上限 6 人)\r\n";
         text += "当前地图 Bot 总数量：#b" + mapBotCount + "#k 人\r\n\r\n";
 
-        text += "#L1##b【招募伴侣】#k召唤 Bot 队友加入队伍 (自动跟随)#l\r\n";
-        text += "#L2##r【战斗指令】#k命令队伍内所有 Bot 开始打怪 (就地战斗)#l\r\n";
-        text += "#L3##g【行军指令】#k命令队伍内所有 Bot 停止打怪并跟随队长#l\r\n";
-        text += "#L4##d【离队管理】#k将队伍内的所有 Bot 请离队伍#l\r\n";
-        text += "#L5##b【野外召唤】#k在本地图召唤自主刷怪 Bot (不入队)#l\r\n";
-        text += "#L6##r【清理地图】#k清除当前地图上的所有虚拟 Bot#l\r\n";
-        text += "#L7##k【帮助说明】#k查看 Bot 玩法与快捷聊天指令说明#l\r\n";
+        text += "#L1##b[招募伴侣]#k 召唤 Bot 队友加入队伍 (自动跟随)#l\r\n";
+        text += "#L2##r[战斗指令]#k 命令队伍内所有 Bot 开始打怪 (就地战斗)#l\r\n";
+        text += "#L3##g[行军指令]#k 命令队伍内所有 Bot 停止打怪并跟随队长#l\r\n";
+        text += "#L4##d[离队管理]#k 将队伍内的所有 Bot 请离队伍#l\r\n";
+        text += "#L5##b[野外召唤]#k 在本地图召唤自主刷怪 Bot (不入队)#l\r\n";
+        text += "#L6##r[清理地图]#k 清理本地图上的虚拟 Bot#l\r\n";
+        text += "#L7##k[帮助说明]#k 查看 Bot 玩法与快捷聊天指令说明#l\r\n";
 
         cm.sendSimple(text);
     } else if (status === 1) {
@@ -97,11 +97,11 @@ function action(mode, type, selection) {
             case 1: // 召唤 Bot 入队
                 var text = "#e#b请选择您希望招募的 Bot 职业伴侣：#k#n\r\n\r\n";
                 text += "伴侣将自动适配您的等级，召唤后直接加入您的队伍并跟随您！\r\n\r\n";
-                text += "#L11#⚔ 战士 (Warrior)#l\r\n";
-                text += "#L12#🔮 魔法师 (Magician)#l\r\n";
-                text += "#L13#🏹 弓箭手 (Bowman)#l\r\n";
-                text += "#L14#🗡 飞侠 (Thief)#l\r\n";
-                text += "#L15#🎲 随机职业同伴#l\r\n";
+                text += "#L11##b[战士]#k 强力近战与防御 (Warrior)#l\r\n";
+                text += "#L12##r[法师]#k 华丽范围法术 (Magician)#l\r\n";
+                text += "#L13##g[弓手]#k 远程精准射击 (Bowman)#l\r\n";
+                text += "#L14##d[飞侠]#k 迅捷暴击刺杀 (Thief)#l\r\n";
+                text += "#L15##k[随机]#k 随机职业伴侣#l\r\n";
                 cm.sendSimple(text);
                 break;
 
@@ -120,16 +120,19 @@ function action(mode, type, selection) {
             case 5: // 野外召唤
                 var text = "#e#b请选择召唤野外打怪 Bot 的职业类型：#k#n\r\n\r\n";
                 text += "生成的 Bot 将在当前地图自动寻找怪物打怪，不占用队伍名额。\r\n\r\n";
-                text += "#L51#⚔ 战士 (Warrior)#l\r\n";
-                text += "#L52#🔮 魔法师 (Magician)#l\r\n";
-                text += "#L53#🏹 弓箭手 (Bowman)#l\r\n";
-                text += "#L54#🗡 飞侠 (Thief)#l\r\n";
-                text += "#L55#🎲 随机职业#l\r\n";
+                text += "#L51##b[战士]#k 战士 (Warrior)#l\r\n";
+                text += "#L52##r[法师]#k 魔法师 (Magician)#l\r\n";
+                text += "#L53##g[弓手]#k 弓箭手 (Bowman)#l\r\n";
+                text += "#L54##d[飞侠]#k 飞侠 (Thief)#l\r\n";
+                text += "#L55##k[随机]#k 随机职业#l\r\n";
                 cm.sendSimple(text);
                 break;
 
             case 6: // 清理地图
-                handleClearMapBots(player);
+                var text = "#e#b请选择您要执行的地图清理类型：#k#n\r\n\r\n";
+                text += "#L61##b[仅清理野外Bot]#k 仅清除本地图野外自主刷怪Bot (保留队伍伴侣)#l\r\n";
+                text += "#L62##r[全图彻底清理]#k 清除本地图所有Bot (包括队伍伴侣并退队)#l\r\n";
+                cm.sendSimple(text);
                 break;
 
             case 7: // 帮助
@@ -157,6 +160,15 @@ function action(mode, type, selection) {
             else if (selection === 53) baseClass = 3;
             else if (selection === 54) baseClass = 4;
             handleSpawnWildBot(player, baseClass);
+        } else if (selectedOption === 6) {
+            // 清理地图
+            if (selection === 61) {
+                handleClearWildBots(player);
+            } else if (selection === 62) {
+                handleClearAllMapBots(player);
+            } else {
+                cm.dispose();
+            }
         } else {
             cm.dispose();
         }
@@ -195,7 +207,7 @@ function handleSpawnPartyBot(player, baseClass) {
         BotRecruitManager.setPendingLeader(botChr.getId(), player.getId());
         BotTypeManager.convertBotType(botChr, BotTypeManager.BotType.FOLLOWER_BOT);
 
-        cm.sendOk("#b#e" + botChr.getName() + "#k#n (等级 " + botChr.getLevel() + ") 已成功召唤并加入您的队伍！\r\n\r\n当前处于#r跟随状态#k。进入战斗地图后，您可以通过本 NPC 发送【战斗指令】让其就地打怪！");
+        cm.sendOk("#b#e" + botChr.getName() + "#k#n (等级 " + botChr.getLevel() + ") 已成功召唤并加入您的队伍！\r\n\r\n当前处于#r[跟随状态]#k。进入战斗地图后，您可以通过本 NPC 发送【战斗指令】让其就地打怪！");
     } else {
         cm.sendOk("Bot 伴侣召唤成功（角色 ID：" + botId + "），正在进入世界...");
     }
@@ -228,6 +240,10 @@ function handlePartyAttack(player) {
                 p = BotHelpers.getCharFromChannelStorage(pc.getId());
             }
             if (p != null && BotHelpers.isBot(p)) {
+                // 防御校验：Bot 必须真实存在于当前地图中且未处于断线/清理状态
+                if (p.getMap() == null || p.getMap().getId() != map.getId() || map.getCharacterById(p.getId()) == null || p.isAwayFromWorld()) {
+                    continue;
+                }
                 BotRecruitManager.markStationHere(p.getId());
                 GCMovement.stop(p);
                 BotTypeManager.convertBotType(p, BotTypeManager.BotType.TRAINING_BOT);
@@ -239,7 +255,7 @@ function handlePartyAttack(player) {
     if (count > 0) {
         cm.sendOk("已成功指挥队伍内 #r#e" + count + "#k#n 位 Bot 伴侣在当前地图开始打怪！\r\n\r\n打怪经验和掉落将与队伍共享。需要移动时请选择【行军指令】使其继续跟随。");
     } else {
-        cm.sendOk("队伍中未找到处于跟随状态的 Bot 伴侣。");
+        cm.sendOk("当前队伍中没有在本地图的有效 Bot 伴侣。");
     }
     cm.dispose();
 }
@@ -253,6 +269,7 @@ function handlePartyFollow(player) {
         return;
     }
 
+    var map = player.getMap();
     var count = 0;
     var members = toJsArray(party.getMembers());
     for (var i = 0; i < members.length; i++) {
@@ -263,6 +280,10 @@ function handlePartyFollow(player) {
                 p = BotHelpers.getCharFromChannelStorage(pc.getId());
             }
             if (p != null && BotHelpers.isBot(p)) {
+                // 防御校验：Bot 必须真实存在于当前地图中且未处于断线/清理状态
+                if (p.getMap() == null || p.getMap().getId() != map.getId() || map.getCharacterById(p.getId()) == null || p.isAwayFromWorld()) {
+                    continue;
+                }
                 BotRecruitManager.setPendingLeader(p.getId(), player.getId());
                 BotTypeManager.convertBotType(p, BotTypeManager.BotType.FOLLOWER_BOT);
                 count++;
@@ -271,9 +292,9 @@ function handlePartyFollow(player) {
     }
 
     if (count > 0) {
-        cm.sendOk("已成功指挥队伍内 #b#e" + count + "#k#n 位 Bot 伴侣停止打怪并切换为#b跟随模式#k！\r\n它们将寸步不离跟随您跑图与穿过传送门。");
+        cm.sendOk("已成功指挥队伍内 #b#e" + count + "#k#n 位 Bot 伴侣停止打怪并切换为#b[跟随模式]#k！\r\n它们将寸步不离跟随您跑图与穿过传送门。");
     } else {
-        cm.sendOk("队伍中未找到处于战斗状态的 Bot 伴侣。");
+        cm.sendOk("当前队伍中没有在本地图的有效 Bot 伴侣。");
     }
     cm.dispose();
 }
@@ -342,14 +363,55 @@ function handleSpawnWildBot(player, baseClass) {
     cm.dispose();
 }
 
-// 清理本地图所有虚拟 Bot
-function handleClearMapBots(player) {
+// 仅清理本地图野外自主 Bot（保留队伍内的伴侣）
+function handleClearWildBots(player) {
     var map = player.getMap();
     if (map == null) {
         cm.dispose();
         return;
     }
 
+    var party = player.getParty();
+    var partyBotIds = {};
+    if (party != null) {
+        var members = toJsArray(party.getMembers());
+        for (var i = 0; i < members.length; i++) {
+            if (members[i] != null) {
+                partyBotIds[members[i].getId()] = true;
+            }
+        }
+    }
+
+    var botList = [];
+    var chrs = toJsArray(map.getCharacters());
+    for (var i = 0; i < chrs.length; i++) {
+        var c = chrs[i];
+        if (BotHelpers.isBot(c)) {
+            // 排除当前队伍伴侣
+            if (partyBotIds[c.getId()]) {
+                continue;
+            }
+            botList.push(c);
+        }
+    }
+
+    for (var j = 0; j < botList.length; j++) {
+        BotGeneration.removeBotFromServer(botList[j]);
+    }
+
+    cm.sendOk("已成功清理当前地图上的 #r" + botList.length + "#k 位野外自主 Bot，队伍伴侣已为您保留！");
+    cm.dispose();
+}
+
+// 清理本地图全部虚拟 Bot（包括队伍伴侣并将其退队）
+function handleClearAllMapBots(player) {
+    var map = player.getMap();
+    if (map == null) {
+        cm.dispose();
+        return;
+    }
+
+    var party = player.getParty();
     var botList = [];
     var chrs = toJsArray(map.getCharacters());
     for (var i = 0; i < chrs.length; i++) {
@@ -360,16 +422,22 @@ function handleClearMapBots(player) {
     }
 
     for (var j = 0; j < botList.length; j++) {
-        BotGeneration.removeBotFromServer(botList[j]);
+        var botChr = botList[j];
+        if (party != null && party.getMemberById(botChr.getId()) != null) {
+            try {
+                Party.expelFromParty(party, player.getClient(), botChr.getId());
+            } catch (e) {}
+        }
+        BotGeneration.removeBotFromServer(botChr);
     }
 
-    cm.sendOk("已清理当前地图上的 #r" + botList.length + "#k 位虚拟 Bot。");
+    cm.sendOk("已彻底清理当前地图上的 #r" + botList.length + "#k 位虚拟 Bot（包含队伍伴侣）。");
     cm.dispose();
 }
 
 // 玩法与帮助说明
 function handleShowHelp() {
-    var text = "\t\t\t#e#b★ Bot 虚拟伴侣交互指南 ★#k#n\r\n\r\n";
+    var text = "\t\t\t#e#b[ Bot 虚拟伴侣交互指南 ]#k#n\r\n\r\n";
     text += "#e1. 组队与邀请：#n\r\n";
     text += "   - 在野外或城镇右键点击任意 Bot，选择【组队邀请】，Bot 将 100% 同意入队。\r\n";
     text += "   - 也可在本 NPC 直接选择【招募伴侣】，一键将 Bot 召唤并拉进队伍。\r\n\r\n";
