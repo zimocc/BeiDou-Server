@@ -5358,6 +5358,12 @@ public class Character extends AbstractCharacterObject {
             return;
         }
 
+        if (merchant.isClosedForBan()) {
+            merchant.closeForBan();
+            this.setHiredMerchant(null);
+            return;
+        }
+
         if (merchant.isOwner(this) && !merchant.isPublished()) {
             merchant.closeOwnerMerchant(this);
             return;
@@ -5372,7 +5378,10 @@ public class Character extends AbstractCharacterObject {
             }
         } else {
             if (merchant.isOwner(this)) {
-                merchant.setOpen(true);
+                if (!merchant.setOpen(true)) {
+                    merchant.closeForBan();
+                    return;
+                }
             } else {
                 merchant.removeVisitor(this);
             }

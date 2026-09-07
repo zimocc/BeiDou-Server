@@ -658,3 +658,30 @@ fix:  1. 修复自由市场买卖/点券机器人发言英文硬编码，支持�
      - `testChineseBotNames`: 验证 50 个生成的 Bot 名称均以 "仙" 开头且 $\le 12$ 字节；
      - `testChineseDialogueLoading`: 验证 zh-CN 对话资源正常解析；
      - **测试结果**：9 个测试用例全部通过（**Tests run: 9, Failures: 0, Errors: 0, Skipped: 0**）。
+
+---
+
+## 16. master 远程更新同步合并至 Bot 分支
+
+### 16.1 背景与目标
+拉取远程 `origin/master` 最新更新（提交 `6c5a1c1f5`：修复封禁账号后雇佣商店继续营业的异常问题），并将其平滑合并到 `Bot` 分支。严格保障合并过程不影响、不破坏 `Bot` 分支的所有新增功能、自主逻辑与汉化体系。
+
+### 16.2 合并过程与冲突检测
+1. **获取最新主干**：通过 `git fetch origin master:master` 快进更新本地 `master` 至 `origin/master`（`6c5a1c1f5`）。
+2. **合并至 Bot 分支**：在 `Bot` 分支执行 `git merge --no-commit master`。
+3. **冲突判定**：Git 3-way 自动合并顺利完成（`Automatic merge went well`），**0 冲突**，无需人工裁决介入。
+
+### 16.3 变更审查与 Bot 代码防护确认
+本次合并引入来自 `master` 的 7 个文件改动（共 +216 行 / -66 行）：
+- **[HiredMerchant.java](file:///d:/code/gamedev/083/BeiDou-Server/gms-server/src/main/java/org/gms/server/maps/HiredMerchant.java)**:
+  - `master` 改动：增加了封禁账号时的自动闭店与游离状态防护（`ownerBanned`、`detached`、`closeForBan()`）；
+  - `Bot` 防护审查：Bot 新增的自由市场购买逻辑（`botBuy`）以及纯内存人工商店（`HiredMerchantArtificial`）跳过数据库存储与世界查询的优化逻辑完整保留，与封禁检测互不干扰。
+- **[Character.java](file:///d:/code/gamedev/083/BeiDou-Server/gms-server/src/main/java/org/gms/client/Character.java)**:
+  - `master` 改动：在角色关闭雇佣商店交互时增加了 `merchant.isClosedForBan()` 检查；
+  - `Bot` 防护审查：Bot 新增的 `isBot` 判定、`isLoggedInWorld`、`getCashShop()`、`getMonsterBook()` 懒加载等完全位于独立代码块，未受任何改动影响。
+- **[AccountService.java](file:///d:/code/gamedev/083/BeiDou-Server/gms-server/src/main/java/org/gms/service/AccountService.java)**、**[PlayerInteractionHandler.java](file:///d:/code/gamedev/083/BeiDou-Server/gms-server/src/main/java/org/gms/net/server/channel/handlers/PlayerInteractionHandler.java)**、**[World.java](file:///d:/code/gamedev/083/BeiDou-Server/gms-server/src/main/java/org/gms/net/server/world/World.java)** 以及国际化日志配置：
+  - 均为账号封号处理时级联关闭玩家已开雇佣商店的业务闭环，未涉及 Bot 交互与行为决策树。
+
+### 16.4 构建与测试验证
+- **Maven 全量编译**：1403 个源码文件均通过编译，无任何警告与语法错误。
+- **单元测试**：运行 `.\SoloMapling-0.3\mvnw.cmd test -Dtest=BotResourceLoadingTest -f gms-server\pom.xml`，所有 9 个单元测试 100% 通过（**Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, BUILD SUCCESS**）。

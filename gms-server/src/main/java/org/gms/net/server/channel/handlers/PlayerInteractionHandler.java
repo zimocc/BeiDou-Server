@@ -411,8 +411,12 @@ public final class PlayerInteractionHandler extends AbstractPacketHandler {
                     chr.getMap().broadcastMessage(PacketCreator.updatePlayerShopBox(shop));
                     shop.setOpen(true);
                 } else if (merchant != null && merchant.isOwner(chr)) {
+                    if (!merchant.setOpen(true)) {
+                        merchant.closeForBan();
+                        c.sendPacket(PacketCreator.getMiniRoomError(18));
+                        return;
+                    }
                     chr.setHasMerchant(true);
-                    merchant.setOpen(true);
                     chr.getMap().addMapObject(merchant);
                     chr.setHiredMerchant(null);
                     chr.getMap().broadcastMessage(PacketCreator.spawnHiredMerchantBox(merchant));
@@ -856,8 +860,11 @@ public final class PlayerInteractionHandler extends AbstractPacketHandler {
                             merchant.closeOwnerMerchant(chr);
                         } else {
                             merchant.clearMessages();
-                            merchant.setOpen(true);
-                            merchant.getMap().broadcastMessage(PacketCreator.updateHiredMerchantBox(merchant));
+                            if (merchant.setOpen(true)) {
+                                merchant.getMap().broadcastMessage(PacketCreator.updateHiredMerchantBox(merchant));
+                            } else {
+                                merchant.closeForBan();
+                            }
                         }
                     }
                 }

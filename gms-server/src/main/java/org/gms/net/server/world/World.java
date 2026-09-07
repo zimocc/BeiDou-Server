@@ -1653,28 +1653,29 @@ public class World {
     }
 
     public void runHiredMerchantSchedule() {
-        Map<Integer, Pair<HiredMerchant, Integer>> deployedMerchants;
+        List<HiredMerchant> merchantsToClose = new ArrayList<>();
         activeMerchantsLock.lock();
         try {
             merchantUpdate = Server.getInstance().getCurrentTime();
-            deployedMerchants = new LinkedHashMap<>(activeMerchants);
-
-            for (Map.Entry<Integer, Pair<HiredMerchant, Integer>> dm : deployedMerchants.entrySet()) {
-                try {
-                    int timeOn = dm.getValue().getRight();
-                    HiredMerchant hm = dm.getValue().getLeft();
-
-                    if (timeOn <= 144) {   // 1440 minutes == 24hrs
-                        activeMerchants.put(hm.getOwnerId(), new Pair<>(dm.getValue().getLeft(), timeOn + 1));
-                    } else {
-                        hm.forceClose();
-                    }
-                } catch (Exception e) {
-                    log.error("Failed to close HiredMerchant ownerId={}", dm.getKey(), e);
+            for (Map.Entry<Integer, Pair<HiredMerchant, Integer>> entry : activeMerchants.entrySet()) {
+                int timeOn = entry.getValue().getRight();
+                HiredMerchant merchant = entry.getValue().getLeft();
+                if (merchant.isClosedForBan() || timeOn > 144) { // 1440 minutes == 24hrs
+                    merchantsToClose.add(merchant);
+                } else {
+                    entry.setValue(new Pair<>(merchant, timeOn + 1));
                 }
             }
         } finally {
             activeMerchantsLock.unlock();
+        }
+        // 收店需要客户端/物品锁，不能持注册表锁等待，避免与店主操作互锁。
+        for (HiredMerchant merchant : merchantsToClose) {
+            try {
+                merchant.forceClose();
+            } catch (RuntimeException e) {
+                log.error(I18nUtil.getLogMessage("HiredMerchant.close.scheduleFailed", merchant.getOwnerId()), e);
+            }
         }
     }
 

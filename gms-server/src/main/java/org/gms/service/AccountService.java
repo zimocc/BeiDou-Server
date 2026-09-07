@@ -3,6 +3,7 @@ package org.gms.service;
 import com.mybatisflex.core.paginate.Page;
 import com.mybatisflex.core.query.QueryWrapper;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.gms.client.Character;
 import org.gms.client.Client;
 import org.gms.client.DefaultDates;
@@ -13,6 +14,8 @@ import org.gms.model.dto.AddAccountDTO;
 import org.gms.model.dto.UpdateAccountByGmDTO;
 import org.gms.model.dto.UpdateAccountByUserDTO;
 import org.gms.net.server.Server;
+import org.gms.net.server.world.World;
+import org.gms.server.maps.HiredMerchant;
 import org.gms.util.BCrypt;
 import org.gms.util.HexTool;
 import org.gms.util.I18nUtil;
@@ -35,6 +38,7 @@ import static org.gms.dao.entity.table.IpbansDOTableDef.IPBANS_D_O;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class AccountService {
     private final AccountsMapper accountsMapper;
     private final CharactersMapper charactersMapper;
@@ -77,7 +81,32 @@ public class AccountService {
     }
 
     public void update(AccountsDO condition) {
-        accountsMapper.update(condition);
+        if (accountsMapper.update(condition) > 0
+                && (Boolean.TRUE.equals(condition.getBanned())
+                || condition.getTempban() != null && condition.getTempban().getTime() > System.currentTimeMillis())) {
+            closeAccountHiredMerchants(condition.getId());
+        }
+    }
+
+    /** 雇佣商店不依赖角色在线，按账号全角色、全世界收店。 */
+    public void closeAccountHiredMerchants(int accountId) {
+        List<CharactersDO> owners;
+        try {
+            owners = charactersMapper.selectIdAndWorldListByAccountId(accountId);
+        } catch (RuntimeException e) {
+            log.error(I18nUtil.getLogMessage("AccountService.closeMerchants.lookupFailed", accountId), e);
+            return;
+        }
+        for (World world : Server.getInstance().getWorlds()) {
+            for (CharactersDO owner : owners) {
+                try {
+                    HiredMerchant merchant = world.getHiredMerchant(owner.getId());
+                    if (merchant != null) merchant.closeForBan();
+                } catch (RuntimeException e) {
+                    log.error(I18nUtil.getLogMessage("AccountService.closeMerchants.closeFailed", accountId, owner.getId()), e);
+                }
+            }
+        }
     }
 
     public void addAccount(AddAccountDTO submitData) throws NoSuchAlgorithmException {
@@ -185,15 +214,13 @@ public class AccountService {
         account.setId(accountId);
         account.setBanned(true);
         account.setBanreason(reason);
-        accountsMapper.update(account);
+        update(account);
         // 遍历账号下的角色，如果在线，追封客户端/Mac/IP
         List<CharactersDO> characterList = charactersMapper.selectIdAndWorldListByAccountId(accountId); // 仅查询角色ID和所在world
         for (CharactersDO chr : characterList) {
-            Character player = Server.getInstance()
-                    .getWorlds()
-                    .get(chr.getWorld())
-                    .getPlayerStorage()
-                    .getCharacterById(chr.getId());
+            World world = Server.getInstance().getWorld(chr.getWorld());
+            if (world == null) continue;
+            Character player = world.getPlayerStorage().getCharacterById(chr.getId());
             if (player == null) continue; // 角色离线
             player.setBanned(true);
             Client c = player.getClient(); // 角色在线，获取客户端
@@ -227,7 +254,7 @@ public class AccountService {
     }
 
     public void ban(Character chr, String reason) {
-        accountsMapper.update(AccountsDO.builder().banned(true).id(chr.getAccountId()).banreason(reason).build());
+        update(AccountsDO.builder().banned(true).id(chr.getAccountId()).banreason(reason).build());
         // 更新在线的ban状态
         chr.setBanned(true);
     }
@@ -255,7 +282,7 @@ public class AccountService {
         if (accountId == null) {
             throw new NoSuchElementException();
         }
-        accountsMapper.update(AccountsDO.builder()
+        update(AccountsDO.builder()
                 .id(accountId)
                 .banreason(reason)
                 .banned(true)

@@ -38,6 +38,7 @@ import org.gms.net.server.world.World;
 import org.gms.server.ItemInformationProvider;
 import org.gms.server.Trade;
 import org.gms.util.DatabaseConnection;
+import org.gms.util.I18nUtil;
 import org.gms.util.PacketCreator;
 import org.gms.util.Pair;
 import org.slf4j.Logger;
@@ -83,6 +84,8 @@ public class HiredMerchant extends AbstractMapObject {
     private final AtomicBoolean open = new AtomicBoolean();
     private final AtomicBoolean closing = new AtomicBoolean();
     private volatile boolean published = false;
+    private volatile boolean ownerBanned = false;
+    private volatile boolean detached = false;
     private MapleMap map;
     private final Visitor[] visitors = new Visitor[3];
     private final LinkedList<PastVisitor> visitorHistory = new LinkedList<>();
@@ -145,6 +148,7 @@ public class HiredMerchant extends AbstractMapObject {
     public boolean addVisitor(Character visitor) {
         visitorLock.lock();
         try {
+            if (!isOpen()) return false;
             int i = this.getFreeSlot();
             if (i > -1) {
                 visitors[i] = new Visitor(visitor, Instant.now());
@@ -239,6 +243,7 @@ public class HiredMerchant extends AbstractMapObject {
     public void withdrawMesos(Character chr) {
         if (isOwner(chr)) {
             synchronized (items) {
+                if (ownerBanned || closing.get() || detached) return;
                 chr.withdrawMerchantMesos();
             }
         }
@@ -246,6 +251,8 @@ public class HiredMerchant extends AbstractMapObject {
 
     public void takeItemBack(int slot, Character chr) {
         synchronized (items) {
+            if (ownerBanned || closing.get() || detached || !isOwner(chr) || isOpen()
+                    || slot < 0 || slot >= items.size()) return;
             PlayerShopItem shopItem = items.get(slot);
             if (shopItem.isExist()) {
                 if (shopItem.getBundles() > 0) {
@@ -291,7 +298,7 @@ public class HiredMerchant extends AbstractMapObject {
 
     public void buy(Client c, int item, short quantity) {
         synchronized (items) {
-            if (quantity < 1 || item < 0 || item >= items.size()) {   // thanks xiaokelvin for pointing out slot check missing
+            if (!isOpen() || quantity < 1 || item < 0 || item >= items.size()) {   // thanks xiaokelvin for pointing out slot check missing
                 c.sendPacket(PacketCreator.enableActions());
                 return;
             }
@@ -396,7 +403,40 @@ public class HiredMerchant extends AbstractMapObject {
         }
     }
 
+    /** 与店主上架/取回操作共用客户端锁，再与购买串行停止营业。 */
+    public void closeForBan() {
+        World worldServer = Server.getInstance().getWorld(world);
+        Character owner = worldServer == null ? null : worldServer.getPlayerStorage().getCharacterById(ownerId);
+        Client ownerClient = owner == null ? null : owner.getClient();
+        if (ownerClient != null) ownerClient.lockClient();
+        try {
+            synchronized (items) {
+                ownerBanned = true;
+                open.set(false);
+            }
+            forceCloseInternal();
+        } finally {
+            if (ownerClient != null) ownerClient.unlockClient();
+        }
+    }
+
+    public boolean isClosedForBan() {
+        return ownerBanned;
+    }
+
     public void forceClose() {
+        World worldServer = Server.getInstance().getWorld(world);
+        Character owner = worldServer == null ? null : worldServer.getPlayerStorage().getCharacterById(ownerId);
+        Client ownerClient = owner == null ? null : owner.getClient();
+        if (ownerClient != null) ownerClient.lockClient();
+        try {
+            forceCloseInternal();
+        } finally {
+            if (ownerClient != null) ownerClient.unlockClient();
+        }
+    }
+
+    private void forceCloseInternal() {
         if (!closing.compareAndSet(false, true)) {
             return;
         }
@@ -404,6 +444,22 @@ public class HiredMerchant extends AbstractMapObject {
         Server server = Server.getInstance();
         World worldServer = server.getWorld(world);
         Channel channelServer = server.getChannel(world, channel);
+        boolean authoritative = worldServer != null && worldServer.isHiredMerchantRegistered(this);
+        Character owner = worldServer == null ? null : worldServer.getPlayerStorage().getCharacterById(ownerId);
+        boolean returnToOwner = !ownerBanned && owner != null && owner.isLoggedInWorld() && this == owner.getHiredMerchant();
+        if (authoritative && !returnToOwner) {
+            synchronized (items) {
+                open.set(false);
+                try {
+                    // 保存成功前保留注册和内存物品，失败后由定时收店重试。
+                    saveItems(true);
+                } catch (SQLException | RuntimeException e) {
+                    closing.set(false);
+                    log.error(I18nUtil.getLogMessage("HiredMerchant.close.saveFailed", ownerId), e);
+                    return;
+                }
+            }
+        }
         if (channelServer != null) {
             channelServer.removeHiredMerchant(ownerId, this);
         }
@@ -413,8 +469,8 @@ public class HiredMerchant extends AbstractMapObject {
             map.removeMapObject(this);
         }
 
-        boolean authoritative = worldServer != null && worldServer.isHiredMerchantRegistered(this);
         if (!authoritative) {
+            detached = true;
             visitorLock.lock();
             try {
                 setOpen(false);
@@ -424,19 +480,17 @@ public class HiredMerchant extends AbstractMapObject {
             } finally {
                 visitorLock.unlock();
             }
-            log.warn("Skipping persistence for non-current HiredMerchant ownerId={}, channel={}", ownerId, channel);
+            log.warn(I18nUtil.getLogMessage("HiredMerchant.close.staleInstance", ownerId, channel));
             map = null;
             return;
         }
-
-        Character owner = worldServer.getPlayerStorage().getCharacterById(ownerId);
 
         visitorLock.lock();
         try {
             setOpen(false);
             removeAllVisitors();
 
-            if (owner != null && owner.isLoggedInWorld() && this == owner.getHiredMerchant()) {
+            if (returnToOwner) {
                 closeOwnerMerchantAfterClaim(owner);
                 map = null;
                 return;
@@ -445,13 +499,10 @@ public class HiredMerchant extends AbstractMapObject {
             visitorLock.unlock();
         }
 
-        try {
-            saveItems(true);
-            synchronized (items) {
-                items.clear();
-            }
-        } catch (SQLException ex) {
-            log.error("Failed to save HiredMerchant items while closing ownerId={}", ownerId, ex);
+        if (ownerBanned && owner != null) removeOwner(owner);
+        synchronized (items) {
+            detached = true;
+            items.clear();
         }
 
         Character player = worldServer.getPlayerStorage().getCharacterById(ownerId);
@@ -463,7 +514,7 @@ public class HiredMerchant extends AbstractMapObject {
                 ps.setInt(1, ownerId);
                 ps.executeUpdate();
             } catch (SQLException ex) {
-                log.error("Failed to clear HiredMerchant state ownerId={}", ownerId, ex);
+                log.error(I18nUtil.getLogMessage("HiredMerchant.close.stateFailed", ownerId), ex);
             }
         }
 
@@ -472,6 +523,10 @@ public class HiredMerchant extends AbstractMapObject {
     }
 
     public void closeOwnerMerchant(Character chr) {
+        if (isOwner(chr) && ownerBanned) {
+            closeForBan();
+            return;
+        }
         if (this.isOwner(chr) && closing.compareAndSet(false, true)) {
             closeOwnerMerchantAfterClaim(chr);
         }
@@ -538,11 +593,16 @@ public class HiredMerchant extends AbstractMapObject {
         }
 
         Server.getInstance().getWorld(world).unregisterHiredMerchant(this);
+        detached = true;
     }
 
     public synchronized void visitShop(Character chr) {
         visitorLock.lock();
         try {
+            if (ownerBanned || closing.get() || detached) {
+                chr.sendPacket(PacketCreator.getMiniRoomError(18));
+                return;
+            }
             if (this.isOwner(chr)) {
                 this.setOpen(false);
                 this.removeAllVisitors();
@@ -572,6 +632,7 @@ public class HiredMerchant extends AbstractMapObject {
 
     public void clearItems() {
         synchronized (items) {
+            if (ownerBanned || closing.get() || detached) return;
             items.clear();
         }
     }
@@ -603,7 +664,7 @@ public class HiredMerchant extends AbstractMapObject {
 
     public List<PlayerShopItem> getItems() {
         synchronized (items) {
-            return Collections.unmodifiableList(items);
+            return Collections.unmodifiableList(new ArrayList<>(items));
         }
     }
 
@@ -619,7 +680,7 @@ public class HiredMerchant extends AbstractMapObject {
 
     public boolean addItem(PlayerShopItem item) {
         synchronized (items) {
-            if (items.size() >= 16) {
+            if (ownerBanned || closing.get() || detached || items.size() >= 16) {
                 return false;
             }
 
@@ -630,6 +691,7 @@ public class HiredMerchant extends AbstractMapObject {
 
     public void clearInexistentItems() {
         synchronized (items) {
+            if (ownerBanned || closing.get() || detached) return;
             for (int i = items.size() - 1; i >= 0; i--) {
                 if (!items.get(i).isExist()) {
                     items.remove(i);
@@ -672,12 +734,37 @@ public class HiredMerchant extends AbstractMapObject {
     }
 
     public boolean isOpen() {
-        return open.get();
+        return open.get() && !ownerBanned && !closing.get() && !detached;
     }
 
-    public void setOpen(boolean set) {
-        open.getAndSet(set);
-        published = true;
+    public boolean setOpen(boolean set) {
+        if (!set) {
+            open.set(false);
+            return true;
+        }
+        synchronized (items) {
+            if (ownerBanned || closing.get() || detached) return false;
+            // 创建时已注册，发布/维护结束时再查封禁，补住封号与开店交错的窗口。
+            try (Connection con = DatabaseConnection.getConnection();
+                 PreparedStatement ps = con.prepareStatement("SELECT a.banned, a.tempban > CURRENT_TIMESTAMP AS temporarily_banned FROM accounts a JOIN characters c ON c.accountid = a.id WHERE c.id = ?")) {
+                ps.setInt(1, ownerId);
+                try (ResultSet rs = ps.executeQuery()) {
+                    if (!rs.next() || rs.getInt("banned") == 1 || rs.getBoolean("temporarily_banned")) {
+                        ownerBanned = true;
+                        open.set(false);
+                        return false;
+                    }
+                }
+            } catch (SQLException | RuntimeException e) {
+                ownerBanned = true;
+                open.set(false);
+                log.error(I18nUtil.getLogMessage("HiredMerchant.open.checkFailed", ownerId), e);
+                return false;
+            }
+            open.set(true);
+            published = true;
+            return true;
+        }
     }
 
     public int getItemId() {
@@ -702,7 +789,7 @@ public class HiredMerchant extends AbstractMapObject {
         List<PlayerShopItem> list = new LinkedList<>();
         List<PlayerShopItem> all = new ArrayList<>();
 
-        if (!open.get()) {
+        if (!isOpen()) {
             return list;
         }
 
@@ -719,29 +806,32 @@ public class HiredMerchant extends AbstractMapObject {
     }
 
     public void saveItems(boolean shutdown) throws SQLException {
-        List<Pair<Item, InventoryType>> itemsWithType = new ArrayList<>();
-        List<Short> bundles = new ArrayList<>();
+        synchronized (items) {
+            if (detached) return;
+            List<Pair<Item, InventoryType>> itemsWithType = new ArrayList<>();
+            List<Short> bundles = new ArrayList<>();
 
-        for (PlayerShopItem pItems : getItems()) {
-            Item newItem = pItems.getItem();
-            short newBundle = pItems.getBundles();
+            for (PlayerShopItem pItems : getItems()) {
+                Item newItem = pItems.getItem();
+                short newBundle = pItems.getBundles();
 
-            if (shutdown) { //is "shutdown" really necessary?
-                newItem.setQuantity(pItems.getItem().getQuantity());
-            } else {
-                newItem.setQuantity(pItems.getItem().getQuantity());
+                if (shutdown) { //is "shutdown" really necessary?
+                    newItem.setQuantity(pItems.getItem().getQuantity());
+                } else {
+                    newItem.setQuantity(pItems.getItem().getQuantity());
+                }
+                if (newBundle > 0) {
+                    itemsWithType.add(new Pair<>(newItem, newItem.getInventoryType()));
+                    bundles.add(newBundle);
+                }
             }
-            if (newBundle > 0) {
-                itemsWithType.add(new Pair<>(newItem, newItem.getInventoryType()));
-                bundles.add(newBundle);
+
+            try (Connection con = DatabaseConnection.getConnection()) {
+                ItemFactory.MERCHANT.saveItems(itemsWithType, bundles, this.ownerId, con);
             }
-        }
 
-        try (Connection con = DatabaseConnection.getConnection()) {
-            ItemFactory.MERCHANT.saveItems(itemsWithType, bundles, this.ownerId, con);
+            FredrickProcessor.insertFredrickLog(this.ownerId);
         }
-
-        FredrickProcessor.insertFredrickLog(this.ownerId);
     }
 
     private static boolean check(Character chr, List<PlayerShopItem> items) {
